@@ -100,23 +100,17 @@ while i < 5:
     i += 1
 
 
+driver.close
+#%% --- Write the data into a pandas DataFrame object. ---
 
-#%% --- Do the actual scraping ---
+reviews_df = pd.DataFrame.from_records(reviews,
+                                       columns = ["user_id", "user_name",
+                                                  "comment", "comment_date"])
 
-# reviews = []
-# soup = BeautifulSoup(search_url.content, "html.parser").find(id="bookReviews")
-# for review in soup.find_all(class_="review"):
-#         try:  # Get user / reviewer id
-#             user_id = review.find(class_="user").get("href")[11:].split("-")[0]
-#             #Get user name
-#             user_name = review.find(class_ = "user").get_text()
-#             # Get full review text even the hidden parts, and remove spaces and newlines
-#             comment = review.find(class_="readable").find_all("span")[-1].get_text(". ", strip=True)
-#             date = review.find(class_="reviewDate").get_text()
-#             user_data = [user_id, user_name, comment, date]
-#             reviews.append(user_data)
-            
-#         except Exception:
-#             print("OOOPs!")
+#%% --- Save the data ---
+
+output_fp = Path("../../data/raw/goodreads_reviews_raw.csv")
+reviews_df.to_csv(output_fp, encoding = "utf-8", index = False)
+
             
             
