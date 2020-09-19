@@ -54,6 +54,8 @@ option.add_experimental_option('prefs', prefs)
 
 login_id = "ejgscrape@protonmail.com"
 login_password = "ejgscrapegoodreads"
+api_key = "kjJioZzdiwd9zuHNfhOzbA"
+api_secret = "pLRCn8rDorTmKccu5qsjhgxMq2LtDC1bDb2fNvF0iA"
 
 
 #Initiate the Google Chrome webdriver with options.
@@ -72,8 +74,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 reviews = []
 
 i = 0
-while i < 5:
-    
+while i <= 10:
     
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, "html.parser").find(id="bookReviews")
@@ -96,7 +97,7 @@ while i < 5:
     ActionChains(driver).move_to_element(driver.find_element_by_class_name('next_page')).perform()
     next_button = driver.find_element_by_class_name('next_page')
     next_button.click()
-    time.sleep(10)
+    time.sleep(20)
     i += 1
 
 
