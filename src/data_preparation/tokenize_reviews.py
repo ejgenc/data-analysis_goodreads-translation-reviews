@@ -14,7 +14,6 @@ Lorem dolor ipsum sit amet
 import os
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
-import numpy as np
 import nltk
 nltk.download('vader_lexicon')
 
