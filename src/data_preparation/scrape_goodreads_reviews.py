@@ -5,21 +5,24 @@ Created on Sat Jun 27 16:12:37 2020
 
 ------ What is this file? ------
                 
-Lorem dolor ipsum sit amet
+This script ingests a collection of http's to Goodreads reviews of certain books
+Produces a csv file (reviews_raw) which has the following information:
+    - book_id
+    - review_id
+    - reviewer_id
+    - reviewer_name
+    - review_date
+    - review_rating
+    - review
 
 """
 
 #%% --- Import required packages ---
 
 import os
-from bs4 import BeautifulSoup
-from selenium import webdriver # For webscraping
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
-import time
+from src.helper_functions.data_preparation_helper_functions import scrape_goodreads_reviews
 
 #%% --- Set proper directory to assure integration with doit ---
 
@@ -27,87 +30,45 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-#%% --- Prepare URL's to be searched ---
+#%% --- Import data ---
 
-initial_http = "https://www.goodreads.com/"
-search_https = ["https://www.goodreads.com/book/show/2517",
-                "https://www.goodreads.com/book/show/11691",
-                "https://www.goodreads.com/book/show/6282753",
-                "https://www.goodreads.com/book/show/11690",
-                "https://www.goodreads.com/book/show/11692",
-                "https://www.goodreads.com/book/show/11693",
-                "https://www.goodreads.com/book/show/28718879",
-                "https://www.goodreads.com/book/show/24997390",
-               "https://www.goodreads.com/book/show/11694",
-               "https://www.goodreads.com/book/show/270872"]
-               
-                
-#%% --- Create a list to hold all reviews ---
+#Book ID and Book HTTP data
+import_fp = Path("../../data/external/book_data.xlsx")
+book_id_and_http_df = pd.read_excel(import_fp)
 
-all_reviews = []
-
-#%% --- Initialize the Firefox gecko web driver ---
-
-driver = webdriver.Firefox(executable_path="firefox_driver/geckodriver.exe")
+#Goodreads login data
+# --- ATTENTION! ---
+#
+# To the potential replicator: you MUST provide your own login credentials
+# if you wish to replicate the project in your own computing environment.
+#
+# --- ATTENTION! ---
+import_fp = Path("../../env.txt")
+with open(import_fp, "r") as credentials_file:
+    credentials = credentials_file.read().split("\n")
     
-#%% --- Next Page Test ---
+#%% --- specify the Selenium driver path ---
 
-## password id
+driver_path = Path("firefox_driver/geckodriver.exe")
+    
+#%% --- Select the data that is requested by the scraping function ---
 
-login_id = "ejgscrape@protonmail.com"
-login_password = "ejgscrapegoodreads"
+book_id_list = list(book_id_and_http_df["book_id"])
+http_list = list(book_id_and_http_df["http"])
+login_id = credentials[0]
+login_password = credentials[1]
 
-driver.get(initial_http)
-time.sleep(5)
-login_id_field = driver.find_element_by_id("userSignInFormEmail").send_keys(login_id)
-login_password_field = driver.find_element_by_id("user_password").send_keys(login_password)
-login_button = driver.find_element_by_class_name("gr-button").click()
+#%% --- Call the scraping function ---
 
-for search_http in search_https:
-    driver.get(search_http)
-    time.sleep(5)
-        
-    i = 0
-    while i <= 10:
-        
-        page_source = driver.page_source
-        soup = BeautifulSoup(page_source, "html.parser").find(id="bookReviews")
-        for review in soup.find_all(class_="review"):
-            try:  # Get user / reviewer id
-                user_id = review.find(class_="user").get("href")[11:].split("-")[0]
-                #Get user name
-                user_name = review.find(class_ = "user").get_text()
-                # Get full review text even the hidden parts, and remove spaces and newlines
-                comment = review.find(class_="readable").find_all("span")[-1].get_text(". ", strip=True)
-                date = review.find(class_="reviewDate").get_text()
-                user_data = [user_id, user_name, comment, date]
-                all_reviews.append(user_data)
-                
-            except Exception:
-                print("OOOPS!")
-          
-        next_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CLASS_NAME, 'next_page')))
-        try:
-            driver.execute_script("arguments[0].click();", next_button)
-        except:
-            next_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CLASS_NAME, 'next_page')))
-            driver.execute_script("arguments[0].click();", next_button)
-        
-        time.sleep(3)
-        i += 1
+reviews = scrape_goodreads_reviews(book_id_list,
+                                   http_list,
+                                   driver_path,
+                                   login_id,
+                                   login_password)
+
+#%% --- Export Data ---
+
+export_fp = Path("../../data/raw/reviews_raw.csv")
+reviews.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
-driver.close()
-#%% --- Write the data into a pandas DataFrame object. ---
-
-reviews_df = pd.DataFrame.from_records(all_reviews,
-                                       columns = ["user_id", "user_name",
-                                                  "comment", "comment_date"])
-
-#%% --- Save the data ---
-
-output_fp = Path("../../data/raw/goodreads_reviews_raw.csv")
-reviews_df.to_csv(output_fp, encoding = "utf-8", index = False)
-
-            
-            
