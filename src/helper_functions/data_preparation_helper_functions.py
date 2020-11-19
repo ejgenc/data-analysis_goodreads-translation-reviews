@@ -19,6 +19,7 @@ from selenium.webdriver.common.by import By
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
 import time
+from datetime import date
 
 #%% --- Helper Functions ---
 
@@ -75,6 +76,7 @@ def scrape_goodreads_reviews(book_id_list,
             #Within the page, find the section title "bookreviews"
             soup = BeautifulSoup(page_source, "html.parser").find(id="bookReviews")
             for review in soup.find_all(class_="review"):
+                date_scraped = date.today().strftime("%d/%m/%Y")
                 review_id = "r{}".format(review_id_enumerator)
                 try:
                     
@@ -84,7 +86,7 @@ def scrape_goodreads_reviews(book_id_list,
                     rating = len(review.find_all(class_="p10"))
                     review = review.find(class_="readable").find_all("span")[-1].get_text(". ", strip=True)
                     
-                    user_data = [book_id, review_id, reviewer_id,
+                    user_data = [date_scraped, book_id, review_id, reviewer_id,
                                  reviewer_name, review_date, rating,
                                  review]
                     
@@ -108,7 +110,7 @@ def scrape_goodreads_reviews(book_id_list,
     driver.close()
     #CONVERT LIST OF LISTS INTO DF#
     reviews_df = pd.DataFrame.from_records(reviews_data,
-                                           columns = ["book_id", "review_id",
+                                           columns = ["date_scraped","book_id", "review_id",
                                                       "reviewer_id", "reviewer_name",
                                                       "review_date","rating",
                                                       "review"])

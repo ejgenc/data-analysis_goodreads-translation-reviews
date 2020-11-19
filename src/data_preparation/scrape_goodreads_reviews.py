@@ -7,6 +7,7 @@ Created on Sat Jun 27 16:12:37 2020
                 
 This script ingests a collection of http's to Goodreads reviews of certain books
 Produces a csv file (reviews_raw) which has the following information:
+    - date_scraped
     - book_id
     - review_id
     - reviewer_id
@@ -61,7 +62,7 @@ login_password = credentials[1]
 #%% --- Call the scraping function ---
 
 reviews = scrape_goodreads_reviews(book_id_list,
-                                   http_list,
+                                   http_list[0:1],
                                    driver_path,
                                    login_id,
                                    login_password)
