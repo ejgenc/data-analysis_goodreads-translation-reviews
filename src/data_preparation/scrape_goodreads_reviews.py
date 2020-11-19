@@ -24,7 +24,6 @@ import os
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
 from src.helper_functions.data_preparation_helper_functions import scrape_goodreads_reviews
-
 #%% --- Set proper directory to assure integration with doit ---
 
 abspath = os.path.abspath(__file__)
@@ -62,7 +61,7 @@ login_password = credentials[1]
 #%% --- Call the scraping function ---
 
 reviews = scrape_goodreads_reviews(book_id_list,
-                                   http_list[0:1],
+                                   http_list,
                                    driver_path,
                                    login_id,
                                    login_password)
