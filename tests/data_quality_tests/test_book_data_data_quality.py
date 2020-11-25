@@ -10,7 +10,7 @@ The file can be found at:
 #%% --- Import required packages ---
 
 import os
-import urllib.request
+import requests
 from pathlib import Path # To wrap around filepaths
 import pytest
 import pandas as pd
@@ -24,7 +24,7 @@ os.chdir(dname)
 #%% --- Import data ---
 
 import_fp = Path("../../data/external/book_data.xlsx")
-book_data = pd.read_excel(import_fp)
+book_data = pd.read_excel(import_fp, engine="openpyxl")
 
 #%% --- Quality test: check if there are any null values ---
 
@@ -37,26 +37,26 @@ class TestNullValues(object):
 
 #%% --- Quality test: check if http_id and book_id variable is unique for all rows ---
 
-def TestUniquenessOfVariables(object):
+class TestUniquenessOfVariables(object):
     def test_column_uniqueness_http_id(self):
         expected = len(book_data["http_id"])
-        actual =  len(book_data["http_id"].unique)
+        actual =  len(book_data["http_id"].unique())
         error_message = "Column http_id contains non-unique values. Expected {} unique values, got {}".format(expected,actual)
         assert expected == actual, error_message
         
     def test_column_uniqueness_book_id(self):
         expected = len(book_data["book_id"])
-        actual =  len(book_data["book_id"].unique)
+        actual =  len(book_data["book_id"].unique())
         error_message = "Column book_id contains non-unique values. Expected {} unique values, got {}".format(expected,actual)
         assert expected == actual, error_message
 
 #%% --- Quality test: check if all https are available ---
 
-def TestHttpAvailability(object):
+class TestHttpAvailability(object):
     def test_http_availability_by_pinging(self):
-        for http in  book_data["http"]:
-            expected = 200
-            actual = urllib.request.urlopen(http).getcode()
+        for http in book_data["http"]:
+            expected = "<Response [200]>"
+            actual = str(requests.get(http))
             error_message = "The following http is not available: {}".format(http)
             assert expected == actual, error_message
-            
+                  

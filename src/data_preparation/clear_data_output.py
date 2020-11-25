@@ -18,9 +18,8 @@ os.chdir(dname)
 
 #%% --- Process folder names and delete paths ---
 
-folder_names = ["processed", "final"]
+folder_names = ["raw","processed", "final"]
 folder_prefix = "../../data/{}"
-folder_prefix_viz = "../../media/figures/raw"
 
 for folder_name in folder_names:
     folder_path = Path(folder_prefix.format(folder_name))
