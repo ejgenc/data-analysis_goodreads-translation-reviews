@@ -24,37 +24,46 @@ os.chdir(dname)
 #%% --- Import data ---
 
 import_fp = Path("../../data/external/book_data.xlsx")
-book_data = pd.read_excel(import_fp, engine="openpyxl")
+test_target = pd.read_excel(import_fp, engine="openpyxl")
 
 #%% --- Quality test: check if there are any null values ---
 
 class TestNullValues(object):
     def test_total_null_values(self):
         expected = 0
-        actual = book_data.isnull().sum().sum()
+        actual = test_target.isnull().sum().sum()
         error_message = "Dataset contains null values. Expected {} null values, got {}".format(expected,actual)
         assert expected == actual, error_message
-
-#%% --- Quality test: check if http_id and book_id variable is unique for all rows ---
-
-class TestUniquenessOfVariables(object):
-    def test_column_uniqueness_http_id(self):
-        expected = len(book_data["http_id"])
-        actual =  len(book_data["http_id"].unique())
-        error_message = "Column http_id contains non-unique values. Expected {} unique values, got {}".format(expected,actual)
-        assert expected == actual, error_message
         
-    def test_column_uniqueness_book_id(self):
-        expected = len(book_data["book_id"])
-        actual =  len(book_data["book_id"].unique())
-        error_message = "Column book_id contains non-unique values. Expected {} unique values, got {}".format(expected,actual)
-        assert expected == actual, error_message
+#%% --- Quality test: check data type agreements within columns and data types
+
+class TestDataTypes(object):
+    def test_data_type_agreement_within_columns(self):
+        for column_name in test_target.columns:
+            expected_dtype = type(test_target[column_name][0])
+            value_index = 0
+            while value_index < len(test_target[column_name]):
+                value_type = type(test_target[column_name][value_index])
+                error_message = "Values in column \"{}\" are not all of same type. Value at index {} is type {}, expected type {}".format(column_name, value_index, value_type, expected_dtype)
+                assert value_type == expected_dtype, error_message
+                value_index += 1
+                
+#%% --- Quality test: check uniqueness of  the entries under certain columns ---
+
+class TestUniqueness(object):
+    def test_if_selected_are_all_unique(self):
+        selected_columns = ["http_id","book_id"]
+        for column in selected_columns:
+            expected = len(test_target[column])
+            actual =  len(test_target[column].unique())
+            error_message = "Column {} contains non-unique values. Expected {} unique values, got {}".format(column, expected,actual)
+            assert expected == actual, error_message
 
 #%% --- Quality test: check if all https are available ---
 
 class TestHttpAvailability(object):
     def test_http_availability_by_pinging(self):
-        for http in book_data["http"]:
+        for http in test_target["http"]:
             expected = "<Response [200]>"
             actual = str(requests.get(http))
             error_message = "The following http is not available: {}".format(http)
