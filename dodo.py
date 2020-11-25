@@ -25,10 +25,10 @@ def task_clear_viz_output():
     }
 
 def task_run_book_data_data_quality_tests():
-    action_path = Path("src/tests/data_quality_tests/test_book_data_data_quality.py")
+    action_path = Path("tests/data_quality_tests/test_book_data_data_quality.py")
     return {
         "file_dep": [Path("data/external/book_data.xlsx")],
-        "actions": ["python pytest {}".format(action_path)],
+        "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
 
