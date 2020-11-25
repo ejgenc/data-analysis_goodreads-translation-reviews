@@ -42,3 +42,10 @@ def task_scrape_goodreads_reviews():
         "targets": [Path("data/raw/reviews_raw.csv")],
         "title": show_cmd,
     }
+
+def task_run_reviews_raw_data_quality_tests():
+        action_path = Path("tests/data_quality_tests/test_reviews_raw_data_quality.py")
+    return {
+        "file_dep": [Path("data/raw/reviews_raw.csv")],
+        "actions": ["pytest {}".format(action_path)],
+        "title": show_cmd
