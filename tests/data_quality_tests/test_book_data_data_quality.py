@@ -58,6 +58,21 @@ class TestUniqueness(object):
             actual =  len(test_target[column].unique())
             error_message = "Column {} contains non-unique values. Expected {} unique values, got {}".format(column, expected,actual)
             assert expected == actual, error_message
+            
+    def test_if_selected_columns_are_of_correct_dtype(self):
+        dtype_dict = {"http_id": "object",
+                      "http": "object",
+                      "book_id": "object",
+                      "book_name": "object",
+                      "author": "object",
+                      "translator_first": "object"}
+        
+        for column, dtype in dtype_dict.items():
+            expected = dtype
+            actual = str(test_target[column].dtype)
+            error_message = "Column {} is of wrong data type. Expected {}, got {}".format(column, expected, actual)
+            assert expected == actual, error_message
+
 
 #%% --- Quality test: check if all https are available ---
 

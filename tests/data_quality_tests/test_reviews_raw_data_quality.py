@@ -14,6 +14,8 @@ from pathlib import Path # To wrap around filepaths
 import datetime as dt
 import pytest
 import pandas as pd
+from langdetect import DetectorFactory, detect
+from langdetect.lang_detect_exception import LangDetectException
 
 #%% --- Set proper directory to assure integration with doit ---
 
@@ -48,27 +50,27 @@ class TestDataTypes(object):
                 assert value_type == expected_dtype, error_message
                 value_index += 1
                 
-        def test_if_selected_columns_are_of_correct_dtype(self):
-            dtype_dict = {"date_scraped": "datetime64[ns]",
-                          "book_id": "object",
-                          "review_id": "object",
-                          "reviewer_id": "int64",
-                          "reviewer_name": "object",
-                          "review_date": "datetime64[ns]",
-                          "rating": "int64",
-                          "review": "object"}
-            
-            for column, dtype in dtype_dict.items():
-                expected = dtype
-                actual = str(test_target[column].dtype)
-                error_message = "Column {} is of wrong data type. Expected {}, got {}".format(column, expected, actual)
-                assert expected == actual, error_message
+    def test_if_selected_columns_are_of_correct_dtype(self):
+        dtype_dict = {"date_scraped": "datetime64[ns]",
+                      "book_id": "object",
+                      "review_id": "object",
+                      "reviewer_id": "int64",
+                      "reviewer_name": "object",
+                      "review_date": "datetime64[ns]",
+                      "rating": "int64",
+                      "review": "object"}
+        
+        for column, dtype in dtype_dict.items():
+            expected = dtype
+            actual = str(test_target[column].dtype)
+            error_message = "Column {} is of wrong data type. Expected {}, got {}".format(column, expected, actual)
+            assert expected == actual, error_message
 
 #%% --- Quality test: check uniqueness of the entries under certain columns ---
 
 class TestUniqueness(object):
     def test_if_selected_are_all_unique(self):
-        selected_columns = ["book_id", "review_id"]
+        selected_columns = ["review_id"]
         for column in selected_columns:
             expected = len(test_target[column])
             actual =  len(test_target[column].unique())
@@ -77,21 +79,34 @@ class TestUniqueness(object):
 
 #%% --- Quality test: check datetime agreement within and across columns
 
-class TestDatetimeAgreement(object): 
+@pytest.mark.skip(reason="not fully implemented")
+class TestDatetimeFormatAgreement(object): 
     #Fetch columns that have datetime information in them
     datetime_columns = []
     for column, dtype in test_target.dtypes.items():
         if dtype == "datetime64[ns]":
             datetime_columns.append(column)
             
-    def test_datetime_agreement_within_columns(self):
+    def test_datetime_format_agreement_within_columns(self):
         for column in datetime_columns:
             expected_format = test_target[column]
             pass
     
-    def test_datetime_agreement_across_columns(self):
+    def test_datetime_format_agreement_across_columns(self):
         pass
               
 #%% --- Quality test: check if "review" column only includes English comments ---
 
+class TestReviewLanguage(object):
+    def test_if_reviews_are_english(self):
+        DetectorFactory.seed = 1
+        expected = "en"
+        for review in test_target["review"]:
+            try:
+                actual = detect(review)
+            except:
+                actual = "not a language"
+            error_message = "Found a non-english review. Language detector returned language code {}, expected {}".format(actual,expected)
+            assert expected == actual, error_message
+            
 
