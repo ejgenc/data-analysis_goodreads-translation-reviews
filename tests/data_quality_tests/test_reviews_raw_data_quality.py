@@ -25,7 +25,7 @@ os.chdir(dname)
 
 #%% --- Import data ---
 
-import_fp = Path("../../data/raw/reviews_raw.csv")
+import_fp = Path("../../data/raw/goodreads_reviews_raw.csv")
 test_target = pd.read_csv(import_fp)
 
 #%% --- Quality test: check if there are any null values ---

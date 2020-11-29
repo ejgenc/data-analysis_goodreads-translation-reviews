@@ -23,7 +23,7 @@ os.chdir(dname)
 
 #%% --- Import data ---
 
-import_fp = Path("../../data/external/book_data.xlsx")
+import_fp = Path("../../data/external/book_data_raw.xlsx")
 test_target = pd.read_excel(import_fp, engine="openpyxl")
 
 #%% --- Quality test: check if there are any null values ---
