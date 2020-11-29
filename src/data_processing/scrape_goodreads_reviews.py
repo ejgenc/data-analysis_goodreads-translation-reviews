@@ -33,7 +33,7 @@ os.chdir(dname)
 #%% --- Import data ---
 
 #Book ID and Book HTTP data
-import_fp = Path("../../data/external/book_data.xlsx", engine = "openpyxl")
+import_fp = Path("../../data/external/book_data_external.xlsx", engine = "openpyxl")
 book_id_and_http_df = pd.read_excel(import_fp)
 
 #Goodreads login data
