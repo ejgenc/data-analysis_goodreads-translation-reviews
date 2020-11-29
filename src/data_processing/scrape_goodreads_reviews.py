@@ -15,9 +15,14 @@ Produces a csv file (reviews_raw) which has the following information:
     - review_date
     - review_rating
     - review
+    
+This script targets the following file:
+    ../../data/external/book_data_external.xlsx
+    
+The resulting csv file is located at:
+    ../../data/raw/goodreads_reviews_raw.csv
 
 """
-
 #%% --- Import required packages ---
 
 import os

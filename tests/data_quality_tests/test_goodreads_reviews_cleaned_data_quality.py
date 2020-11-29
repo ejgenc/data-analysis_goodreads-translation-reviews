@@ -4,7 +4,7 @@
 
 This test module contains some data quality tests for the goodreads_reviews_cleaned.csv file.
 The file can be found at:
-    data/cleaned/goodreads_reviews_cleaned.csv
+    ../../data/cleaned/goodreads_reviews_cleaned.csv
 
 """
 #%% --- Import required packages ---
@@ -51,12 +51,12 @@ class TestDataTypes(object):
                 value_index += 1
                 
     def test_if_selected_columns_are_of_correct_dtype(self):
-        dtype_dict = {"date_scraped": "datetime64[ns]",
+        dtype_dict = {"date_scraped": "object",
                       "book_id": "object",
                       "review_id": "object",
                       "reviewer_id": "int64",
                       "reviewer_name": "object",
-                      "review_date": "datetime64[ns]",
+                      "review_date": "object",
                       "rating": "int64",
                       "review": "object"}
         
@@ -76,21 +76,40 @@ class TestUniqueness(object):
             actual =  len(test_target[column].unique())
             error_message = "Column {} contains non-unique values. Expected {} unique values, got {}".format(column, expected,actual)
             assert expected == actual, error_message
-              
+            
+#%% --- Quality test: check for formatting errors in datetime formatting ---
+
+class TestDatetime(object):
+    def test_formatting_errors(self):
+        datetime_columns = ["date_scraped", "review_date"]
+        expected = True
+        for column in datetime_columns:
+            selected = test_target[column]
+            for datetime in list(selected):
+                parts = datetime.split("/")
+                month = int(parts[1])
+                actual = month <= 12
+                error_message = "Found datetime formatting error. Month cannot be bigger than 12, found {}".format(str(month))
+                assert expected == actual, error_message
+                
+          
 #%% --- Quality test: check if "review" column only includes English comments ---
 
 class TestReviewLanguage(object):
+    DetectorFactory.seed = 0
     def test_if_reviews_are_english(self):
-        DetectorFactory.seed = 1
-        expected = "en"
+        expected = 20
+        actual = 0
         for review in test_target["review"]:
             try:
-                actual = detect(review)
+                lang = detect(review)
             except:
-                actual = "not a language"
-            error_message = "Found a non-english review. Language detector returned language code {}, expected {}".format(actual,expected)
-            assert expected == actual, error_message
-            
+                lang = "not a language"
+            if lang != "en":
+                actual += 1
+            error_message = "Language detection did not work as intended. Excepted below {} flags, got {}".format(expected,actual)
+            assert expected >= actual, error_message
+
 #%% --- Quality test: check if "review" column strings are all lower case and contain no stopwords ---
 
 class TestStringConventions(object):
@@ -100,6 +119,3 @@ class TestStringConventions(object):
         error_message = "Some of the reviews are not exclusively lower case. Expected {} lower case only reviews, got only {}.".format(expected,actual)
         assert expected == actual, error_message
     
-
-
-

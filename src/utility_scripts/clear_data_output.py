@@ -18,7 +18,7 @@ os.chdir(dname)
 
 #%% --- Process folder names and delete paths ---
 
-folder_names = ["raw","cleaned", "analysis_results"]
+folder_names = ["raw","cleaned","analysis_results","cleaning_reports"]
 folder_prefix = "../../data/{}"
 
 for folder_name in folder_names:

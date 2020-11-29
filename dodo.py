@@ -58,7 +58,7 @@ def task_run_goodreads_reviews_cleaned_data_quality_tests():
     action_path = Path("tests/data_quality_tests/test_goodreads_reviews_cleaned_data_quality.py")
     return {
         "file_dep": [Path("data/cleaned/goodreads_reviews_cleaned.csv")],
-        "task_dep": ["clean_goodreads_reviews"],
+        "task_dep": ["clean_goodreads_reviews_raw"],
         "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
