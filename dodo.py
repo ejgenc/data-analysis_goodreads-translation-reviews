@@ -62,3 +62,13 @@ def task_run_goodreads_reviews_cleaned_data_quality_tests():
         "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
+
+def task_process_goodreads_reviews_cleaned():
+    action_path = Path("src/data_processing/process_goodreads_reiews_cleaned.py")
+    return {
+        "file_dep": [Path("data/cleaned/goodreads_reviews_cleaned.csv")],
+        "task_dep": ["run_goodreads_reviews_cleaned_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/raw/review_sentences_raw.csv")],
+        "title": show_cmd
+    }
