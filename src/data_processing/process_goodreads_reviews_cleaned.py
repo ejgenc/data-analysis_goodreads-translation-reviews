@@ -24,7 +24,6 @@ import pandas as pd
 import re #regex
 import nltk
 from nltk.tokenize import sent_tokenize
-from nltk.corpus import stopwords
 
 #%% --- Set proper directory to assure integration with doit ---
 
@@ -36,9 +35,6 @@ os.chdir(dname)
 
 import_fp = Path("../../data/cleaned/goodreads_reviews_cleaned.csv")
 review_sentences = pd.read_csv(import_fp)
-
-# NLTK stopwords data
-nltk.download('stopwords')
 
 #%% --- Process: drop unnecessary columns ---
 
@@ -74,30 +70,33 @@ review_sentences["sentence_id"] = "s" + review_sentences["sentence_id"].astype(s
 
 review_sentences["length_in_words_with_stopwords"] = review_sentences["review_sentence"].str.split().str.len()
 
-#%% --- Process: calculate sentence length (in words), don't count stopwords too ---
+#%% --- Process: tag sentence if it mentions "AUTHOR / BOOK" 
 
-#create a temp copy of "review_sentence" column
+# ATTENTION! The tagging process below is at alpha. It will be much more
+# complex in the finished version.
 
-review_sentences["TEMP"] = review_sentences["review_sentence"].copy()
+#%% --- Process: tag sentence if it mentions TRANSLATION / TRANSLATOR ###
 
-#split the sentence from spaces for better removal
+# ATTENTION! The tagging process below is at alpha. It will be much more
+# complex in the finished version.
 
-#review_sentences["TEMP"] = review_sentences["review_sentence"].str.split(" ")
+pattern = r"\b[Tt]ransl\w+\b"
 
-#Use regex to remove "stopwords" from this column
+review_sentences["mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
+#%% -- Process: re-order columns ---
 
-pat = re.compile('|'.join(map(re.escape, stopwords.words("english"))))
+# re-ordering scheme: book/review/sentence id's line up, 
+# tags come after id's
+# extra data comes after tags
+# the actual sentence comes last
 
-review_sentences["TEMP"]  = [pat.sub('', text) for text in review_sentences['TEMP']]
-
-#Calculate column "length_in_words_without_stopwords" using the intermediary column
-
-#Drop intermediary column
-
+review_sentences = review_sentences[["book_id", "review_id", "sentence_id",
+                                     "mentions_trans", "length_in_words_with_stopwords",
+                                     "review_sentence"]]
 
 #%% --- Export data ---
 
-# export_fp = Path("../../data/raw/review_sentences_raw.csv")
-# review_sentences .to_csv(export_fp, encoding = "utf-8", index = False)
+export_fp = Path("../../data/raw/review_sentences_raw.csv")
+review_sentences .to_csv(export_fp, encoding = "utf-8", index = False)
 
 
