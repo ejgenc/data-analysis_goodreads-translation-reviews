@@ -66,23 +66,7 @@ review_sentences.rename({"review": "review_sentence"},
 review_sentences["sentence_id"] = np.arange(len(review_sentences))
 review_sentences["sentence_id"] = "s" + review_sentences["sentence_id"].astype(str)
 
-# #%% --- Process: calculate sentence length (in words), count stopwords too ---
 
-# review_sentences["length_in_words_with_stopwords"] = review_sentences["review_sentence"].str.split().str.len()
-
-#%% --- Process: tag sentence if it mentions "AUTHOR / BOOK" 
-
-# ATTENTION! The tagging process below is at alpha. It will be much more
-# complex in the finished version.
-
-# #%% --- Process: tag sentence if it mentions TRANSLATION / TRANSLATOR ###
-
-# # ATTENTION! The tagging process below is at alpha. It will be much more
-# # complex in the finished version.
-
-# pattern = r"\b[Tt]ransl\w+\b"
-
-# review_sentences["mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
 #%% -- Process: re-order columns ---
 
 # re-ordering scheme: book/review/sentence id's line up, 

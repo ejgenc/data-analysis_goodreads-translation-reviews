@@ -72,3 +72,38 @@ def task_process_goodreads_reviews_cleaned():
         "targets": [Path("data/raw/review_sentences_raw.csv")],
         "title": show_cmd
     }
+
+def task_clean_review_sentences_raw():
+    action_path = Path("src/data_cleaning/clean_review_sentences_raw.py")
+    return {
+        "file_dep": [Path("data/raw/review_sentences_raw.csv")],
+        "task_dep": ["process_goodreads_reviews_cleaned"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/cleaned/review_sentences_cleaned.csv")],
+        "title": show_cmd
+    }
+
+def task_run_review_sentences_cleaned_data_quality_tests():
+    action_path = Path("tests/data_quality_tests/test_review_sentences_cleaned_data_quality.py")
+    return {
+        "file_dep": [Path("data/cleaned/review_sentences_cleaned.csv")],
+        "task_dep": ["clean_review_sentences_raw"],
+        "actions": ["pytest {}".format(action_path)],
+        "title": show_cmd
+    }
+
+def task_analyze_review_sentences_cleaned():
+    action_path = Path("src/data_analysis/analyze_review_sentences_cleaned.py")
+    return {
+        "file_dep": [Path("data/cleaned/review_sentences_cleaned.csv")],
+        "task_dep": ["run_review_sentences_cleaned_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/analysis_results/review_sentences_analyzed.csv")],
+        "title": show_cmd
+    }
+
+def task_process_review_sentences_analyzed():
+        action_path = Path("src/data_processing/process_review_sentences_analyzed.py")
+    return {
+        
+    }
