@@ -110,7 +110,7 @@ class TestReviewLanguage(object):
             error_message = "Language detection did not work as intended. Excepted below {} flags, got {}".format(expected,actual)
             assert expected >= actual, error_message
 
-#%% --- Quality test: check if "review" column strings are all lower case and contain no stopwords ---
+#%% --- Quality test: check if "review" column strings are all lower case ---
 
 class TestStringConventions(object):
     def test_if_reviews_are_lowercase(self):

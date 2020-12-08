@@ -21,8 +21,6 @@ import os
 from pathlib import Path # To wrap around filepaths
 import numpy as np
 import pandas as pd
-import re #regex
-import nltk
 from nltk.tokenize import sent_tokenize
 
 #%% --- Set proper directory to assure integration with doit ---
@@ -61,11 +59,19 @@ review_sentences.rename({"review": "review_sentence"},
                         axis = "columns",
                         inplace = True)
 
+#%% --- Process: drop quotation marks
+
+review_sentences["review_sentence"] = review_sentences["review_sentence"].str.replace(r"\"","")
+
+### !!! ATTENTION! Why this? ATTENTION !!!
+# Apparently, there is a problem with the .csv format and quotations marks gone ramparts
+#You can write them well, but they cannot be read.
+#I have dropped all quotation marks in order to prevent this.
+
 #%% --- Process: tag each sentence with a sentence id ---
 
 review_sentences["sentence_id"] = np.arange(len(review_sentences))
 review_sentences["sentence_id"] = "s" + review_sentences["sentence_id"].astype(str)
-
 
 #%% -- Process: re-order columns ---
 
