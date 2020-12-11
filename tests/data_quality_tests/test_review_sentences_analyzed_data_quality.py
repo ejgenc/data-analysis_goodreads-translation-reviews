@@ -57,7 +57,7 @@ class TestDataTypes(object):
                     "review_id": "object",
                     "sentence_id": "object",
                     "review_sentence": "object",
-                    "length_in_words_with_stopwords": "int64",
+                    "length_in_words": "int64",
                     "mentions_trans": "bool",
                     "VADER_score_neg": "float64",
                     "VADER_score_neu": "float64",
@@ -80,28 +80,4 @@ class TestValueBoundaries(object):
             actual = test_target[column].min()
             error_message = ("Minimum value of column {} is below the threshold of {}."
                              "got at least one row with value {}").format(column,expected_threshold,actual)
-            assert expected_threshold >= actual, error_message
-
-#%% --- Quality test: check if VADER tagging has been correctly done ---
-
-class TestAnalysisOutcome(object):
-    def test_outcome_of_VADER_tagging(self):
-        # prepare a subset of the dataset to replicate the analysis
-        subset = test_target["review_sentence"]
-        #Create an instance of the sentiment analyzer
-        sid = SentimentIntensityAnalyzer()
-        #Analyse each sentence and get VADER scores in a matrix as a seperate column
-        subset["VADER_results_matrix"] = subset["review_sentence"].apply(sid.polarity_scores)
-        
-        target_columns = ["VADER_score_neg", "VADER_score_neu",
-                          "VADER_score_pos", "VADER_score_compound"]
-        
-#%%
-
-subset = test_target[["review_sentence","VADER_score_neg",
-                     "VADER_score_neu", "VADER_score_pos", "VADER_score_compound"]]
-
-sid = SentimentIntensityAnalyzer()
-
-subset["VADER_results_matrix"] = subset["review_sentence"].apply(sid.polarity_scores)
-        
+            assert expected_threshold <= actual, error_message
