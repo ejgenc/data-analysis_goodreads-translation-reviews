@@ -36,7 +36,7 @@ review_sentences = pd.read_csv(import_fp)
 
 #%% --- Analyze: calculate sentence length (in words), count stopwords too ---
 
-review_sentences["length_in_words_with_stopwords"] = review_sentences["review_sentence"].str.split().str.len()
+review_sentences["length_in_words"] = review_sentences["review_sentence"].str.split().str.len()
 
 #%% --- Analyze: tag sentence if it mentions "AUTHOR / BOOK" 
 
@@ -65,7 +65,7 @@ temp_VADER_df = pd.DataFrame(temp_VADER_list_of_dicts)
 
 #Change the column names of the temporary VADER dataframe
 temp_VADER_df.columns = ["VADER_score_neg","VADER_score_neu",
-                         "VADER_score_pos"," VADER_score_compound"]
+                         "VADER_score_pos","VADER_score_compound"]
 
 #Concat temp_VADER_df and review_sentences
 review_sentences = pd.concat([review_sentences,temp_VADER_df],

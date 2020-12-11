@@ -100,21 +100,21 @@ def task_analyze_review_sentences_cleaned():
         "title": show_cmd
     }
 
-def task_run_review_sentences_analyzed_data_quality_tests():
-    action_path = Path("tests/data_quality_tests/test_review_sentences_analyzed_data_quality.py")
-    return {
-        "file_dep": [Path("data/analysis_results/review_sentences_analyzed.csv")],
-        "task_dep": ["analyzed_review_sentences_cleaned"],
-        "actions": ["pytest {}".format(action_path)],
-        "title": show_cmd
-    }
+# def task_run_review_sentences_analyzed_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_review_sentences_analyzed_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/analysis_results/review_sentences_analyzed.csv")],
+#         "task_dep": ["analyzed_review_sentences_cleaned"],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
 
-def task_process_review_sentences_analyzed():
-    action_path = Path("src/data_processing/process_review_sentences_analyzed.py")
-    return {
-        "file_dep": [Path("data/analyzed/review_sentences_analyzed.csv")],
-        "task_dep": ["run_review_sentences_analyzed_data_quality_tests"],
-        "actions": ["python {}".format(action_path)],
-        "targets": [Path("data/raw/relevant_words_raw.csv")],
-        "title": show_cmd
-    }
+# def task_process_review_sentences_analyzed():
+#     action_path = Path("src/data_processing/process_review_sentences_analyzed.py")
+#     return {
+#         "file_dep": [Path("data/analyzed/review_sentences_analyzed.csv")],
+#         "task_dep": ["run_review_sentences_analyzed_data_quality_tests"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/raw/relevant_words_raw.csv")],
+#         "title": show_cmd
+#     }
