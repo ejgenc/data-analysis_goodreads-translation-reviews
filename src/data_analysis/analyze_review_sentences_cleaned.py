@@ -36,7 +36,7 @@ review_sentences = pd.read_csv(import_fp)
 
 #%% --- Analyze: calculate sentence length (in words), count stopwords too ---
 
-review_sentences["length_in_words"] = review_sentences["review_sentence"].str.split().str.len()
+review_sentences["length_in_words"] = review_sentences["review_sentence"].str.split(" ").str.len()
 
 #%% --- Analyze: tag sentence if it mentions "AUTHOR / BOOK" 
 

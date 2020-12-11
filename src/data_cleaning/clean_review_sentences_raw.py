@@ -83,5 +83,3 @@ review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
 export_fp = Path("../../data/cleaning_reports/review_sentences_raw_shorter_than_three_words.csv")
 shorter_than_3.to_csv(export_fp, encoding = "utf-8", index = False)
 
-
-
