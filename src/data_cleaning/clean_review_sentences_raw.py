@@ -22,7 +22,6 @@ Reports related to the cleaning process are located at:
 
 import os
 from pathlib import Path # To wrap around filepaths
-import csv
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---
