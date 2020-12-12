@@ -38,20 +38,6 @@ review_sentences = pd.read_csv(import_fp)
 
 review_sentences["length_in_words"] = review_sentences["review_sentence"].str.split(" ").str.len()
 
-#%% --- Analyze: tag sentence if it mentions "AUTHOR / BOOK" 
-
-# ATTENTION! The tagging process below is at alpha. It will be much more
-# complex in the finished version.
-
-#%% --- Analyze: tag sentence if it mentions TRANSLATION / TRANSLATOR ###
-
-# ATTENTION! The tagging process below is at alpha. It will be much more
-# complex in the finished version.
-
-pattern = r"\b[Tt]ransl\w+\b"
-
-review_sentences["mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
-
 #%% --- Analyze: calculate sentiment for each sentence using VADER
 
 #Create an instance of the sentiment analyzer

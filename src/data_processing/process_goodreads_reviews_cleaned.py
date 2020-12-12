@@ -73,6 +73,20 @@ review_sentences["review_sentence"] = review_sentences["review_sentence"].str.re
 review_sentences["sentence_id"] = np.arange(len(review_sentences))
 review_sentences["sentence_id"] = "s" + review_sentences["sentence_id"].astype(str)
 
+#%% --- Process: tag sentence if it mentions "AUTHOR / BOOK" 
+
+# ATTENTION! The tagging process below is at alpha. It will be much more
+# complex in the finished version.
+
+#%% --- Process: tag sentence if it mentions TRANSLATION / TRANSLATOR ###
+
+# ATTENTION! The tagging process below is at alpha. It will be much more
+# complex in the finished version.
+
+pattern = r"\b[Tt]ransl\w+\b"
+
+review_sentences["mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
+
 #%% -- Process: re-order columns ---
 
 # re-ordering scheme: book/review/sentence id's line up, 
@@ -80,7 +94,9 @@ review_sentences["sentence_id"] = "s" + review_sentences["sentence_id"].astype(s
 # extra data comes after tags
 # the actual sentence comes last
 
-review_sentences = review_sentences[["book_id", "review_id", "sentence_id","review_sentence"]]
+review_sentences = review_sentences[["book_id", "review_id",
+                                     "sentence_id","mentions_trans",
+                                     "review_sentence"]]
 
 #%% --- Export data ---
 

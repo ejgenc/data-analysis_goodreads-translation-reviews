@@ -109,11 +109,11 @@ def task_run_review_sentences_analyzed_data_quality_tests():
         "title": show_cmd
     }
 
-# def task_process_review_sentences_analyzed():
-#     action_path = Path("src/data_processing/process_review_sentences_analyzed.py")
+# def task_process_review_sentences_cleaned():
+#     action_path = Path("src/data_processing/process_review_sentences_cleaned.py")
 #     return {
-#         "file_dep": [Path("data/analyzed/review_sentences_analyzed.csv")],
-#         "task_dep": ["run_review_sentences_analyzed_data_quality_tests"],
+#         "file_dep": [Path("data/cleaned/review_sentences_cleaned.csv")],
+#         "task_dep": ["run_review_sentences_cleaned_data_quality_tests"],
 #         "actions": ["python {}".format(action_path)],
 #         "targets": [Path("data/raw/relevant_words_raw.csv")],
 #         "title": show_cmd
