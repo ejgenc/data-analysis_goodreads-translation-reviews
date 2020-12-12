@@ -119,3 +119,31 @@ def task_process_review_sentences_cleaned():
         "title": show_cmd
     }
 
+# def task_clean_tagged_sentences_raw():
+#     action_path = Path("src/data_cleaning/clean_tagged_sentences_raw.py")
+#     return {
+#         "file_dep": [Path("data/raw/tagged_sentences_raw.csv")],
+#         "task_dep": ["process_review_sentences_cleaned"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/cleaned/tagged_sentences_cleaned.csv")],
+#         "title": show_cmd
+#     }
+
+# def task_run_tagged_sentences_cleaned_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_tagged_sentences_cleaned_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/cleaned/tagged_sentences_cleaned.csv")],
+#         "task_dep": ["clean_tagged_sentences_raw"],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
+
+# def task_process_tagged_sentences_cleaned():
+#     action_path = Path("src/data_processing/process_tagged_sentences_cleaned.py")
+#     return {
+#         "file_dep": [Path("data/cleaned/tagged_sentences_cleaned.csv")],
+#         "task_dep": ["run_tagged_sentences_cleaned_data_quality_tests"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/raw/relevant_words_raw.csv")],
+#         "title": show_cmd
+#     }
