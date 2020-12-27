@@ -119,15 +119,15 @@ def task_process_review_sentences_cleaned():
         "title": show_cmd
     }
 
-# def task_clean_token_and_dependencies_raw():
-#     action_path = Path("src/data_cleaning/clean_tokens_and_dependencies_raw.py")
-#     return {
-#         "file_dep": [Path("data/raw/tokens_and_dependencies_raw.csv")],
-#         "task_dep": ["process_review_sentences_cleaned"],
-#         "actions": ["python {}".format(action_path)],
-#         "targets": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")],
-#         "title": show_cmd
-#     }
+def task_clean_token_and_dependencies_raw():
+    action_path = Path("src/data_cleaning/clean_tokens_and_dependencies_raw.py")
+    return {
+        "file_dep": [Path("data/raw/tokens_and_dependencies_raw.csv")],
+        "task_dep": ["process_review_sentences_cleaned"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")],
+        "title": show_cmd
+    }
 
 # def task_run_tokens_and_dependencies_cleaned_data_quality_tests():
 #     action_path = Path("tests/data_quality_tests/test_tokens_and_dependencies_cleaned_data_quality.py")
