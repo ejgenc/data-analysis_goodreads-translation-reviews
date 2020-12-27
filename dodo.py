@@ -129,11 +129,11 @@ def task_clean_token_and_dependencies_raw():
         "title": show_cmd
     }
 
-# def task_run_tokens_and_dependencies_cleaned_data_quality_tests():
-#     action_path = Path("tests/data_quality_tests/test_tokens_and_dependencies_cleaned_data_quality.py")
-#     return {
-#         "file_dep": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")],
-#         "task_dep": ["clean_token_and_dependencies_raw"],
-#         "actions": ["pytest {}".format(action_path)],
-#         "title": show_cmd
-#     }
+def task_run_tokens_and_dependencies_cleaned_data_quality_tests():
+    action_path = Path("tests/data_quality_tests/test_tokens_and_dependencies_cleaned_data_quality.py")
+    return {
+        "file_dep": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")],
+        "task_dep": ["clean_token_and_dependencies_raw"],
+        "actions": ["pytest {}".format(action_path)],
+        "title": show_cmd
+    }
