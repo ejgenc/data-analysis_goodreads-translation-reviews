@@ -11,7 +11,7 @@ This script targets the following file:
     ../../data/cleaned/review_sentences_cleaned.csv
     
 The resulting csv file is located at:
-    ../../data/raw/syntax_trees_raw.csv
+    ../../data/raw/tokens_and_dependencies_raw.csv
     
 """
 #%% --- Import required packages ---
@@ -92,6 +92,12 @@ review_sentences = review_sentences[["book_id","review_id","sentence_id",
                                     "token_id","token","dependency_relation",
                                     "parent_token", "mentions_trans"]]
 
+#%% --- Process: rename columns ---
+
+review_sentences.rename({"mentions_trans":"sent_mentions_trans"},
+                        axis = 1,
+                        inplace = True)
+
 #%% TEST GROUND
 
 trans_mask = review_sentences["mentions_trans"] == True
@@ -110,9 +116,13 @@ final_mask = review_sentences["dependency_relation"] == "amod"
 
 subset3 = subset2.loc[final_mask,:]
 
+#%%
+
+most_used_words = subset3.loc[:,"token"].value_counts()
+
 #%% --- Export data ---
 
-# export_fp = Path("../../data/raw/tagged_sentences_raw.csv")
+# export_fp = Path("../../data/raw/tokens_and_dependencies_raw.csv")
 # review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
