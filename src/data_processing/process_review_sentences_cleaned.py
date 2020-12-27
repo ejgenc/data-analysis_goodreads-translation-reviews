@@ -31,12 +31,12 @@ os.chdir(dname)
 #%% --- Import data ---
 
 import_fp = Path("../../data/cleaned/review_sentences_cleaned.csv")
-review_sentences = pd.read_csv(import_fp)
+tokens_and_dependencies = pd.read_csv(import_fp)
 
 #%% --- Process: create a temporary column to hold the spaCY dependency parsing output ---
 
 nlp = spacy.load("en_core_web_sm")
-review_sentences["TEMP_dependency_doc"] = review_sentences["review_sentence"].apply(nlp)
+tokens_and_dependencies["TEMP_dependency_doc"] = tokens_and_dependencies["review_sentence"].apply(nlp)
 
 #%% --- Process: parse the spaCy doc data structure and make the necessary info explicit ---
 
@@ -51,78 +51,56 @@ def placeholder_func(doc):
 
 # Create a new column that holds the explicit dependency info
 
-review_sentences["TEMP_explicit_dependency"] = review_sentences["TEMP_dependency_doc"].apply(placeholder_func)
+tokens_and_dependencies["TEMP_explicit_dependency"] = tokens_and_dependencies["TEMP_dependency_doc"].apply(placeholder_func)
 
-#%% --- Process: Drop the columns "review_sentences" and "TEMP_dependency_doc ---
+#%% --- Process: Drop the columns "tokens_and_dependencies" and "TEMP_dependency_doc ---
 
 unnecessary_columns = ["review_sentence", "TEMP_dependency_doc"]
 
-review_sentences.drop(labels = unnecessary_columns,
+tokens_and_dependencies.drop(labels = unnecessary_columns,
                       axis = 1,
                       inplace = True)
 
 #%% --- Process: expand DOWNWARDS ---
 
-review_sentences = review_sentences.explode("TEMP_explicit_dependency").reset_index(drop = True)
+tokens_and_dependencies = tokens_and_dependencies.explode("TEMP_explicit_dependency").reset_index(drop = True)
 
 #%% --- Process: expand SIDEWAYS ---
 
-temp_subset = review_sentences["TEMP_explicit_dependency"].to_list()
+temp_subset = tokens_and_dependencies["TEMP_explicit_dependency"].to_list()
 
 temp_df = pd.DataFrame(temp_subset,
                        columns = ["token","dependency_relation","parent_token"])
 
-review_sentences = pd.concat([review_sentences, temp_df],
+tokens_and_dependencies = pd.concat([tokens_and_dependencies, temp_df],
                              axis = 1)
 
 #%% --- Process : drop the column "TEMP_explicit_dependency" ---
 
-review_sentences.drop("TEMP_explicit_dependency",
+tokens_and_dependencies.drop("TEMP_explicit_dependency",
                       axis = 1,
                       inplace = True)
 
 #%% --- Process: give each token a unique token id ---
 
-review_sentences["token_id"] = np.arange(len(review_sentences)) + 1 
-review_sentences["token_id"] = "t" + review_sentences["token_id"].astype(str)
+tokens_and_dependencies["token_id"] = np.arange(len(tokens_and_dependencies)) + 1 
+tokens_and_dependencies["token_id"] = "t" + tokens_and_dependencies["token_id"].astype(str)
 
 #%% --- Process: re-order columns ---
 
-review_sentences = review_sentences[["book_id","review_id","sentence_id",
+tokens_and_dependencies = tokens_and_dependencies[["book_id","review_id","sentence_id",
                                     "token_id","token","dependency_relation",
                                     "parent_token", "mentions_trans"]]
 
 #%% --- Process: rename columns ---
 
-review_sentences.rename({"mentions_trans":"sent_mentions_trans"},
+tokens_and_dependencies.rename({"mentions_trans":"sent_mentions_trans"},
                         axis = 1,
                         inplace = True)
 
-#%% TEST GROUND
-
-trans_mask = review_sentences["mentions_trans"] == True
-
-subset = review_sentences.loc[trans_mask,:]
-
-#%%
-
-trans_par_mask = review_sentences["parent_token"] == "translation"
-
-subset2 = subset.loc[trans_par_mask,:]
-
-#%% 
-
-final_mask = review_sentences["dependency_relation"] == "amod"
-
-subset3 = subset2.loc[final_mask,:]
-
-#%%
-
-most_used_words = subset3.loc[:,"token"].value_counts()
-
 #%% --- Export data ---
 
-# export_fp = Path("../../data/raw/tokens_and_dependencies_raw.csv")
-# review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
+export_fp = Path("../../data/raw/tokens_and_dependencies_raw.csv")
+tokens_and_dependencies.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
