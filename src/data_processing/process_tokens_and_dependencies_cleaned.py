@@ -18,6 +18,8 @@ The resulting csv files are located at:
     ../../data/raw/orig_tokens_and_dependencies_raw.csv
     
 """
+
+#!!!! TEST REGEX MATCHING !!!!
 #%% --- Import required packages ---
 
 import os
@@ -35,7 +37,7 @@ os.chdir(dname)
 import_fp = Path("../../data/cleaned/tokens_and_dependencies_cleaned.csv")
 tokens_and_dependencies = pd.read_csv(import_fp)
 
-#%% --- Process: seperate dataset into tokens whose sentences ---
+#%% --- Process: single out tokens of importance ---
 #   --- Explicitly state translation vs. original ---
 
 # Translation
@@ -46,14 +48,16 @@ trans_tokens_and_dependencies = tokens_and_dependencies.loc[trans_mask,:]
 # Original
 
 
-#%% --- Translation processing ---
+
+#%%     --- Translation processing ---
 
 #Create a regex pattern for translation
 
 trans_pat = r"\b[Tt]ransl\w+\b"
-non_trans_pat = r"\bis\b|\bare\b"
+verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 
-#PATTERN 1
+#%%         --- PATTERN 1 ---
+
 # dependency_relation = "amod"
 # parent_token = trans_pat
 
@@ -67,21 +71,43 @@ merged_mask = dependency_relation_mask & parent_token_mask
 #Use mask to extract
 pat_1_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
-# PATTERN 2
-#dependency_relation = "acomp"
-#parent_token = non_trans_pat
+#%%         --- PATTERN 2 ---
+#               --- Step One ---
+
+#token = trans_pat
+#dependency_relation = nsubj
+#parent_token = verb_pat
 
 #Create appropriate masks
-dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "acomp"
-parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(non_trans_pat)
+dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "nsubj"
+parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+token_mask = trans_tokens_and_dependencies["token"].str.match(trans_pat)
 
 #Merge masks
-merged_mask = dependency_relation_mask & parent_token_mask
+merged_mask = dependency_relation_mask & parent_token_mask & token_mask
 
 #Use mask to extract
+pat_2_sent_ids = trans_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
+
+#               --- Step Two ---
+
+#dependency_relation = "acomp"
+#parent_token = verb_pat
+#sentence_id = pat_2_sent_ids
+
+#Create appropriate masks
+sentence_id_mask = trans_tokens_and_dependencies["sentence_id"].isin(pat_2_sent_ids.values)
+dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "acomp"
+parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask
+
 pat_2_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
-# PATTERN 3
+
+#%%         --- PATTERN 3 ---
+
 #dependency_relation = "advmod"
 #parent_token = trans_pat
 
@@ -95,57 +121,82 @@ merged_mask = dependency_relation_mask & parent_token_mask
 #Use mask to extract
 pat_3_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
-# PATTERN 4 - Step one
-#token = trans_pat
+
+#%%         --- Merge translation processing extracts ---
+
+translation_extracts = pd.concat([pat_1_extract,
+                                 pat_2_extract,
+                                 pat_3_extract],
+                                 axis = 0,
+                                 ignore_index = True
+                                )
+
+#%%     --- Original Processing ---
+
+#Create a regex pattern for translation
+
+book_pat = r"\b[Bb]ook\b"
+style_pat = r"\b[Ss]tyle\b"
+write_pat = r"\b[Ww]r[io]t\w+\b"
+verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
+
+#%%         --- PATTERN 1 ---
+
+# dependency_relation = "amod"
+# parent_token = book_pat | style_pat
+
+#%%         --- PATTERN 2 ---
+
+#               --- Step One ---
+
+#token = book_pat | style_pat
 #dependency_relation = nsubj
-#parent_token = non_trans_pat
+#parent_token = verb_pat
 
-#Create appropriate masks
-dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "nsubj"
-parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(non_trans_pat)
-token_mask = trans_tokens_and_dependencies["token"].str.match(trans_pat)
+#               --- Step Two ---
 
-#Merge masks
-merged_mask = dependency_relation_mask & parent_token_mask & token_mask
-
-#Use mask to extract
-pat_4_sent_ids = trans_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
-
-#PATTERN 4 - Step two
 #dependency_relation = "acomp"
-#parent_token = non_trans_pat
-#sentence_id = pat_4_sent_ids
-
-#Create appropriate masks
-sentence_id_mask = trans_tokens_and_dependencies["sentence_id"].isin(pat_4_sent_ids.values)
-dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "acomp"
-parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(non_trans_pat)
-
-#Merge masks
-merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask
-
-pat_4_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
+#parent_token = verb_pat
+#sentence_id = pat_2_sent_ids
 
 
-#%%
+#%%         --- PATTERN 3 ---
+
+#dependency_relation = "advmod"
+#parent_token = book_pat | style_pat
+
+#%% --- Process: drop unnecessary columns ---
+
+
+#%% --- Export data ---
+
+filenames_and_extacts = {"translation_modifiers" : translation_extracts,
+                         "original_modifiers" : book_extracts}
+
+for filename, extract in filenames_and_extracts.items:
+    export_fp = Path("../../data/raw/{}_raw.csv").format(filename)
+    extract.to_csv(export_fp, encoding = "utf-8", index = False)
+
+
+#%% --- TEST GROUND ----
+
 
 import spacy
 nlp = spacy.load("en_core_web_sm")
 
 #%%
-sents = ["bad translation",
-         "bad translations",
-         "a bad translation",
-         "the bad translation",
-         "the bad translations",
-         "translations are bad",
+sents = ["a bad translation",
+         "a bad and horrible translation",
          "the translation is bad",
+         "the translation was bad",
+         "the translation will be bad",
+         "the translation were bad",
+         "the translation is bad and horrible",
          "the translations are bad",
-         "the newest translation is bad",
-         "the translation of the book is bad",
-         "horribly translated",
-         "well translated",
-         "the translator did a great job"]
+         "the translations are bad and horrible",
+         "badly translated",
+         "translated badly",
+         "translated by maureen freely"]
 
 dependency_docs = []
 
