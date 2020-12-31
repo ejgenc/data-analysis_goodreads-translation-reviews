@@ -109,7 +109,7 @@ review_sentences = review_sentences[["book_id", "review_id",
 
 #%% --- Export data ---
 
-# export_fp = Path("../../data/raw/review_sentences_raw.csv")
-# review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
+export_fp = Path("../../data/raw/review_sentences_raw.csv")
+review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
