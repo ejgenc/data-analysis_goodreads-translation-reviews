@@ -89,14 +89,9 @@ tokens_and_dependencies["token_id"] = "t" + tokens_and_dependencies["token_id"].
 #%% --- Process: re-order columns ---
 
 tokens_and_dependencies = tokens_and_dependencies[["book_id","review_id","sentence_id",
-                                    "token_id","token","dependency_relation",
-                                    "parent_token", "mentions_trans"]]
-
-#%% --- Process: rename columns ---
-
-tokens_and_dependencies.rename({"mentions_trans":"sent_mentions_trans"},
-                        axis = 1,
-                        inplace = True)
+                                    "token_id","sent_mentions_original",
+                                    "sent_mentions_trans","token",
+                                    "dependency_relation","parent_token"]]
 
 #%% --- Export data ---
 

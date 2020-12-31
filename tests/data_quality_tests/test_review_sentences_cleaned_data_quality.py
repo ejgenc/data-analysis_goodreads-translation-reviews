@@ -52,7 +52,8 @@ class TestDataTypes(object):
                     "book_id": "object",
                     "review_id": "object",
                     "sentence_id": "object",
-                    "mentions_trans": "bool",
+                    "sent_mentions_original": "bool",
+                    "sent_mentions_trans": "bool",
                     "review_sentence": "object"}
         for column, dtype in dtype_dict.items():
             expected = dtype

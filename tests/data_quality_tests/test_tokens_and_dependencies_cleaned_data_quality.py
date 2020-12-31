@@ -67,9 +67,11 @@ class TestDataTypes(object):
                     "review_id": "object",
                     "sentence_id": "object",
                     "token_id": "object",
+                    "sent_mentions_original": "bool",
+                    "sent_mentions_trans": "bool",
+                    "token": "object",
                     "dependency_relation": "object",
-                    "parent_token": "object",
-                    "sent_mentions_trans": "bool"}
+                    "parent_token": "object"}
         for column, dtype in dtype_dict.items():
             expected = dtype
             actual = str(test_target[column].dtype)
