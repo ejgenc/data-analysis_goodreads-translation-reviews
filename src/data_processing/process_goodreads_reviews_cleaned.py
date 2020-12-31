@@ -78,7 +78,12 @@ review_sentences["sentence_id"] = "s" + (review_sentences["sentence_id"] + 1).as
 # ATTENTION! The tagging process below is at alpha. It will be much more
 # complex in the finished version.
 
-pattern = r"\b[Bb]ook\w+\b|\b[Ss]tyle\w+\\b|\b[Aa]uthor\w+\\b|\b[Ww]r[io]t\w+\b"
+book_pat = r"\b[Bb]ook[\w+]\b"
+style_pat = r"\b[Ss]tyle[\w+]\b"
+author_pat = r"\b[Aa]uthor[\w+]\b"
+write_pat = r"\b[Ww]r[io]t\w+\b"
+
+pattern = r"\b[Bb]ook[\w+]?\b|\b[Ss]tyle[\w+]?\b|\b[Aa]uthor[\w+]?\b|\b[Ww]r[io]t\w+\b"
 
 review_sentences["sent_mentions_original"] = review_sentences["review_sentence"].str.contains(pattern)
 
@@ -87,7 +92,7 @@ review_sentences["sent_mentions_original"] = review_sentences["review_sentence"]
 # ATTENTION! The tagging process below is at alpha. It will be much more
 # complex in the finished version.
 
-pattern = r"\b[Tt]ransl\w+\b"
+pattern = r"\b[Tt]ranslat\w+\b"
 
 review_sentences["sent_mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
 
@@ -104,7 +109,7 @@ review_sentences = review_sentences[["book_id", "review_id",
 
 #%% --- Export data ---
 
-export_fp = Path("../../data/raw/review_sentences_raw.csv")
-review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
+# export_fp = Path("../../data/raw/review_sentences_raw.csv")
+# review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
 
 

@@ -53,7 +53,7 @@ trans_tokens_and_dependencies = tokens_and_dependencies.loc[trans_mask,:]
 
 #Create a regex pattern for translation
 
-trans_pat = r"\b[Tt]ransl\w+\b"
+trans_pat = r"\b[Tt]ranslat\w+\b"
 verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 
 #%%         --- PATTERN 1 ---
@@ -135,17 +135,18 @@ translation_extracts = pd.concat([pat_1_extract,
 
 #Create a regex pattern for translation
 
-book_pat = r"\b[Bb]ook\b"
-style_pat = r"\b[Ss]tyle\b"
+book_pat = r"\b[Bb]ook[\w+]\b"
+style_pat = r"\b[Ss]tyle[\w+]\b"
+author_pat = r"\b[Aa]uthor[\w+]\b"
 write_pat = r"\b[Ww]r[io]t\w+\b"
 verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 
-#%%         --- PATTERN 1 ---
+#%%         --- PATTERN 4 ---
 
 # dependency_relation = "amod"
 # parent_token = book_pat | style_pat
 
-#%%         --- PATTERN 2 ---
+#%%         --- PATTERN 5 ---
 
 #               --- Step One ---
 
@@ -157,25 +158,34 @@ verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 
 #dependency_relation = "acomp"
 #parent_token = verb_pat
-#sentence_id = pat_2_sent_ids
+#sentence_id = pat_5_sent_ids
 
 
-#%%         --- PATTERN 3 ---
+#%%         --- PATTERN 6 ---
 
 #dependency_relation = "advmod"
 #parent_token = book_pat | style_pat
 
+#%%         --- Merge original processing extracts ---
+
+# original_extracts = pd.concat([pat_4_extract,
+#                                  pat_5_extract,
+#                                  pat_6_extract],
+#                                  axis = 0,
+#                                  ignore_index = True
+#                                 )
+
 #%% --- Process: drop unnecessary columns ---
 
 
-#%% --- Export data ---
+# #%% --- Export data ---
 
-filenames_and_extacts = {"translation_modifiers" : translation_extracts,
-                         "original_modifiers" : book_extracts}
+# filenames_and_extacts = {"translation_modifiers" : translation_extracts,
+#                          "original_modifiers" : original_extracts}
 
-for filename, extract in filenames_and_extracts.items:
-    export_fp = Path("../../data/raw/{}_raw.csv").format(filename)
-    extract.to_csv(export_fp, encoding = "utf-8", index = False)
+# for filename, extract in filenames_and_extracts.items:
+#     export_fp = Path("../../data/raw/{}_raw.csv").format(filename)
+#     extract.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
 #%% --- TEST GROUND ----
