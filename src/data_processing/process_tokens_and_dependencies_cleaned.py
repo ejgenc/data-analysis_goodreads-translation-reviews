@@ -47,8 +47,8 @@ trans_tokens_and_dependencies = tokens_and_dependencies.loc[trans_mask,:]
 
 # Original
 
-
-
+original_mask = tokens_and_dependencies["sent_mentions_original"] == True
+original_tokens_and_dependencies = tokens_and_dependencies.loc[original_mask,:]
 #%%     --- Translation processing ---
 
 #Create a regex pattern for translation
@@ -72,6 +72,9 @@ merged_mask = dependency_relation_mask & parent_token_mask
 pat_1_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
 #%%         --- PATTERN 2 ---
+
+#!! WE HAVE TO SPLIT THIS OUT, YO!
+#What does is etc. refer to?
 #               --- Step One ---
 
 #token = trans_pat
@@ -135,24 +138,52 @@ translation_extracts = pd.concat([pat_1_extract,
 
 #Create a regex pattern for translation
 
-book_pat = r"\b[Bb]ook[\w+]\b"
-style_pat = r"\b[Ss]tyle[\w+]\b"
-author_pat = r"\b[Aa]uthor[\w+]\b"
+book_pat = r"\b[Bb]ook[\w+]?\b"
+style_pat = r"\b[Ss]tyle[\w+]?\b"
+author_pat = r"\b[Aa]uthor[\w+]?\b"
+
+combined_noun_pat = r"\b[Bb]ook[\w+]?\b|\b[Ss]tyle[\w+]?\b|\b[Aa]uthor[\w+]?\b"
+
 write_pat = r"\b[Ww]r[io]t\w+\b"
 verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 
 #%%         --- PATTERN 4 ---
 
 # dependency_relation = "amod"
-# parent_token = book_pat | style_pat
+# parent_token = book_pat | style_pat | author_pat
+
+#Create appropriate masks
+dependency_relation_mask = original_tokens_and_dependencies["dependency_relation"] == "amod"
+parent_token_mask = original_tokens_and_dependencies["parent_token"].str.match(combined_noun_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask
+
+#Use mask to extract
+pat_4_extract = original_tokens_and_dependencies.loc[merged_mask,:]
 
 #%%         --- PATTERN 5 ---
 
+### WE HAVE TO SPLIT THIS OUT, YO!s
+#What does is etc. refer to?
+
 #               --- Step One ---
 
-#token = book_pat | style_pat
+#token = book_pat | style_pat | author_pat
 #dependency_relation = nsubj
 #parent_token = verb_pat
+
+#Create appropriate masks
+dependency_relation_mask = original_tokens_and_dependencies["dependency_relation"] == "nsubj"
+parent_token_mask = original_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+token_mask = original_tokens_and_dependencies["token"].str.match(combined_noun_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask & token_mask
+
+#Use mask to extract
+pat_5_sent_ids = original_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
+
 
 #               --- Step Two ---
 
@@ -160,25 +191,48 @@ verb_pat = r"\bis\b|\bare\b|\bwas\b|\bwere\b|\bbe\b"
 #parent_token = verb_pat
 #sentence_id = pat_5_sent_ids
 
+#Create appropriate masks
+sentence_id_mask = original_tokens_and_dependencies["sentence_id"].isin(pat_5_sent_ids.values)
+dependency_relation_mask = original_tokens_and_dependencies["dependency_relation"] == "acomp"
+parent_token_mask = original_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask
+
+pat_5_extract = original_tokens_and_dependencies.loc[merged_mask,:]
+
+
 
 #%%         --- PATTERN 6 ---
 
 #dependency_relation = "advmod"
-#parent_token = book_pat | style_pat
+#parent_token = write_pat
+
+#Create appropriate masks
+dependency_relation_mask = original_tokens_and_dependencies["dependency_relation"] == "advmod"
+parent_token_mask = original_tokens_and_dependencies["parent_token"].str.match(write_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask
+
+#Use mask to extract
+pat_6_extract = original_tokens_and_dependencies.loc[merged_mask,:]
+
+
 
 #%%         --- Merge original processing extracts ---
 
-# original_extracts = pd.concat([pat_4_extract,
-#                                  pat_5_extract,
-#                                  pat_6_extract],
-#                                  axis = 0,
-#                                  ignore_index = True
-#                                 )
+original_extracts = pd.concat([pat_4_extract,
+                                  pat_5_extract,
+                                  pat_6_extract],
+                                  axis = 0,
+                                  ignore_index = True
+                                )
 
 #%% --- Process: drop unnecessary columns ---
 
 
-# #%% --- Export data ---
+#%% --- Export data ---
 
 # filenames_and_extacts = {"translation_modifiers" : translation_extracts,
 #                          "original_modifiers" : original_extracts}

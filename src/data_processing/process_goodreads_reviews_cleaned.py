@@ -78,9 +78,9 @@ review_sentences["sentence_id"] = "s" + (review_sentences["sentence_id"] + 1).as
 # ATTENTION! The tagging process below is at alpha. It will be much more
 # complex in the finished version.
 
-book_pat = r"\b[Bb]ook[\w+]\b"
-style_pat = r"\b[Ss]tyle[\w+]\b"
-author_pat = r"\b[Aa]uthor[\w+]\b"
+book_pat = r"\b[Bb]ook[\w+]?\b"
+style_pat = r"\b[Ss]tyle[\w+]?\b"
+author_pat = r"\b[Aa]uthor[\w+]?\b"
 write_pat = r"\b[Ww]r[io]t\w+\b"
 
 pattern = r"\b[Bb]ook[\w+]?\b|\b[Ss]tyle[\w+]?\b|\b[Aa]uthor[\w+]?\b|\b[Ww]r[io]t\w+\b"
