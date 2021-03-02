@@ -7,8 +7,9 @@ Created on Sun Dec 27 22:04:35 2020
 
 ------ What is this file? ------
                 
-This script ingests the file tokens_and_dependencies_cleaned.csv
-in order to process it into a second level of analysis
+This script ingests and processes the file
+tokens_and_dependencies_cleaned.csv to find which adverbs/adjectives
+are used with the specified RegEx patterns.
 
 This script targets the following file:
     ../../data/cleaned/tokens_and_dependencies_cleaned.csv
@@ -19,7 +20,9 @@ The resulting csv files are located at:
     
 """
 
-#!!!! TEST REGEX MATCHING !!!!
+#!!!! MESSAGE LEFT ON 02/03/2021: pat_2 and pat_5 cannot
+# distinguish between translator(s) translation, book/author etc. Fix that!
+# SOLUTION = GO TWO UP
 #%% --- Import required packages ---
 
 import os
@@ -73,8 +76,6 @@ pat_1_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
 #%%         --- PATTERN 2 ---
 
-#!! WE HAVE TO SPLIT THIS OUT, YO!
-#What does is etc. refer to?
 #               --- Step One ---
 
 #token = trans_pat
@@ -91,23 +92,33 @@ merged_mask = dependency_relation_mask & parent_token_mask & token_mask
 
 #Use mask to extract
 pat_2_sent_ids = trans_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
+pat_2_token_ids = trans_tokens_and_dependencies.loc[merged_mask,"token_id"]
+
+def add_number_to_token_id(token_id):
+    num_part = int(token_id.split("t")[1])
+    num_part += 2
+    new_id = "t" + str(num_part)
+    return new_id
+
+pat_2_token_ids_two_away = pat_2_token_ids.apply(add_number_to_token_id)
 
 #               --- Step Two ---
 
 #dependency_relation = "acomp"
 #parent_token = verb_pat
 #sentence_id = pat_2_sent_ids
+# token_id =  pat_2_token_ids_two_away
 
 #Create appropriate masks
 sentence_id_mask = trans_tokens_and_dependencies["sentence_id"].isin(pat_2_sent_ids.values)
+token_id_mask = trans_tokens_and_dependencies["token_id"].isin(pat_2_token_ids_two_away.values)
 dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "acomp"
 parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(verb_pat)
 
 #Merge masks
-merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask
+merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask & token_id_mask
 
 pat_2_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
-
 
 #%%         --- PATTERN 3 ---
 
@@ -136,7 +147,7 @@ translation_extracts = pd.concat([pat_1_extract,
 
 #%%     --- Original Processing ---
 
-#Create a regex pattern for translation
+#Create a regex pattern for original
 
 book_pat = r"\b[Bb]ook[\w+]?\b"
 style_pat = r"\b[Ss]tyle[\w+]?\b"
@@ -165,7 +176,6 @@ pat_4_extract = original_tokens_and_dependencies.loc[merged_mask,:]
 #%%         --- PATTERN 5 ---
 
 ### WE HAVE TO SPLIT THIS OUT, YO!s
-#What does is etc. refer to?
 
 #               --- Step One ---
 
@@ -183,6 +193,15 @@ merged_mask = dependency_relation_mask & parent_token_mask & token_mask
 
 #Use mask to extract
 pat_5_sent_ids = original_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
+pat_5_token_ids = original_tokens_and_dependencies.loc[merged_mask,"token_id"]
+
+def add_number_to_token_id(token_id):
+    num_part = int(token_id.split("t")[1])
+    num_part += 2
+    new_id = "t" + str(num_part)
+    return new_id
+
+pat_5_token_ids_two_away = pat_5_token_ids.apply(add_number_to_token_id)
 
 
 #               --- Step Two ---
@@ -190,18 +209,18 @@ pat_5_sent_ids = original_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
 #dependency_relation = "acomp"
 #parent_token = verb_pat
 #sentence_id = pat_5_sent_ids
+#token_id = pat_5_token_ids_to_away
 
 #Create appropriate masks
 sentence_id_mask = original_tokens_and_dependencies["sentence_id"].isin(pat_5_sent_ids.values)
+token_id_mask = original_tokens_and_dependencies["token_id"].isin(pat_5_token_ids_two_away.values)
 dependency_relation_mask = original_tokens_and_dependencies["dependency_relation"] == "acomp"
 parent_token_mask = original_tokens_and_dependencies["parent_token"].str.match(verb_pat)
 
 #Merge masks
-merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask
+merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask & token_id_mask
 
 pat_5_extract = original_tokens_and_dependencies.loc[merged_mask,:]
-
-
 
 #%%         --- PATTERN 6 ---
 
@@ -217,8 +236,6 @@ merged_mask = dependency_relation_mask & parent_token_mask
 
 #Use mask to extract
 pat_6_extract = original_tokens_and_dependencies.loc[merged_mask,:]
-
-
 
 #%%         --- Merge original processing extracts ---
 
@@ -242,6 +259,13 @@ original_extracts = pd.concat([pat_4_extract,
 #     extract.to_csv(export_fp, encoding = "utf-8", index = False)
 
 
+
+
+
+
+
+
+
 #%% --- TEST GROUND ----
 
 
@@ -260,7 +284,9 @@ sents = ["a bad translation",
          "the translations are bad and horrible",
          "badly translated",
          "translated badly",
-         "translated by maureen freely"]
+         "translated by maureen freely",
+         "The translation is bad. All the time I have been thinking this better be worth it.",
+         "The translation is bad. The translation could be a factor."]
 
 dependency_docs = []
 
@@ -282,3 +308,56 @@ explicit_dependencies = []
 for doc in dependency_docs:
     explicit_dependency = placeholder_func(doc)
     explicit_dependencies.append(explicit_dependency)
+    
+#%%         --- PATTERN 2 ---
+
+#               --- Step One ---
+
+#token = trans_pat
+#dependency_relation = nsubj
+#parent_token = verb_pat
+
+#Create appropriate masks
+dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "nsubj"
+parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+token_mask = trans_tokens_and_dependencies["token"].str.match(trans_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask & token_mask
+
+#Use mask to extract
+pat_2_sent_ids = trans_tokens_and_dependencies.loc[merged_mask,"sentence_id"]
+pat_2_token_ids = trans_tokens_and_dependencies.loc[merged_mask,"token_id"]
+
+def add_number_to_token_id(token_id):
+    num_part = int(token_id.split("t")[1])
+    num_part += 2
+    new_id = "t" + str(num_part)
+    return new_id
+
+pat_2_token_ids_two_away = pat_2_token_ids.apply(add_number_to_token_id)
+
+#               --- Step Two ---
+
+#dependency_relation = "acomp"
+#parent_token = verb_pat
+#sentence_id = pat_2_sent_ids
+# token_id =  pat_2_token_ids_two_away
+
+#Create appropriate masks
+sentence_id_mask = trans_tokens_and_dependencies["sentence_id"].isin(pat_2_sent_ids.values)
+token_id_mask = trans_tokens_and_dependencies["token_id"].isin(pat_2_token_ids_two_away.values)
+dependency_relation_mask = trans_tokens_and_dependencies["dependency_relation"] == "acomp"
+parent_token_mask = trans_tokens_and_dependencies["parent_token"].str.match(verb_pat)
+
+#Merge masks
+merged_mask = dependency_relation_mask & parent_token_mask & sentence_id_mask & token_id_mask
+
+pat_2_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
+
+
+
+
+
+
+
