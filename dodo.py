@@ -137,3 +137,32 @@ def task_run_tokens_and_dependencies_cleaned_data_quality_tests():
         "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
+
+def task_process_tokens_and_dependencies_cleaned():
+    action_path = Path("src/data_processing/process_tokens_and_dependencies_cleaned.py")
+    return {
+        "file_dep": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")]
+        "task_dep": ["run_tokens_and_dependencies_cleaned_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/raw/modifiers_raw.csv")],
+        "title": show_cmd
+    }
+
+# def task_clean_modifiers_raw():
+#     action_path = Path("src/data_cleaning/clean_modifiers_raw.py")
+#     return {
+#         "file_dep": [Path("data/raw/modifiers_raw.csv")],
+#         "task_dep": ["process_tokens_and_dependencies_cleaned"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/cleaned/modifiers_cleaned.csv")],
+#         "title": show_cmd
+#     }
+
+# def task_run_modifiers_cleaned_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_modifiers_cleaned_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/cleaned/modifiers_cleaned.csv")],
+#         "task_dep": ["clean_modifiers_raw"],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
