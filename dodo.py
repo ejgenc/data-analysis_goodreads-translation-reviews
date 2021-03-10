@@ -141,7 +141,7 @@ def task_run_tokens_and_dependencies_cleaned_data_quality_tests():
 def task_process_tokens_and_dependencies_cleaned():
     action_path = Path("src/data_processing/process_tokens_and_dependencies_cleaned.py")
     return {
-        "file_dep": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")]
+        "file_dep": [Path("data/cleaned/tokens_and_dependencies_cleaned.csv")],
         "task_dep": ["run_tokens_and_dependencies_cleaned_data_quality_tests"],
         "actions": ["python {}".format(action_path)],
         "targets": [Path("data/raw/modifiers_raw.csv")],
