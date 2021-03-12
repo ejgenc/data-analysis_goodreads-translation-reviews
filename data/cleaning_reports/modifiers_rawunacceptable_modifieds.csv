@@ -1,0 +1,7 @@
+book_id,review_id,sentence_id,token_id,modifier_id,modifier,modified,dependency_relation
+b13,r3985,s38305,t912279,m94,celebrity,translator[s,amod
+b8,r2540,s23215,t585242,m2058,black,book'and,amod
+b15,r4738,s47440,t1117378,m3107,beautiful,writing.passages,amod
+b8,r2458,s22596,t568760,m4545,especially,wroting,advmod
+b8,r2458,s22596,t568761,m4546,when,wroting,advmod
+b15,r4572,s45059,t1065609,m4793,desperate,writhed,advmod

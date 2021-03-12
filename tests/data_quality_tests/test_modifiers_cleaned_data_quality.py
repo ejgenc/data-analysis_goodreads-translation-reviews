@@ -87,7 +87,7 @@ class TestValues(object):
         expected = 0
         actual = language_modifiers_count
         error_message = ("Column 'modifier' includes modifiers that denote language.",
-                         " expected {} language modifiers, got {}").format(expected, actual)
+                         " expected {} language modifiers, got {}".format(expected,actual))
         assert expected == actual, error_message
     
     def test_for_modified_variation(self):
@@ -103,12 +103,12 @@ class TestValues(object):
                               "translate", "translates", "translated",
                               "translating", "write", "writes", "wrote",
                               "written"]
-        unacceptable_modifiers_count = (~(test_target["modified"].isin(acceptable_modified_forms))).sum
+        unacceptable_modifiers_count = (~(test_target["modified"].isin(acceptable_modified_forms))).sum()
         expected = 0
         actual = unacceptable_modifiers_count
         error_message = ("Column 'modified' includes modifieds that fall",
                          " outside the expected modified forms.",
-                         " Expected {} unfitting modified forms, got {}").format(expected,actual)
+                         " Expected {} unfitting modified forms, got {}".format(expected,actual))
         assert expected == actual, error_message
 
             
