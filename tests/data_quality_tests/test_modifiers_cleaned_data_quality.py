@@ -75,11 +75,42 @@ class TestDataTypes(object):
 #%% --- Quality test: check values for specific columns ---
 
 class TestValues(object):
-    def test_for_language_modifiers(self):
-        pass
+    def test_for_false_positive_language_modifiers(self):
+        languages_list = ["chinese","spanish","english","hindi","bengali",
+                  "portuguese","russian","japanese","turkish","korean",
+                  "french","german","vietnamese","urdu","italian","arabic",
+                  "persian","polish","romanian","dutch","greek","hungarian",
+                  "czech","finnish","irish","norwegian","swedish","danish",
+                  "lithuanian","latvian","estonian","georgian","armenian",
+                  "azerbaijani"]
+        language_modifiers_count = test_target["modifier"].isin(languages_list).sum()
+        expected = 0
+        actual = language_modifiers_count
+        error_message = ("Column 'modifier' includes modifiers that denote language.",
+                         " expected {} language modifiers, got {}").format(expected, actual)
+        assert expected == actual, error_message
     
     def test_for_modified_variation(self):
-        pass
+        acceptable_modified_forms = ["translation", "translations",
+                              "translation's", "translations'",
+                              "translator", "translators",
+                              "translator's", "translators'",
+                              "style", "styles","style's", "styles'",
+                              "book", "books", "book's", "books'",
+                              "author", "authors", "author's", "authors'",
+                              "writer", "writers", "writer's", "writers'",
+                              "writing", "writings", "writing's", "writings'",
+                              "translate", "translates", "translated",
+                              "translating", "write", "writes", "wrote",
+                              "written"]
+        unacceptable_modifiers_count = (~(test_target["modified"].isin(acceptable_modified_forms))).sum
+        expected = 0
+        actual = unacceptable_modifiers_count
+        error_message = ("Column 'modified' includes modifieds that fall",
+                         " outside the expected modified forms.",
+                         " Expected {} unfitting modified forms, got {}").format(expected,actual)
+        assert expected == actual, error_message
+
             
         
 
