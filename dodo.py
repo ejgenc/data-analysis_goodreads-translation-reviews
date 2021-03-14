@@ -166,3 +166,13 @@ def task_run_modifiers_cleaned_data_quality_tests():
         "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
+
+# def task_analyze_modifiers_cleaned():
+#     action_path = Path("src/data_analysis/analyze_modifiers_cleaned.py")
+#     return {
+#         "file_dep": [Path("data/cleaned/modifiers_cleaned.csv")]
+#         "task_dep": ["run_modifiers_cleaned_data_quality_tests"]
+#         "actions": ["python {}".format(action_path)],
+#         "targets": None,
+#         "title" show_cmd
+#     }
