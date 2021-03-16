@@ -15,6 +15,7 @@ This script targets the following file:
 The resulting csv files are located at:
     CSV FILES HERE
     
+!!! ATTENTION! THIS FILE REQUIRES MAJOR REFACTORING !!!
 """
 
 #%% --- Import required packages ---
@@ -101,22 +102,61 @@ modified_collections = {"refers_to_translation":["translation","translations","t
                "refers_to_vtranslation":["translate","translates","translated","translating"],
                "refers_to_vwriting":["write","writes","wrote","written"]}
 
-# Get a a groupby per collection
+
+modifier_counts_per_groupby = pd.DataFrame(index = modified_collections.keys(),
+                                           columns = ["number_of_nonunique_modifiers",
+                                                      "number_of_unique_modifiers"])
 collections_per_groupby = {}
 
 for collection_name, collection in modified_collections.items():
     collection_mask = modifiers_cleaned["modified"].isin(collection)
     modifiers_cleaned_subset = modifiers_cleaned[collection_mask]
-    #subset_groupby =
-
-
-# concatenated_value_counts = {}
-# for key,value in trans_group.items():
-#     to_concat = []
-#     for modified_name,series in modifier_value_counts_per_modified.items():
-#         if modified_name in value:
-#             to_concat.append(series)
-#     concatenated_value_counts[key] = reduce(lambda x,y: pd.merge(x, y, how = "outer", on = "modifier"), to_concat).fillna(0)
-#     concatenated_value_counts[key]["total_count"] = concatenated_value_counts[key].sum(numeric_only = True)
-            
     
+    # N# of unique/nunique modifiers per modified collection, unique/nunique ratio
+    placeholder = modifiers_cleaned_subset["modifier"].agg(["count","nunique"])
+    modifier_counts_per_groupby.loc[collection_name,"number_of_nonunique_modifiers"] = int(placeholder["count"])
+    modifier_counts_per_groupby.loc[collection_name,"number_of_unique_modifiers"] = int(placeholder["nunique"])
+    
+    #Frequency of modifiers per modified collection
+    subset_groupby = (modifiers_cleaned_subset["modifier"].value_counts()
+                                                          .reset_index()
+                                                          .rename({"index" : "modifier",
+                                                                   "modifier" : "count"},
+                                                                  axis = 1)
+                                                          .sort_values(by = "count",
+                                                                       ascending = False))
+    collections_per_groupby[collection_name] = subset_groupby
+    
+modifier_counts_per_groupby = (modifier_counts_per_groupby.reset_index()
+                                                           .rename({"index":"modified_collection"})
+                                                           .sort_values(by = "number_of_nonunique_modifiers",
+                                                                       ascending = False))
+
+modifier_counts_per_groupby["unique_to_nonunique_ratio"] = (modifier_counts_per_groupby["number_of_unique_modifiers"]
+                                                            / modifier_counts_per_groupby["number_of_nonunique_modifiers"])
+#%%--- Export data ---
+
+# Export modifier_counts
+export_fp = Path("../../analysis_results/total_modifiers_per_unique_modified.csv")
+modifier_counts.to_csv(export_fp, encoding = "utf-8", index = False)
+
+# Export modifier_counts_per_groubpy
+export_fp = Path("../../analysis_results/total_modifiers_per_modified_group.csv")
+modifier_counts_per_groupby.to_csv(export_fp, encoding = "utf-8", index = False)
+
+# Export modifier_value_counts_per_modified
+for unique_modified, value_count_dataframe in modifier_value_counts_per_modified.items():
+    export_fp = Path("../../analysis_results/{}_modifier_value_counts.csv"
+                     .format(unique_modified))
+    value_count_dataframe.to_csv(export_fp, encoding = "utf-8", index = False)
+
+# Export collections_per_groupby
+for modified_group, value_count_dataframe in collections_per_groupby.items():
+    export_fp = Path("../../analysis_results/group_{}_modifier_value_counts.csv"
+                     .format(unique_modified))
+    value_count_dataframe.to_csv(export_fp, encoding = "utf-8", index = False)
+
+
+    
+
+
