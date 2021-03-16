@@ -137,26 +137,21 @@ modifier_counts_per_groupby["unique_to_nonunique_ratio"] = (modifier_counts_per_
 #%%--- Export data ---
 
 # Export modifier_counts
-export_fp = Path("../../analysis_results/total_modifiers_per_unique_modified.csv")
+export_fp = Path("../../data/analysis_results/total_modifiers_per_unique_modified.csv")
 modifier_counts.to_csv(export_fp, encoding = "utf-8", index = False)
 
 # Export modifier_counts_per_groubpy
-export_fp = Path("../../analysis_results/total_modifiers_per_modified_group.csv")
+export_fp = Path("../../data/analysis_results/total_modifiers_per_modified_group.csv")
 modifier_counts_per_groupby.to_csv(export_fp, encoding = "utf-8", index = False)
 
 # Export modifier_value_counts_per_modified
 for unique_modified, value_count_dataframe in modifier_value_counts_per_modified.items():
-    export_fp = Path("../../analysis_results/{}_modifier_value_counts.csv"
+    export_fp = Path("../../data/analysis_results/{}_modifier_value_counts.csv"
                      .format(unique_modified))
     value_count_dataframe.to_csv(export_fp, encoding = "utf-8", index = False)
 
 # Export collections_per_groupby
 for modified_group, value_count_dataframe in collections_per_groupby.items():
-    export_fp = Path("../../analysis_results/group_{}_modifier_value_counts.csv"
+    export_fp = Path("../../data/analysis_results/group_{}_modifier_value_counts.csv"
                      .format(unique_modified))
     value_count_dataframe.to_csv(export_fp, encoding = "utf-8", index = False)
-
-
-    
-
-
