@@ -153,5 +153,5 @@ for unique_modified, value_count_dataframe in modifier_value_counts_per_modified
 # Export collections_per_groupby
 for modified_group, value_count_dataframe in collections_per_groupby.items():
     export_fp = Path("../../data/analysis_results/group_{}_modifier_value_counts.csv"
-                     .format(unique_modified))
+                     .format(modified_group))
     value_count_dataframe.to_csv(export_fp, encoding = "utf-8", index = False)
