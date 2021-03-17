@@ -177,3 +177,15 @@ def task_analyze_modifiers_cleaned():
                     Path("../../data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.
         "title": show_cmd
     }
+
+def task_analyze_goodreads_reviews_cleaned():
+    action_path = Path("src/data_analysis/analyze_goodreads_reviews_cleaned.py")
+    return {
+        "file_dep": [Path("data/cleaned/goodreads_reviews_cleaned.csv"),
+                    Path("data/analysis_results/review_sentences_analyzed.csv")], # Formatting here?
+        "task_dep": ["run_goodreads_reviews_cleaned_data_quality_tests",
+                    "run_review_sentences_analyzed_data_quality_tests"]
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/analysis_results/goodreads_reviews_analyzed.csv")]
+        "title": show_cmd
+    }
