@@ -140,7 +140,7 @@ modifiers.to_csv(export_fp, encoding = "utf-8", index = False)
 cleaning_documentation_dataframes = [unacceptable_modifier_forms,
                                       unacceptable_modified_forms]
 cleaning_documentation_filenames = ["modifiers_raw_unacceptable_modifiers.csv",
-                                    "modifiers_rawunacceptable_modifieds.csv"]
+                                    "modifiers_raw_unacceptable_modifieds.csv"]
 
 for dataframe, filename in zip(cleaning_documentation_dataframes,
                                cleaning_documentation_filenames):
