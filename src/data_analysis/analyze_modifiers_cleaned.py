@@ -13,9 +13,12 @@ This script targets the following file:
     ../../data/cleaned/modifiers_cleaned.csv
     
 The resulting csv files are located at:
-    CSV FILES HERE
+    ../../data/analysis_results/total_modifiers_per_unique_modified.csv
+    ../../data/analysis_results/total_modifiers_per_modified_group.csv
+    ...
     
 !!! ATTENTION! THIS FILE REQUIRES MAJOR REFACTORING !!!
+
 """
 
 #%% --- Import required packages ---
