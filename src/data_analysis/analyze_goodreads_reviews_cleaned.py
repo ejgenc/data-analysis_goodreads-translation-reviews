@@ -24,6 +24,7 @@ The resulting csv file is located at:
 import os
 
 from pathlib import Path # To wrap around filepaths
+import numpy as np
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---
@@ -40,5 +41,30 @@ goodreads_reviews = pd.read_csv(import_fp, encoding = "utf-8")
 
 #review_sentences_analyzed
 import_fp = Path("../../data/analysis_results/review_sentences_analyzed.csv")
-review_sentences_analyzed = pd.read_csv(import_fp, encoding = "utf-8", sep = ",")
+sentences_analyzed = pd.read_csv(import_fp, encoding = "utf-8")
+
+#%% --- Prepare data ---
+
+sentences_analyzed = sentences_analyzed.loc[:,["review_id",
+                                               "sentence_id",
+                                               "sent_mentions_original",
+                                               "sent_mentions_trans",
+                                               "length_in_words",
+                                               "VADER_score_compound"]]
+
+#%% --- Analyze: review length in sentences and words. ---
+
+length_per_review = (sentences_analyzed
+                        .groupby("review_id")
+                        ["length_in_words"]
+                        .agg(["sum","count"])
+                        .rename({"sum" : "length_in_words",
+                                 "count" : "length_in_sentences"})
+                        .reset_index())
+# BUG HERE! FIX IT!
+goodreads_reviews.join(length_per_review,
+                       on = "review_id",
+                       how = "left")
+
+
 
