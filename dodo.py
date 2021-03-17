@@ -173,8 +173,8 @@ def task_analyze_modifiers_cleaned():
         "file_dep": [Path("data/cleaned/modifiers_cleaned.csv")],
         "task_dep": ["run_modifiers_cleaned_data_quality_tests"],
         "actions": ["python {}".format(action_path)],
-        "targets": [Path("../../data/analysis_results/total_modifiers_per_unique_modified.csv"),
-                    Path("../../data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.
+        "targets": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
+                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.
         "title": show_cmd
     }
 
