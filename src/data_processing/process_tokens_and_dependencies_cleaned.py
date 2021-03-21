@@ -20,9 +20,6 @@ The resulting csv files are located at:
     
 """
 
-#!!!! MESSAGE LEFT ON 10/03/2021:
-# REPLACE STYLE WITH "WRITER" pattern
-
 import os
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
@@ -74,7 +71,7 @@ merged_mask = dependency_relation_mask & parent_token_mask
 pat_1_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
 #Add an extra "refers_to" column
-pat_1_extract["refers_to"] = pat_1_extract.loc[:,"parent_token"]
+pat_1_extract.loc[:,"refers_to"] = pat_1_extract.loc[:,"parent_token"]
 
 #Reset and drop index
 pat_1_extract.reset_index(drop = True,inplace = True)
@@ -142,8 +139,7 @@ pat_2_extract_token_ids_two_up_mask =  trans_tokens_and_dependencies.loc[:,"toke
 pat_2_extract_correct_parents = trans_tokens_and_dependencies.loc[pat_2_extract_token_ids_two_up_mask,"token"]
 pat_2_extract_correct_parents.reset_index(drop = True,inplace = True)
 
-pat_2_extract["refers_to"] = pat_2_extract_correct_parents
-
+pat_2_extract.loc[:,"refers_to"] = pat_2_extract_correct_parents
 
 #%%         --- PATTERN 3 ---
 
@@ -161,7 +157,7 @@ merged_mask = dependency_relation_mask & parent_token_mask
 pat_3_extract = trans_tokens_and_dependencies.loc[merged_mask,:]
 
 #Add an extra "refers_to" column
-pat_3_extract["refers_to"] = pat_3_extract.loc[:,"parent_token"]
+pat_3_extract.loc[:,"refers_to"] = pat_3_extract.loc[:,"parent_token"]
 
 #Reset and drop index
 pat_3_extract.reset_index(drop = True,inplace = True)
@@ -205,7 +201,7 @@ merged_mask = dependency_relation_mask & parent_token_mask
 pat_4_extract = original_tokens_and_dependencies.loc[merged_mask,:]
 
 #Add an extra "refers_to" column
-pat_4_extract["refers_to"] = pat_4_extract.loc[:,"parent_token"]
+pat_4_extract.loc[:,"refers_to"] = pat_4_extract.loc[:,"parent_token"]
 
 #Reset and drop index
 pat_4_extract.reset_index(drop = True,inplace = True)
@@ -267,8 +263,7 @@ pat_5_extract_token_ids_two_up_mask =  original_tokens_and_dependencies.loc[:,"t
 pat_5_extract_correct_parents = original_tokens_and_dependencies.loc[pat_5_extract_token_ids_two_up_mask,"token"]
 pat_5_extract_correct_parents.reset_index(drop = True,inplace = True)
 
-pat_5_extract["refers_to"] = pat_5_extract_correct_parents
-
+pat_5_extract.loc[:,"refers_to"] = pat_5_extract_correct_parents
 
 #%%         --- PATTERN 6 ---
 
@@ -286,7 +281,7 @@ merged_mask = dependency_relation_mask & parent_token_mask
 pat_6_extract = original_tokens_and_dependencies.loc[merged_mask,:]
 
 #Add an extra "refers_to" column
-pat_6_extract["refers_to"] = pat_6_extract.loc[:,"parent_token"]
+pat_6_extract.loc[:,"refers_to"] = pat_6_extract.loc[:,"parent_token"]
 
 #Reset and drop index
 pat_6_extract.reset_index(drop = True,inplace = True)
@@ -318,7 +313,6 @@ extracts.drop(["sent_mentions_original",
                "parent_token"],
               axis = 1,
               inplace = True)
-
 
 #%% --- Process: rename specific columns ---
 

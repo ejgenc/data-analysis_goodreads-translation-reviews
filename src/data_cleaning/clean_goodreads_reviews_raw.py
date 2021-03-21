@@ -63,7 +63,6 @@ for book_id in goodreads_reviews["book_id"].unique().tolist():
     review_id_series = review_id_series.append(subset_via_book_id_mask["review_id"])
     
 unique_review_id_mask = goodreads_reviews.loc[:,"review_id"].isin(review_id_series)
-
 duplicate_reviews = (goodreads_reviews.loc[(~unique_review_id_mask),:]
                      .reset_index())
 goodreads_reviews = (goodreads_reviews.loc[unique_review_id_mask,:]
