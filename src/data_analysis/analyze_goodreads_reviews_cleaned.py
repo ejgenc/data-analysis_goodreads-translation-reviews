@@ -59,12 +59,13 @@ length_per_review = (sentences_analyzed
                         ["length_in_words"]
                         .agg(["sum","count"])
                         .rename({"sum" : "length_in_words",
-                                 "count" : "length_in_sentences"})
+                                 "count" : "length_in_sentences"},
+                                axis = 1)
                         .reset_index())
-# BUG HERE! FIX IT!
-goodreads_reviews.join(length_per_review,
-                       on = "review_id",
-                       how = "left")
+
+goodreads_reviews = goodreads_reviews.merge(length_per_review,
+                                            how = "left",
+                                            on = "review_id")
 
 
 

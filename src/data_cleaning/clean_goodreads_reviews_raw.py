@@ -49,6 +49,25 @@ non_null_values_mask = goodreads_reviews["review"].notnull()
 null_values_only = goodreads_reviews.loc[null_values_mask,:]
 goodreads_reviews = goodreads_reviews.loc[non_null_values_mask,:].reset_index(drop = True)
 
+#%% --- Cleaning: filter, document and drop duplicate comments. ---
+
+review_id_series = pd.Series(name = "review_id")
+
+for book_id in goodreads_reviews["book_id"].unique().tolist():
+    book_id_mask = goodreads_reviews.loc[:,"book_id"] == book_id
+    subset_via_book_id_mask = (goodreads_reviews.loc[book_id_mask,:]
+                               .drop_duplicates(subset = "reviewer_id",
+                                                keep = "first"))
+    
+    review_id_series = review_id_series.append(subset_via_book_id_mask["review_id"])
+    
+unique_review_id_mask = goodreads_reviews.loc[:,"review_id"].isin(review_id_series)
+
+duplicate_reviews = (goodreads_reviews.loc[(~unique_review_id_mask),:]
+                     .reset_index())
+goodreads_reviews = (goodreads_reviews.loc[unique_review_id_mask,:]
+                     .reset_index())
+    
 #%% --- Cleaning: check and correct data type agreement within columns ---
 
 #The reason why we are not doing a vectorized operation here is that we are
@@ -112,7 +131,8 @@ goodreads_reviews.to_csv(export_fp, encoding = "utf-8", index = False)
 #%% --- Export cleaning documentation - that has been deleted ---
 
 cleaning_documentation = {"goodreads_reviews_raw_null_values": null_values_only,
-                          "goodreads_reviews_raw_nonenglish_comments": non_english_reviews}
+                          "goodreads_reviews_raw_nonenglish_comments": non_english_reviews,
+                          "goodreads_reviews_raw_duplicate_reviews": duplicate_reviews}
 
 for docname, doc in cleaning_documentation.items():
     export_fp = Path(("../../data/cleaning_reports/{}.csv".format(docname)))

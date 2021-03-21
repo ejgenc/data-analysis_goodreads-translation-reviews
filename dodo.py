@@ -190,7 +190,7 @@ def task_analyze_modifiers_cleaned():
 #         "title": show_cmd
 #     }
 
-# def task_run_modifiers_cleaned_data_quality_tests():
+# def task_run_goodreads_reviews_analyzed_data_quality_tests():
 #     action_path = Path("tests/data_quality_tests/test_goodreads_reviews_analyzed_data_quality.py")
 #     return {
 #         "file_dep": [Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
