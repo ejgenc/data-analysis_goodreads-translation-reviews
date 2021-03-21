@@ -69,6 +69,16 @@ class TestDataTypes(object):
 #%% --- Quality test: check uniqueness of the entries under certain columns ---
 
 class TestUniqueness(object):
+    def test_for_duplicate_ids_per_book(self):
+        for book_id in test_target["book_id"].unique().tolist():
+            book_id_mask = test_target.loc[:,"book_id"] == book_id
+            expected = len(test_target.loc[book_id_mask,"reviewer_id"])
+            actual = test_target.loc[book_id_mask,"reviewer_id"].nunique()
+            error_message = ("Found duplicate reviews in reviews of book id {}. "
+                             "Expected {} unique reviews, found {}"
+                             .format(book_id, expected, actual))
+            assert expected == actual, error_message
+            
     def test_if_selected_are_all_unique(self):
         selected_columns = ["review_id"]
         for column in selected_columns:
