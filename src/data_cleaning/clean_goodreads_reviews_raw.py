@@ -51,7 +51,8 @@ goodreads_reviews = goodreads_reviews.loc[non_null_values_mask,:].reset_index(dr
 
 #%% --- Cleaning: filter, document and drop duplicate comments. ---
 
-review_id_series = pd.Series(name = "review_id")
+review_id_series = pd.Series(name = "review_id",
+                             dtype = "object")
 
 for book_id in goodreads_reviews["book_id"].unique().tolist():
     book_id_mask = goodreads_reviews.loc[:,"book_id"] == book_id

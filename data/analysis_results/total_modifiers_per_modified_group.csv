@@ -1,8 +1,8 @@
 index,number_of_nonunique_modifiers,number_of_unique_modifiers,unique_to_nonunique_ratio
-refers_to_book,2819,577,0.20468251152891095
-refers_to_vwriting,751,162,0.21571238348868177
-refers_to_author,620,213,0.3435483870967742
-refers_to_style,352,168,0.4772727272727273
-refers_to_translation,206,94,0.4563106796116505
-refers_to_vtranslation,73,33,0.4520547945205479
+refers_to_book,2569,577,0.22460101206695213
+refers_to_vwriting,681,162,0.23788546255506607
+refers_to_author,570,213,0.3736842105263158
+refers_to_style,342,168,0.49122807017543857
+refers_to_translation,189,91,0.48148148148148145
+refers_to_vtranslation,69,33,0.4782608695652174
 refers_to_translator,28,24,0.8571428571428571
