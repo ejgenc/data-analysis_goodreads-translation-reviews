@@ -67,5 +67,29 @@ goodreads_reviews = goodreads_reviews.merge(length_per_review,
                                             how = "left",
                                             on = "review_id")
 
+#%% --- Analyze: Count of sentences that directly mention trans, author etc.
 
+masks = []
+
+orig_mention_mask = sentences_analyzed["sent_mentions_original"] == True
+trans_mention_mask = sentences_analyzed["sent_mentions_trans"] == True
+only_orig_mention_mask = (orig_mention_mask & ~trans_mention_mask)
+
+#%% --- Analyze: VADER score for the whole review ---
+
+VADER_score_per_review = (sentences_analyzed
+                          .groupby("review_id")
+                          ["VADER_score_compound"]
+                          .agg(["sum","count"])
+                          .reset_index())
+
+VADER_score_per_review["avg_VADER_score"] = (VADER_score_per_review["sum"]
+                                             / VADER_score_per_review["count"])
+
+VADER_score_per_review = VADER_score_per_review.drop(labels = ["sum","count"],
+                                                     axis = "columns")
+
+goodreads_reviews = goodreads_reviews.merge(VADER_score_per_review,
+                                            how = "left",
+                                            on = "review_id")
 
