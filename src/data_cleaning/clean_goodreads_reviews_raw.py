@@ -52,21 +52,25 @@ goodreads_reviews = goodreads_reviews.loc[non_null_values_mask,:].reset_index(dr
 #%% --- Cleaning: filter, document and drop duplicate comments. ---
 
 review_id_series = pd.Series(name = "review_id",
-                             dtype = "object")
+                              dtype = "object")
 
 for book_id in goodreads_reviews["book_id"].unique().tolist():
     book_id_mask = goodreads_reviews.loc[:,"book_id"] == book_id
     subset_via_book_id_mask = (goodreads_reviews.loc[book_id_mask,:]
-                               .drop_duplicates(subset = "reviewer_id",
+                                .drop_duplicates(subset = "reviewer_id",
                                                 keep = "first"))
     
     review_id_series = review_id_series.append(subset_via_book_id_mask["review_id"])
     
 unique_review_id_mask = goodreads_reviews.loc[:,"review_id"].isin(review_id_series)
-duplicate_reviews = (goodreads_reviews.loc[(~unique_review_id_mask),:]
-                     .reset_index())
-goodreads_reviews = (goodreads_reviews.loc[unique_review_id_mask,:]
-                     .reset_index())
+
+duplicate_reviews = (goodreads_reviews
+                     .loc[(~unique_review_id_mask),:]
+                     .reset_index(drop = True))
+
+goodreads_reviews = (goodreads_reviews
+                     .loc[unique_review_id_mask,:]
+                     .reset_index(drop = True))
     
 #%% --- Cleaning: check and correct data type agreement within columns ---
 
@@ -91,10 +95,10 @@ for column_name in goodreads_reviews.columns:
 #%% --- Cleaning: turn date_scraped and review_date into datetime objects ---
 
 goodreads_reviews["date_scraped"] = pd.to_datetime(goodreads_reviews["date_scraped"],
-                                                                     format = "%d/%m/%Y")
+                                                                      format = "%d/%m/%Y")
 
 goodreads_reviews["review_date"] = pd.to_datetime(goodreads_reviews["review_date"],
-                                                                     format = "%b %d, %Y")
+                                                                      format = "%b %d, %Y")
 #%% --- Cleaning: turn date_scraped and review_date into str with a specific format ---
 
 date_columns = ["date_scraped", "review_date"]
@@ -137,5 +141,4 @@ cleaning_documentation = {"goodreads_reviews_raw_null_values": null_values_only,
 for docname, doc in cleaning_documentation.items():
     export_fp = Path(("../../data/cleaning_reports/{}.csv".format(docname)))
     doc.to_csv(export_fp, encoding = "utf-8", index = False)
-    
     
