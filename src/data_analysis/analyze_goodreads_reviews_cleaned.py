@@ -52,14 +52,19 @@ sentences_analyzed = sentences_analyzed.loc[:,["review_id",
                                                "length_in_words",
                                                "VADER_score_compound"]]
 
+# Take a subset of goodreads reviews to include only reviews whose review no
+# appear in sentences_analyzed.
+
+rid_mask = goodreads_reviews["review_id"].isin(sentences_analyzed["review_id"])
+goodreads_reviews = goodreads_reviews.loc[rid_mask, :]
 #%% --- Analyze: review length in sentences and words. ---
 
 length_per_review = (sentences_analyzed
                         .groupby("review_id")
                         ["length_in_words"]
                         .agg(["sum","count"])
-                        .rename({"sum" : "length_in_words",
-                                 "count" : "length_in_sentences"},
+                        .rename({"sum" : "total_length_in_words",
+                                 "count" : "total_length_in_sentences"},
                                 axis = 1)
                         .reset_index())
 
@@ -67,13 +72,38 @@ goodreads_reviews = goodreads_reviews.merge(length_per_review,
                                             how = "left",
                                             on = "review_id")
 
-#%% --- Analyze: Count of sentences that directly mention trans, author etc.
-
-masks = []
+#%% --- Analyze: review length in sentences and words, split by mentions.---
 
 orig_mention_mask = sentences_analyzed["sent_mentions_original"] == True
 trans_mention_mask = sentences_analyzed["sent_mentions_trans"] == True
 only_orig_mention_mask = (orig_mention_mask & ~trans_mention_mask)
+only_trans_mention_mask = (~orig_mention_mask & trans_mention_mask)
+both_mention_mask = (orig_mention_mask & trans_mention_mask)
+both_nomention_mask = (~orig_mention_mask & ~trans_mention_mask)
+
+masks = [only_orig_mention_mask, only_trans_mention_mask,
+         both_mention_mask, both_nomention_mask]
+
+prefixes = [("length_in_sents_of_orig_mentions", "length_in_words_of_orig_mentions"),
+            ("length_in_sents_of_trans_mentions", "length_in_words_of_trans_mentions"),
+             ("length_in_sents_of_both_mentions", "length_in_words_of_both_mentions"),
+             ("length_in_sents_of_none_mentions", "length_in_words_of_none_mentions")]
+
+for mask, prefix in zip(masks,prefixes):
+    masked_length_per_review = (sentences_analyzed[mask].
+                                groupby("review_id")
+                                ["length_in_words"]
+                                .agg(["sum","count"])
+                                .rename({"sum" : prefix[0],
+                                         "count" : prefix[1]},
+                                        axis = 1)
+                                .reset_index())
+    
+    goodreads_reviews = (goodreads_reviews.merge(masked_length_per_review,
+                                                how = "left",
+                                                on = "review_id")
+                                          .fillna(value = 0,
+                                                  axis = 0))
 
 #%% --- Analyze: VADER score for the whole review ---
 

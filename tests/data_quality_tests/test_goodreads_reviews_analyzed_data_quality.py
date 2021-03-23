@@ -25,3 +25,5 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 #%% --- Import data ---
+
+# Test that VADER scores -1 >= x <= 1
