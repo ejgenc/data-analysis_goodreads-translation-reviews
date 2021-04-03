@@ -121,3 +121,8 @@ VADER_score_per_review = VADER_score_per_review.drop(labels = ["sum","count"],
 goodreads_reviews = goodreads_reviews.merge(VADER_score_per_review,
                                             how = "left",
                                             on = "review_id")
+
+#%% --- Export data ---
+
+export_fp = Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")
+goodreads_reviews.to_csv(export_fp, encoding = "utf-8", index = False)
