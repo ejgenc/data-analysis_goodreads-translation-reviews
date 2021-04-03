@@ -27,3 +27,5 @@ os.chdir(dname)
 #%% --- Import data ---
 
 # Test that VADER scores -1 >= x <= 1
+
+# Test that percentage sums are within are 0 >= x <= 100

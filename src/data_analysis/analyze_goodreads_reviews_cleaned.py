@@ -72,59 +72,39 @@ goodreads_reviews = (goodreads_reviews
                             how = "left",
                             on = "review_id"))
 
-# #%% --- Analyze: review length in sentences and words, split by mentions.---
+#%% --- Analyze: mention ratios for explicit translation/author mentions
 
 orig_mention_mask = sentences_analyzed["sent_mentions_original"] == True
 trans_mention_mask = sentences_analyzed["sent_mentions_trans"] == True
 only_orig_mention_mask = (orig_mention_mask & ~trans_mention_mask)
 only_trans_mention_mask = (~orig_mention_mask & trans_mention_mask)
 both_mention_mask = (orig_mention_mask & trans_mention_mask)
-both_nomention_mask = (~orig_mention_mask & ~trans_mention_mask)
 
-masks = [only_orig_mention_mask, only_trans_mention_mask,
-          both_mention_mask, both_nomention_mask]
+masks = {"share_of_only_trans_mentions" : only_trans_mention_mask,
+         "share_of_trans_mentions" : trans_mention_mask,
+         "share_of_only_orig_mentions": only_orig_mention_mask,
+         "share_of_orig_mentions": orig_mention_mask}
 
-prefixes = [("length_in_words_of_orig_mentions", "length_in_sents_of_orig_mentions"),
-            ("length_in_words_of_trans_mentions", "length_in_sents_of_trans_mentions"),
-              ("length_in_words_of_both_mentions", "length_in_sents_of_both_mentions"),
-              ("length_in_words_of_none_mentions", "length_in_sents_of_none_mentions")]
-
-for mask, prefix in zip(masks,prefixes):
-    masked_length_per_review = (sentences_analyzed[mask].
-                                groupby("review_id")
-                                ["length_in_words"]
-                                .agg(["sum","count"])
-                                .rename({"sum" : prefix[0],
-                                          "count" : prefix[1]},
-                                        axis = 1)
-                                .reset_index())
+for prefix, mask in masks.items():
+    calc = (sentences_analyzed[mask].
+            groupby("review_id")
+            ["length_in_words"]
+            .agg(["count"])
+            .rename({"count": prefix},
+                    axis = 1)
+            .reset_index())
     
-    goodreads_reviews = (goodreads_reviews.merge(masked_length_per_review,
-                                                how = "left",
-                                                on = "review_id")
-                                          .fillna(value = 0,
-                                                  axis = 0))
-# #%% --- Analyze: mention ratios ---
-
-goodreads_reviews["only_trans_to_all_words_ratio"] = (goodreads_reviews["length_in_words_of_trans_mentions"]
-                                                      / goodreads_reviews["total_length_in_words"]
-                                                      * 100)
-
-goodreads_reviews["only_trans_to_all_sents_ratio"] = (goodreads_reviews["length_in_sents_of_trans_mentions"]
-                                                      / goodreads_reviews["total_length_in_sentences"]
-                                                      * 100)
-
-goodreads_reviews["trans_to_all_words_ratio"] = ((goodreads_reviews["length_in_words_of_trans_mentions"]
-                                                  + goodreads_reviews["length_in_words_of_both_mentions"])
-                                                  / goodreads_reviews["total_length_in_words"]
-                                                  * 100)
-
-goodreads_reviews["trans_to_all_sents_ratio"] = ((goodreads_reviews["length_in_sents_of_trans_mentions"]
-                                                  + goodreads_reviews["length_in_sents_of_both_mentions"])
-                                                  / goodreads_reviews["total_length_in_sentences"]
-                                                  * 100)
-
-# #%% --- Analyze: VADER score for the whole review ---
+    goodreads_reviews = (goodreads_reviews.merge(calc,
+                                                 how = "left",
+                                                 on = "review_id")
+                         .fillna(value = 0,
+                                 axis = 0))
+    
+    goodreads_reviews[prefix] = ((goodreads_reviews[prefix]
+                               / goodreads_reviews["total_length_in_sentences"])
+                               * 100)
+    
+#%% --- Analyze: VADER score for the whole review ---
 
 VADER_score_per_review = (sentences_analyzed
                           .groupby("review_id")
@@ -141,4 +121,3 @@ VADER_score_per_review = VADER_score_per_review.drop(labels = ["sum","count"],
 goodreads_reviews = goodreads_reviews.merge(VADER_score_per_review,
                                             how = "left",
                                             on = "review_id")
-
