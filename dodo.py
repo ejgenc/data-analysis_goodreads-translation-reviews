@@ -190,11 +190,11 @@ def task_analyze_goodreads_reviews_cleaned():
         "title": show_cmd
     }
 
-# def task_run_goodreads_reviews_analyzed_data_quality_tests():
-#     action_path = Path("tests/data_quality_tests/test_goodreads_reviews_analyzed_data_quality.py")
-#     return {
-#         "file_dep": [Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
-#         "task_dep": ["analyze_goodreads_reviews_cleaned"],
-#         "actions": ["pytest {}".format(action_path)],
-#         "title": show_cmd
-#     }
+def task_run_goodreads_reviews_analyzed_data_quality_tests():
+    action_path = Path("tests/data_quality_tests/test_goodreads_reviews_analyzed_data_quality.py")
+    return {
+        "file_dep": [Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
+        "task_dep": ["analyze_goodreads_reviews_cleaned"],
+        "actions": ["pytest {}".format(action_path)],
+        "title": show_cmd
+    }

@@ -98,9 +98,8 @@ class TestUniqueness(object):
 
 class TestValueValidity(object):
     def test_validity_of_VADER_scores(self):
-        validity_mask = (-1 <= test_target["avg_VADER_score"]) & (1 >= test_target["avg_VADER_score"])
         expected = len(test_target["avg_VADER_score"])
-        actual = test_target[validity_mask, "avg_VADER_score"].sum()
+        actual = ((-1 <= test_target["avg_VADER_score"]) & (1 >= test_target["avg_VADER_score"])).sum()
         error_message = "Column avg_VADER_score contains scores outside of the expected range."
         assert expected == actual, error_message
     
