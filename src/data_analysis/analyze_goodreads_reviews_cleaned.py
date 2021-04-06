@@ -24,7 +24,6 @@ The resulting csv file is located at:
 import os
 
 from pathlib import Path # To wrap around filepaths
-import numpy as np
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---

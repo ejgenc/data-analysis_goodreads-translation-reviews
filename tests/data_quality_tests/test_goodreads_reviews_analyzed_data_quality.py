@@ -14,7 +14,6 @@ goodreads_reviews_analyzed.csv file. the file can be found at:
 import os
 
 from pathlib import Path # To wrap around filepaths
-import pytest
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---
