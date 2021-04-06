@@ -75,5 +75,3 @@ reviews = scrape_goodreads_reviews(book_id_list,
 
 export_fp = Path("../../data/raw/goodreads_reviews_raw.csv")
 reviews.to_csv(export_fp, encoding = "utf-8", index = False)
-
-

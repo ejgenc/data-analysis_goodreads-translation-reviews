@@ -64,8 +64,7 @@ class TestUniqueness(object):
                       "http": "object",
                       "book_id": "object",
                       "book_name": "object",
-                      "author": "object",
-                      "translator_first": "object"}
+                      "author": "object"}
         
         for column, dtype in dtype_dict.items():
             expected = dtype
