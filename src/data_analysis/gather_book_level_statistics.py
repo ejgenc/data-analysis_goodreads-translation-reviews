@@ -17,7 +17,7 @@ This script targets the following files:
     ../../data/analysis_results/goodreads_reviews_analyzed.csv
     
 The resulting csv file is located at:
-    ../../data/analysis_results/book_level_stats.csv
+    ../../data/analysis_results/book_level_statistics.csv
 
 """
 #%% --- Import required packages ---

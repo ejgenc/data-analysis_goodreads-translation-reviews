@@ -198,3 +198,19 @@ def task_run_goodreads_reviews_analyzed_data_quality_tests():
         "actions": ["pytest {}".format(action_path)],
         "title": show_cmd
     }
+
+def task_gather_book_level_statistics():
+    action_path = Path("src/data_analysis/gather_book_level_statistics.py")
+    return {
+        "file_dep": [Path("../../data/external/book_data_external.xlsx"),
+                    Path("../../data/raw/goodreads_reviews_raw.csv"),
+                    Path("../../data/cleaned/goodreads_reviews_cleaned.csv"),
+                    Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")],
+        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("data/analysis_results/book_level_statistics.csv")],
+        "title": show_cmd
+    }
+
+def task_run_book_level_statistics_data_quality_tests():
+    pass
