@@ -18,7 +18,6 @@ The resulting csv file is located at:
     ../../data/analysis_results/goodreads_reviews_analyzed.csv
         
 """
-
 #%% --- Import required packages ---
 
 import os
