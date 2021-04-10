@@ -8,7 +8,7 @@ Created on Tue Apr  6 14:49:35 2021
 
 This script targets the files goodreads_reviews_analyzed.csv and related files,
 gathering book level statistics about things like number of reviews on the
-Goodreads website/number of reviews scraped, total/mean review length etch.
+Goodreads website/number of reviews scraped, total/mean review length etc.
 
 This script targets the following files:
     ../../data/external/book_data_external.xlsx
@@ -56,7 +56,7 @@ review_statistics = (pd.read_csv(import_fp)
                             "review"],
                            axis = 1))
 
-#%% --- Analyze: number of reviews per book. ---
+#%% --- Analyze: number of and percentage reviews per book. ---
 # Number of reviews per book is calculated in tree different conditions:
 # n_reviews_in_goodreads = number of reviews present on the site
 # n_inital_reviews = number of reviews scraped
@@ -84,14 +84,92 @@ book_statistics = (book_statistics
                            how = "left",
                            on = "book_id"))
 
-#percentage lost after scraping
-#percentage lost after cleaning
+# how much of the total reviews are the initia reviews
+# e.g: 300 on Goodreads - 300 scraped --> 100%
+# how much of the total reviews are the final reviews
+# e.g: 100 scraped - 80 left --> 20% lost (perc_lost), perc_left after cleaning
 
+#percentage lost after scraping
+
+#percentage lost after cleaning
 book_statistics["perc_lost_after_cleaning"] = (1
                                                - (book_statistics["n_final_reviews"]
                                                / book_statistics["n_initial_reviews"]))
 
+#%% --- Analyze: total and mean review length in sentences / words ---
+
+# total review length in words and sets
+total_review_lengths = (review_statistics
+                        .groupby("book_id")
+                         [["total_length_in_words",
+                          "total_length_in_sentences"]]
+                         .agg(["sum"])
+                         .reset_index()
+                         .droplevel(0, axis = 1))
+
+total_review_lengths = (total_review_lengths
+                        .rename(columns = {
+                            total_review_lengths.columns[0] : "book_id",
+                            total_review_lengths.columns[1] : "total_rev_length_in_words",
+                            total_review_lengths.columns[2] : "total_rev_length_in_sents"}))
+
+# mean review length in words and sentences 
+
+mean_lengths_in_words = (review_statistics
+                         .groupby("book_id")
+                         ["total_length_in_words"]
+                         .agg(["sum","count"])
+                         .reset_index())
+mean_lengths_in_words["mean_review_length_in_words"] = (mean_lengths_in_words["sum"]
+                                                        / mean_lengths_in_words["count"])
+
+mean_lengths_in_sents = (review_statistics
+                         .groupby("book_id")
+                         ["total_length_in_sentences"]
+                         .agg(["sum","count"])
+                         .reset_index())
+mean_lengths_in_sents["mean_review_length_in_sentences"] = (mean_lengths_in_sents["sum"]
+                                                            / mean_lengths_in_sents["count"])
+
+lengths = [total_review_lengths, mean_lengths_in_words, mean_lengths_in_sents]
+
+for i, mean_lengths in enumerate(lengths):
+    if "sum" in mean_lengths.columns:
+        mean_lengths = (mean_lengths
+                        .drop(["sum", "count"],
+                              axis = 1))
+        lengths[i] = mean_lengths
+        
+    book_statistics = (book_statistics
+                       .merge(mean_lengths,
+                              how = "left",
+                              on = "book_id"))
+
+
+#%% --- Analyze: share of different mentions ---
+
+test1 = (review_statistics.loc[:,["book_id",
+                                 "total_length_in_sentences",
+                                 "share_of_only_trans_mentions"]]
+        .assign(weighted = lambda x: x["total_length_in_sentences"] * x["share_of_only_trans_mentions"])
+        .drop(["share_of_only_trans_mentions"],
+              axis = 1)
+        .groupby("book_id")
+        [["total_length_in_sentences", "weighted"]]
+        .agg(["sum"])
+        .assign(weighted_mean = lambda x: (x["weighted"]["sum"] 
+                                           / x["total_length_in_sentences"]["sum"])))
+        # .drop(["total_length_in_sentences", "share_of_only_trans_mentions"],
+        #       axis = 1)
+        # .groupby("book_id")
+        # ["weighted"]
+        # .agg(["sum","count"])
+        # .assign(weighted_mean = lambda x: x["sum"] / x["count"])
+        # .drop(["sum", "count"],
+        #       axis = 1)
+        # .rename({"weighted_mean": "share_of_only_trans_mentions"},
+        #         axis = 1))
 
 
 
-
+        

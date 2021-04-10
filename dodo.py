@@ -1,9 +1,9 @@
 from pathlib import Path # To wrap around filepaths
 from doit.tools import run_once
 
-# --- Set a custom title for all doit tasks ---
 
-def show_cmd(task):
+
+def show_cmd(task): # Set a custom title for all doit tasks
     return "executing... %s" % task.name
 
 def task_clear_data_output():
@@ -199,24 +199,24 @@ def task_run_goodreads_reviews_analyzed_data_quality_tests():
         "title": show_cmd
     }
 
-def task_gather_book_level_statistics():
-    action_path = Path("src/data_analysis/gather_book_level_statistics.py")
-    return {
-        "file_dep": [Path("../../data/external/book_data_external.xlsx"),
-                    Path("../../data/raw/goodreads_reviews_raw.csv"),
-                    Path("../../data/cleaned/goodreads_reviews_cleaned.csv"),
-                    Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")],
-        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
-        "actions": ["python {}".format(action_path)],
-        "targets": [Path("data/analysis_results/book_level_statistics.csv")],
-        "title": show_cmd
-    }
+# def task_gather_book_level_statistics():
+#     action_path = Path("src/data_analysis/gather_book_level_statistics.py")
+#     return {
+#         "file_dep": [Path("../../data/external/book_data_external.xlsx"),
+#                     Path("../../data/raw/goodreads_reviews_raw.csv"),
+#                     Path("../../data/cleaned/goodreads_reviews_cleaned.csv"),
+#                     Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")],
+#         "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/analysis_results/book_level_statistics.csv")],
+#         "title": show_cmd
+#     }
 
-def task_run_book_level_statistics_data_quality_tests():
-    action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
-    return {
-        "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
-        "task_dep": ["gather_book_level_statistics"],
-        "actions": ["pytest {}".format(action_path)],
-        "title": show_cmd
-    }
+# def task_run_book_level_statistics_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
+#         "task_dep": ["gather_book_level_statistics"],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
