@@ -107,11 +107,9 @@ total_review_lengths = (review_statistics
                          .reset_index()
                          .droplevel(0, axis = 1))
 
-total_review_lengths = (total_review_lengths
-                        .rename(columns = {
-                            total_review_lengths.columns[0] : "book_id",
-                            total_review_lengths.columns[1] : "total_rev_length_in_words",
-                            total_review_lengths.columns[2] : "total_rev_length_in_sents"}))
+total_review_lengths.columns = ["book_id",
+                                "total_rev_length_in_words",
+                                "total_rev_length_in_sents"]
 
 # mean review length in words and sentences 
 
@@ -128,7 +126,7 @@ mean_lengths_in_sents = (review_statistics
                          ["total_length_in_sentences"]
                          .agg(["sum","count"])
                          .reset_index())
-mean_lengths_in_sents["mean_review_length_in_sentences"] = (mean_lengths_in_sents["sum"]
+mean_lengths_in_sents["mean_review_length_in_sents"] = (mean_lengths_in_sents["sum"]
                                                             / mean_lengths_in_sents["count"])
 
 lengths = [total_review_lengths, mean_lengths_in_words, mean_lengths_in_sents]
@@ -148,28 +146,29 @@ for i, mean_lengths in enumerate(lengths):
 
 #%% --- Analyze: share of different mentions ---
 
-test1 = (review_statistics.loc[:,["book_id",
-                                 "total_length_in_sentences",
-                                 "share_of_only_trans_mentions"]]
-        .assign(weighted = lambda x: x["total_length_in_sentences"] * x["share_of_only_trans_mentions"])
-        .drop(["share_of_only_trans_mentions"],
-              axis = 1)
-        .groupby("book_id")
-        [["total_length_in_sentences", "weighted"]]
-        .agg(["sum"])
-        .assign(weighted_mean = lambda x: (x["weighted"]["sum"] 
-                                           / x["total_length_in_sentences"]["sum"])))
-        # .drop(["total_length_in_sentences", "share_of_only_trans_mentions"],
-        #       axis = 1)
-        # .groupby("book_id")
-        # ["weighted"]
-        # .agg(["sum","count"])
-        # .assign(weighted_mean = lambda x: x["sum"] / x["count"])
-        # .drop(["sum", "count"],
-        #       axis = 1)
-        # .rename({"weighted_mean": "share_of_only_trans_mentions"},
-        #         axis = 1))
+share_types = ["share_of_only_trans_mentions", "share_of_trans_mentions",
+               "share_of_only_orig_mentions", "share_of_orig_mentions"]
 
+for share_type in share_types:
+    share = (review_statistics.loc[:, ["book_id",
+                                       "total_length_in_sentences",
+                                       share_type]]
+             .groupby("book_id")
+             .agg("sum")
+             .assign(temp = lambda x: (x[share_type]
+                                       / x["total_length_in_sentences"]))
+             .drop(["total_length_in_sentences", share_type],
+                   axis = 1)
+             .rename({"temp": share_type},
+                     axis = 1)
+             .reset_index())
+    
+    book_statistics = (book_statistics
+                       .merge(share,
+                              how = "left",
+                              on = "book_id"))
+    
+#%% --- Export data ---
 
-
-        
+export_fp = Path("../../data/analysis_results/book_level_statistics.csv")
+book_statistics.to_csv(export_fp, encoding = "utf-8", index = False)
