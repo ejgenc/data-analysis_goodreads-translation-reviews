@@ -53,7 +53,7 @@ class TestDataTypes(object):
         dtype_dict = {"book_id": "object",
                       "book_name": "object",
                       "author": "object",
-                      "n_inital_reviews": "int64",
+                      "n_initial_reviews": "int64",
                       "n_final_reviews": "int64",
                       "perc_lost_after_cleaning": "float64",
                       "total_rev_length_in_words": "int64",

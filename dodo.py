@@ -212,11 +212,11 @@ def task_gather_book_level_statistics():
         "title": show_cmd
     }
 
-# def task_run_book_level_statistics_data_quality_tests():
-#     action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
-#     return {
-#         "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
-#         "task_dep": ["gather_book_level_statistics"],
-#         "actions": ["pytest {}".format(action_path)],
-#         "title": show_cmd
-#     }
+def task_run_book_level_statistics_data_quality_tests():
+    action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
+    return {
+        "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
+        "task_dep": ["gather_book_level_statistics"],
+        "actions": ["pytest {}".format(action_path)],
+        "title": show_cmd
+    }
