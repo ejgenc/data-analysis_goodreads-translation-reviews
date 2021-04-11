@@ -1,7 +1,7 @@
 book_id,review_id,sentence_id,token_id,modifier_id,modifier,modified,dependency_relation
-b13,r3985,s33641,t817081,m89,celebrity,translator[s,amod
-b8,r2540,s22051,t558026,m1948,black,book'and,amod
-b15,r4738,s42291,t1011938,m2847,beautiful,writing.passages,amod
-b8,r2458,s21432,t541544,m4188,especially,wroting,advmod
-b8,r2458,s21432,t541545,m4189,when,wroting,advmod
-b15,r4572,s39915,t960294,m4395,desperate,writhed,advmod
+b13,r3999,s36933,t901073,m91,celebrity,translator[s,amod
+b8,r2542,s22214,t562780,m1969,black,book'and,amod
+b15,r4752,s45625,t1097169,m2989,beautiful,writing.passages,amod
+b8,r2458,s21581,t545820,m4342,especially,wroting,advmod
+b8,r2458,s21581,t545821,m4343,when,wroting,advmod
+b15,r4586,s43250,t1045506,m4569,desperate,writhed,advmod
