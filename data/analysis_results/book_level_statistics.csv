@@ -1,4 +1,4 @@
-book_id,book_name,author,n_initial_reviews,n_final_reviews,perc_lost_after_cleaning,total_rev_length_in_words,total_rev_length_in_sents,mean_review_length_in_words,mean_review_length_in_sents,share_of_only_trans_mentions,share_of_trans_mentions,share_of_only_orig_mentions,share_of_orig_mentions
+book_id,book_name,author,n_initial_reviews,n_final_reviews,perc_lost_after_cleaning,total_rev_length_in_words,total_rev_length_in_sents,mean_rev_length_in_words,mean_rev_length_in_sents,share_of_only_trans_mentions,share_of_trans_mentions,share_of_only_orig_mentions,share_of_orig_mentions
 b1,My Name is Red,Orhan Pamuk,330,298,0.09696969696969693,79630,3220,269.02027027027026,10.878378378378379,0.06197885735395027,0.1668920020152721,3.4757061422759294,3.58061928693725
 b2,Snow,Orhan Pamuk,330,299,0.09393939393939399,88550,3855,296.15384615384613,12.892976588628763,0.04992318832516081,0.10134640550088131,2.535558427624461,2.5869816448001814
 b3,The Museum of Innocence,Orhan Pamuk,330,296,0.10303030303030303,70000,2869,237.28813559322035,9.72542372881356,0.016922825828367828,0.09905001147594383,3.651441480215022,3.7335686658625993

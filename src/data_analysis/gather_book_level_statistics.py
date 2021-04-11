@@ -118,7 +118,7 @@ mean_lengths_in_words = (review_statistics
                          ["total_length_in_words"]
                          .agg(["sum","count"])
                          .reset_index())
-mean_lengths_in_words["mean_review_length_in_words"] = (mean_lengths_in_words["sum"]
+mean_lengths_in_words["mean_rev_length_in_words"] = (mean_lengths_in_words["sum"]
                                                         / mean_lengths_in_words["count"])
 
 mean_lengths_in_sents = (review_statistics
@@ -126,7 +126,7 @@ mean_lengths_in_sents = (review_statistics
                          ["total_length_in_sentences"]
                          .agg(["sum","count"])
                          .reset_index())
-mean_lengths_in_sents["mean_review_length_in_sents"] = (mean_lengths_in_sents["sum"]
+mean_lengths_in_sents["mean_rev_length_in_sents"] = (mean_lengths_in_sents["sum"]
                                                             / mean_lengths_in_sents["count"])
 
 lengths = [total_review_lengths, mean_lengths_in_words, mean_lengths_in_sents]
