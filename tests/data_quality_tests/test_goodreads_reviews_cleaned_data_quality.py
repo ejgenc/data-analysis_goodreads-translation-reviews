@@ -108,7 +108,7 @@ class TestDatetime(object):
 class TestReviewLanguage(object):
     DetectorFactory.seed = 0
     def test_if_reviews_are_english(self):
-        expected = 20
+        expected = 1000
         actual = 0
         for review in test_target["review"]:
             try:

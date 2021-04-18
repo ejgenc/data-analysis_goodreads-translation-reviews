@@ -126,6 +126,12 @@ goodreads_reviews = goodreads_reviews.loc[non_english_filter,:].reset_index(drop
 #%% --- Cleaning: normalize all reviews to be lowercase_only
 
 goodreads_reviews.loc[:,"review"] = goodreads_reviews.loc[:,"review"].str.lower()
+
+
+#%% --- Cleaning: use a .islower() mask to get rid of persisnent non-lower strings. ---
+
+mask = goodreads_reviews.loc[:,"review"].str.islower()
+goodreads_reviews = goodreads_reviews.loc[mask, :]
     
 #%% --- Export Data ---
 

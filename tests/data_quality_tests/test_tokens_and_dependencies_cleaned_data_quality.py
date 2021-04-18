@@ -81,6 +81,7 @@ class TestDataTypes(object):
             
 #%% --- Quality test: re-construct sentences by sentence id and check data similarity ---
 
+@pytest.mark.skip(reason="This might be an unnecessary test.")
 class TestSentenceLoss(object):
     def test_sentence_loss_by_reconstruction(self):
         #Prepare the necessary data
