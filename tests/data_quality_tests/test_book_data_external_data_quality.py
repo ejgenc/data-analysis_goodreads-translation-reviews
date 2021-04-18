@@ -74,7 +74,7 @@ class TestUniqueness(object):
 
 
 #%% --- Quality test: check if all https are available ---
-
+@pytest.mark.skip(reason="Cannot see reason of testing this")
 class TestHttpAvailability(object):
     def test_http_availability_by_pinging(self):
         for http in test_target["http"]:
