@@ -1,8 +1,0 @@
-index,number_of_nonunique_modifiers,number_of_unique_modifiers,unique_to_nonunique_ratio
-refers_to_book,2676,592,0.22122571001494767
-refers_to_vwriting,702,164,0.2336182336182336
-refers_to_author,597,224,0.37520938023450584
-refers_to_style,348,172,0.4942528735632184
-refers_to_translation,192,91,0.4739583333333333
-refers_to_vtranslation,71,33,0.4647887323943662
-refers_to_translator,28,24,0.8571428571428571
