@@ -1,0 +1,15 @@
+# Environment variables
+env.txt
+
+# Cache files
+__pycache__
+.doit
+
+# Analysis results and intermediary data
+data/analysis_results/*
+data/cleaned/*
+data/cleaning_reports/*
+data/raw/*
+
+# Exemption for gitignore itself
+!.gitignore
