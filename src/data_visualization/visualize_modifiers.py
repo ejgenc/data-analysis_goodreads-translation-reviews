@@ -43,7 +43,7 @@ os.chdir(dname)
 #%% --- Import data ---
 
 import_fp = Path("../../data/analysis_results/"
-                 "group_refers_to_author_modifier_value_counts")
+                 "group_refers_to_author_modifier_value_counts.csv")
 
 test = pd.read_csv(import_fp)
 
