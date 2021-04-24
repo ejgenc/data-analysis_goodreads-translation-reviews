@@ -11,3 +11,4 @@ console.log: WebExtensions: reset-default-search: No addons in our list are inst
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1619262210364	geckodriver	INFO	Listening on 127.0.0.1:64837
