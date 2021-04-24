@@ -3,7 +3,7 @@ env.txt
 
 # Cache files
 __pycache__
-.doit
+.doit*
 
 # Analysis results and intermediary data
 data/analysis_results/*
