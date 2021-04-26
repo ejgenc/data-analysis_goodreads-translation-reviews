@@ -12,3 +12,13 @@ console.log: WebExtensions: reset-default-search: No addons in our list are inst
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
 1619262210364	geckodriver	INFO	Listening on 127.0.0.1:64837
+1619430413306	geckodriver	INFO	Listening on 127.0.0.1:65018
+1619430416464	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\ejgen\\AppData\\Local\\Temp\\rust_mozprofile0zJq7j"
+1619430417202	Marionette	INFO	Marionette enabled
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619430421304	Marionette	INFO	Listening on port 65027
+1619430430278	Marionette	INFO	Stopped listening on port 65027
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

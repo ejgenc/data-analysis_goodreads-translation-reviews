@@ -42,8 +42,29 @@ os.chdir(dname)
 
 #%% --- Import data ---
 
-import_fp = Path("../../data/analysis_results/"
-                 "group_refers_to_author_modifier_value_counts.csv")
+filepaths = {"author": Path("../../data/analysis_results/"
+                 "group_refers_to_author_modifier_value_counts.csv"),
+             "translator": Path("../../data/analysis_results/"
+                 "group_refers_to_translator_modifier_value_counts.csv"),
+             "book": Path("../../data/analysis_results/"
+                 "group_refers_to_book_modifier_value_counts.csv"),
+             "translation": Path("../../data/analysis_results/"
+                 "group_refers_to_translation_modifier_value_counts.csv"),
+             "verb_write": Path("../../data/analysis_results/"
+                 "group_refers_to_vwriting_modifier_value_counts.csv"),
+             "verb_translate": Path("../../data/analysis_results/"
+                 "group_refers_to_vtranslation_modifier_value_counts.csv")}
 
-test = pd.read_csv(import_fp)
+datasets = {group: pd.read_csv(filepath) for group, filepath in filepaths.items()}
+
+#%% --- Visualization ---
+
+
+#%% --- Export data ---
+
+# Prepare directory structure
+
+# Export data
+
+
 
