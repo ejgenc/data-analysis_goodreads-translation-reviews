@@ -61,6 +61,12 @@ datasets = {group: pd.read_csv(filepath) for group, filepath in filepaths.items(
 
 visualizations = {group: None for group, dataset in datasets.items()}
 
+#%%
+
+with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
+    fig = plt.figure(figsize = (5, 5))
+    ax_1 = fig.add_subplot(1, 1, 1)
+
 
 #%% --- Export data ---
 
