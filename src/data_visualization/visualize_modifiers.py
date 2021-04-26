@@ -31,6 +31,7 @@ The resulting raw figures are located at:
 import os
 
 from pathlib import Path # To wrap around filepaths
+from numpy import arange
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -55,7 +56,30 @@ filepaths = {"author": Path("../../data/analysis_results/"
              "verb_translate": Path("../../data/analysis_results/"
                  "group_refers_to_vtranslation_modifier_value_counts.csv")}
 
-datasets = {group: pd.read_csv(filepath) for group, filepath in filepaths.items()}
+# Get the top 20 modifiers for each modifier group
+datasets = {group: pd.read_csv(filepath).head(20) for group, filepath in filepaths.items()}
+
+#%% --- Prepare Data ---
+
+# 1 stands for positive, 0 stands for neutral
+# and -1 stands for negative valence values.
+valence_values = {"author": [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
+                             0, 0, 0, 0, 1, 0, 0, 1, 0],
+                  "translator": [0, 0, 0, 1, 1, 1, 1, 0, 1, 0,
+                                 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+                  "book": [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+                           1, 0, 1, 1, 0, 1, 0, 0],
+                  "translation": [0, 1, 0, 1, 0, -1, 1, -1, -1, 1,
+                                   0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
+                  "verb_write": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                 1, 1, 0, -1, 0, 0, 0, 0],
+                  "verb_translate": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                     0, 0, 1, -1, 0, 0, 0, 0, 0]}
+
+for key, value in valence_values.items():
+    datasets[key]["valence"] = value
+
+
 
 #%% --- Visualization ---
 
@@ -64,8 +88,101 @@ visualizations = {group: None for group, dataset in datasets.items()}
 #%%
 
 with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
-    fig = plt.figure(figsize = (5, 5))
-    ax_1 = fig.add_subplot(1, 1, 1)
+    
+    # Create figure and axes
+    # Figsize calculation in pixels is figsizex/y * dpi
+    fig = plt.figure(figsize = (19.20, 10.80),
+                     dpi = 100)
+    
+    # Implement a grid-like system
+    gs = fig.add_gridspec(nrows = 3,
+                          ncols = 2,
+                          figure = fig,
+                          wspace = 0.30)
+    # set the column and row counter to move over grid
+    rownum = 0
+    colnum = 0
+    
+    # Keep track of max and min value to set proper axes
+    axis_min = 0
+    axis_max = 0
+    
+    for key, data in datasets.items():
+        ax = fig.add_subplot(gs[rownum, colnum])
+        
+        # Cast numerical values to visual marks
+        bar_widths = data["count"].values
+        bar_labels = data["modifier"].values
+        bar_positions = [i * 40 for i in range(0, len(bar_labels))]
+        
+        # Dynamically update axis max
+        if max(bar_widths) > axis_max:
+            axis_max = max(bar_widths)
+        
+
+        # --- Plot Data ---
+        ax.barh(y = bar_positions,
+            width = bar_widths,
+            align = "center",
+            height = 1,
+            edgecolor = "black")
+        
+        # --- Spines and Axes ---
+
+        if colnum == 0:
+            # --- set spines ---
+            ax.spines["top"].set_visible(True)
+            ax.spines["bottom"].set_visible(False)
+            ax.spines["right"].set_visible(True)
+            ax.spines["left"].set_visible(False)
+        
+            # --- invert axes for left/top align ---
+            ax.invert_xaxis()
+            ax.invert_yaxis()
+            
+            # Set axis length to the max possible value
+            ax.axes.set_xlim(axis_max, axis_min)
+            ax.axes.set_ylim(20, -20)
+        
+        if colnum == 1:
+            # --- set spines ---
+            ax.spines["top"].set_visible(True)
+            ax.spines["bottom"].set_visible(False)
+            
+            # --- invert axes for left/top align ---
+            ax.invert_yaxis()
+            
+        # --- Ticks and Labels ---
+        if colnum == 0:
+            ax.xaxis.tick_top()
+            ax.yaxis.tick_right()
+            
+            ax.set_yticks(bar_positions)
+            
+            ax.xaxis.set_label_position('top') 
+            ax.yaxis.set_label_position("right")
+            
+            ax.set_yticklabels(bar_labels)
+            
+            
+        if colnum == 1:
+            ax.xaxis.tick_top()
+            
+            ax.set_yticks(bar_positions)
+            
+            ax.set_yticklabels(bar_labels)
+            
+        
+        # Move over the grid
+        if colnum == 1:
+            rownum += 1
+            colnum = 0
+        else:
+            colnum += 1
+                    
+    for ax in fig.axes:
+        ax.set_xticks([axis_min, axis_max])
+        
 
 
 #%% --- Export data ---
@@ -85,7 +202,91 @@ os.mkdir(mkdir_path)
 #         filename_extended = name + file_extension
 #         export_fp = Path.joinpath(mkdir_path, filename_extended)
 #         visualization.savefig(export_fp,
-#                               bbox_inches = "tight")
+#                               dpi = 100,
+#                               bbox_inches = "tight",
+#                                pad_inches = 0)
+
+
+#%% 
+    
+# Create figure and axes
+# Figsize calculation in pixels is figsizex/y * dpi
+fig = plt.figure()
+
+ax = fig.add_subplot(1, 1, 1)
+
+# Cast numerical values to visual marks
+bar_heights = data["count"].values
+bar_labels = data["modifier"].values
+bar_positions = [i * 5 for i in range(0, len(bar_labels))]
+
+
+
+# --- Plot Data ---
+ax.bar(x = bar_positions,
+    height = bar_heights,
+    align = "center",
+    width = 3,
+    edgecolor = "black")
+
+ax.axes.set_xlim(0, 60)
+
+#     # --- Spines and Axes ---
+
+#     if colnum == 0:
+#         # --- set spines ---
+#         ax.spines["top"].set_visible(True)
+#         ax.spines["bottom"].set_visible(False)
+#         ax.spines["right"].set_visible(True)
+#         ax.spines["left"].set_visible(False)
+
+#         # --- invert axes for left/top align ---
+#         ax.invert_xaxis()
+#         ax.invert_yaxis()
+    
+#         # Set axis length to the max possible value
+#         ax.axes.set_xlim(axis_max, axis_min)
+
+#     if colnum == 1:
+#         # --- set spines ---
+#         ax.spines["top"].set_visible(True)
+#         ax.spines["bottom"].set_visible(False)
+    
+#         # --- invert axes for left/top align ---
+#         ax.invert_yaxis()
+    
+#     # --- Ticks and Labels ---
+#     if colnum == 0:
+#         ax.xaxis.tick_top()
+#         ax.yaxis.tick_right()
+    
+#         ax.set_yticks(bar_positions)
+    
+#         ax.xaxis.set_label_position('top') 
+#         ax.yaxis.set_label_position("right")
+    
+#         ax.set_yticklabels(bar_labels)
+    
+    
+#     if colnum == 1:
+#         ax.xaxis.tick_top()
+    
+#         ax.set_yticks(bar_positions)
+    
+#         ax.set_yticklabels(bar_labels)
+    
+
+#     # Move over the grid
+#     if colnum == 1:
+#         rownum += 1
+#         colnum = 0
+#     else:
+#         colnum += 1
+            
+# for ax in fig.axes:
+#     ax.set_xticks([axis_min, axis_max])
+    
+
 
 
 
