@@ -59,12 +59,28 @@ datasets = {group: pd.read_csv(filepath) for group, filepath in filepaths.items(
 
 #%% --- Visualization ---
 
+visualizations = {group: None for group, dataset in datasets.items()}
+
 
 #%% --- Export data ---
 
 # Prepare directory structure
+current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+current_filename_complete = "_".join(current_filename_split)
+
+mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+os.mkdir(mkdir_path)
 
 # Export data
+# file_extensions = [".png", ".svg"]
+
+# for name, visualization in visualizations.items():
+#     for file_extension in file_extensions:
+#         filename_extended = name + file_extension
+#         export_fp = Path.joinpath(mkdir_path, filename_extended)
+#         visualization.savefig(export_fp,
+#                               bbox_inches = "tight")
+
 
 
 
