@@ -221,13 +221,13 @@ def task_run_book_level_statistics_data_quality_tests():
         "title": show_cmd
     }
 
-# def task_visualize_modifiers():
-#     action_path = Path("src/data_visualization/visualize_modifiers.py")
-#     return {
-#         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
-#                     Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.,
-#         "task_dep": ["run_book_level_statistics_data_quality_tests"],
-#         "actions": ["python {}".format(action_path)],
-#         "targets": [Path("media/figures/raw/modifiers")],
-#         "title": show_cmd
-#     }
+def task_visualize_modifiers():
+    action_path = Path("src/data_visualization/visualize_modifiers.py")
+    return {
+        "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
+                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.,
+        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("media/figures/raw/modifiers")],
+        "title": show_cmd
+    }
