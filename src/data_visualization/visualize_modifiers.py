@@ -83,116 +83,144 @@ for key, value in valence_values.items():
 
 #%% --- Visualization ---
 
-visualizations = {group: None for group, dataset in datasets.items()}
-
+visualizations = {"author/translator": None,
+                  "book/translation": None,
+                  "vwrite/vtranslate": None,} 
 #%%
 
-with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
-    
-    # Create figure and axes
-    # Figsize calculation in pixels is figsizex/y * dpi
-    fig = plt.figure(figsize = (19.20, 10.80),
-                     dpi = 100)
-    
-    # Implement a grid-like system
-    gs = fig.add_gridspec(nrows = 3,
-                          ncols = 2,
-                          figure = fig,
-                          wspace = 0.30)
-    # set the column and row counter to move over grid
-    rownum = 0
-    colnum = 0
-    
-    # Keep track of max and min value to set proper axes
-    axis_min = 0
-    axis_max = 0
-    
-    for key, data in datasets.items():
-        ax = fig.add_subplot(gs[rownum, colnum])
-        
-        # Cast numerical values to visual marks
-        bar_widths = data["count"].values
-        bar_labels = data["modifier"].values
-        bar_positions = [i * 40 for i in range(0, len(bar_labels))]
-        
-        # Dynamically update axis max
-        if max(bar_widths) > axis_max:
-            axis_max = max(bar_widths)
-        
+#Since we will be creating three plots with two axes according 
+# to visualizations dict,we need to create 3 subsets of the datasets
+# of size 2
+start, end = 0, 2
+i = 0
 
-        # --- Plot Data ---
-        ax.barh(y = bar_positions,
-            width = bar_widths,
-            align = "center",
-            height = 1,
-            edgecolor = "black")
+while end <= 6:
+    with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
         
-        # --- Spines and Axes ---
-
-        if colnum == 0:
-            # --- set spines ---
-            ax.spines["top"].set_visible(True)
-            ax.spines["bottom"].set_visible(False)
-            ax.spines["right"].set_visible(True)
-            ax.spines["left"].set_visible(False)
+        # Create figure and axes
+        # Figsize calculation in pixels is figsizex/y * dpi
+        fig = plt.figure(figsize = (19.20, 10.80),
+                         dpi = 100)
         
-            # --- invert axes for left/top align ---
-            ax.invert_xaxis()
-            ax.invert_yaxis()
-            
-            # Set axis length to the max possible value
-            ax.axes.set_xlim(axis_max, axis_min)
-            ax.axes.set_ylim(20, -20)
+        # Implement a grid-like system
+        gs = fig.add_gridspec(nrows = 1,
+                              ncols = 2,
+                              figure = fig,
+                              wspace = 0.35)
         
-        if colnum == 1:
-            # --- set spines ---
-            ax.spines["top"].set_visible(True)
-            ax.spines["bottom"].set_visible(False)
-            
-            # --- invert axes for left/top align ---
-            ax.invert_yaxis()
-            
-        # --- Ticks and Labels ---
-        if colnum == 0:
-            ax.xaxis.tick_top()
-            ax.yaxis.tick_right()
-            
-            ax.set_yticks(bar_positions)
-            
-            ax.xaxis.set_label_position('top') 
-            ax.yaxis.set_label_position("right")
-            
-            ax.set_yticklabels(bar_labels)
-            
-            
-        if colnum == 1:
-            ax.xaxis.tick_top()
-            
-            ax.set_yticks(bar_positions)
-            
-            ax.set_yticklabels(bar_labels)
-            
+        # set the column and row counter to move over grid
+        rownum = 0
+        colnum = 0
         
-        # Move over the grid
-        if colnum == 1:
-            rownum += 1
-            colnum = 0
-        else:
-            colnum += 1
-                    
-    for ax in fig.axes:
-        ax.set_xticks([axis_min, axis_max])
+        # Keep track of max and min value to set proper axes
+        axis_min = 0
+        axis_max = 0
         
+        for data in list(datasets.values())[start:end]:
+            ax = fig.add_subplot(gs[rownum, colnum])
+            
+            # Cast numerical values to visual marks
+            bar_widths = data["count"].values
+            bar_labels = data["modifier"].values
+            bar_positions = [i for i in range(0, len(bar_labels))]
+            
+            # Dynamically update axis max
+            if max(bar_widths) > axis_max:
+                axis_max = max(bar_widths)
+            
+    
+            # --- Plot Data ---
+            ax.barh(y = bar_positions,
+                width = bar_widths,
+                align = "center",
+                height = 0.75,
+                edgecolor = "black")
+            
+            # --- Spines and Axes ---
+    
+            if colnum == 0:
+                # --- set spines ---
+                ax.spines["top"].set_visible(True)
+                ax.spines["bottom"].set_visible(False)
+                ax.spines["right"].set_visible(True)
+                ax.spines["left"].set_visible(False)
+            
+                # --- invert axes for left/top align ---
+                ax.invert_xaxis()
+                ax.invert_yaxis()
+                
+                # Set axis length to the max possible value
+                ax.axes.set_xlim(axis_max, axis_min)
+            
+            if colnum == 1:
+                # --- set spines ---
+                ax.spines["top"].set_visible(True)
+                ax.spines["bottom"].set_visible(False)
+                
+                # --- invert axes for left/top align ---
+                ax.invert_yaxis()
+                
+                # Set axis length to the max possible value
+                ax.axes.set_xlim(axis_min, axis_max)
+                
+            ax.axes.set_ylim(20, -0.75)
+                
+            # --- Ticks and Labels ---
+            if colnum == 0:
+                ax.xaxis.tick_top()
+                ax.yaxis.tick_right()
+                
+                ax.set_yticks(bar_positions)
+                
+                ax.xaxis.set_label_position('top') 
+                ax.yaxis.set_label_position("right")
+                
+                ax.set_yticklabels(bar_labels,
+                                   ha = "left")
+            
+                
+            if colnum == 1:
+                ax.xaxis.tick_top()
+                
+                ax.set_yticks(bar_positions)
+                
+                ax.set_yticklabels(bar_labels,
+                                   # color = red ATTENTION, HOW YOU WILL COLOR IT
+                                   ha = "right")
+                
+            ax.tick_params(axis = "y",
+               which = "both",
+               bottom = False,
+               top = False,
+               left = False,
+               right = False)
+                
+            
+            # Move over the grid
+            if colnum == 1:
+                rownum += 1
+                colnum = 0
+            else:
+                colnum += 1
+                        
+        for ax in fig.axes:
+            ax.set_xticks([axis_min, round(axis_max / 2), axis_max])
+        fig.align_labels()
+            
+    visualizations[list(visualizations.keys())[i]] = fig
+    i += 1
+    start, end = end, end + 2
+            
 
 
 #%% --- Export data ---
 
 # Prepare directory structure
-current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
-current_filename_complete = "_".join(current_filename_split)
+# current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+# current_filename_complete = "_".join(current_filename_split)
 
-mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
-os.mkdir(mkdir_path)
+# mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+# os.mkdir(mkdir_path)
 
 # Export data
 # file_extensions = [".png", ".svg"]
@@ -205,89 +233,4 @@ os.mkdir(mkdir_path)
 #                               dpi = 100,
 #                               bbox_inches = "tight",
 #                                pad_inches = 0)
-
-
-#%% 
-    
-# Create figure and axes
-# Figsize calculation in pixels is figsizex/y * dpi
-fig = plt.figure()
-
-ax = fig.add_subplot(1, 1, 1)
-
-# Cast numerical values to visual marks
-bar_heights = data["count"].values
-bar_labels = data["modifier"].values
-bar_positions = [i * 5 for i in range(0, len(bar_labels))]
-
-
-
-# --- Plot Data ---
-ax.bar(x = bar_positions,
-    height = bar_heights,
-    align = "center",
-    width = 3,
-    edgecolor = "black")
-
-ax.axes.set_xlim(0, 60)
-
-#     # --- Spines and Axes ---
-
-#     if colnum == 0:
-#         # --- set spines ---
-#         ax.spines["top"].set_visible(True)
-#         ax.spines["bottom"].set_visible(False)
-#         ax.spines["right"].set_visible(True)
-#         ax.spines["left"].set_visible(False)
-
-#         # --- invert axes for left/top align ---
-#         ax.invert_xaxis()
-#         ax.invert_yaxis()
-    
-#         # Set axis length to the max possible value
-#         ax.axes.set_xlim(axis_max, axis_min)
-
-#     if colnum == 1:
-#         # --- set spines ---
-#         ax.spines["top"].set_visible(True)
-#         ax.spines["bottom"].set_visible(False)
-    
-#         # --- invert axes for left/top align ---
-#         ax.invert_yaxis()
-    
-#     # --- Ticks and Labels ---
-#     if colnum == 0:
-#         ax.xaxis.tick_top()
-#         ax.yaxis.tick_right()
-    
-#         ax.set_yticks(bar_positions)
-    
-#         ax.xaxis.set_label_position('top') 
-#         ax.yaxis.set_label_position("right")
-    
-#         ax.set_yticklabels(bar_labels)
-    
-    
-#     if colnum == 1:
-#         ax.xaxis.tick_top()
-    
-#         ax.set_yticks(bar_positions)
-    
-#         ax.set_yticklabels(bar_labels)
-    
-
-#     # Move over the grid
-#     if colnum == 1:
-#         rownum += 1
-#         colnum = 0
-#     else:
-#         colnum += 1
-            
-# for ax in fig.axes:
-#     ax.set_xticks([axis_min, axis_max])
-    
-
-
-
-
 
