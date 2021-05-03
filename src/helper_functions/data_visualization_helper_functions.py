@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 #%% --- Helper Functions ---
 
 #%% --- Function: scrape_goodreads ---
-def add_value_labels_barh(ax, spacing=5, fontsize = 12):
+def add_value_labels_barh(ax, spacing=5, fontsize = 12, ha = "right"):
 
     # For each bar: Place a label
     for rect in ax.patches:
@@ -22,8 +22,7 @@ def add_value_labels_barh(ax, spacing=5, fontsize = 12):
 
         # Number of points between bar and label. Change to your liking.
         space = spacing * -1
-        # Vertical alignment for positive values
-        ha = 'right'
+        
 
         # If value of bar is negative: Place label below bar
         if x_value < 0:
@@ -42,6 +41,6 @@ def add_value_labels_barh(ax, spacing=5, fontsize = 12):
             xytext=(space, 0),          # Vertically shift label by `space`
             textcoords="offset points", # Interpret `xytext` as offset in points
             ha=ha,                      # Horizontally center label
-            va="center",                # Vertically align label differently for  positive and negative values.
+            va="center_baseline",       # Vertically align label differently for  positive and negative values.
             rotation = 0,
             fontsize = fontsize)

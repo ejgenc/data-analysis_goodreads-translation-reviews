@@ -33,9 +33,9 @@ import os
 from pathlib import Path # To wrap around filepaths
 from numpy import arange
 import pandas as pd
-import matplotlib.pyplot as 
+import matplotlib.pyplot as plt
 
-from src.helper_functions import data_visualization_helper_functions as viz_helper
+from src.helper_functions.data_visualization_helper_functions import *
 #%% --- Set proper directory to assure integration with doit ---
 
 abspath = os.path.abspath(__file__)
@@ -62,6 +62,7 @@ datasets = {group: pd.read_csv(filepath).head(20) for group, filepath in filepat
 
 #%% --- Prepare Data ---
 
+# Encode valence values
 # 1 stands for positive, 0 stands for neutral
 # and -1 stands for negative valence values.
 valence_values = {"author": [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
@@ -80,11 +81,22 @@ valence_values = {"author": [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
 for key, value in valence_values.items():
     datasets[key]["valence"] = value
     
+# Encode color and hatching according to valence values
+for dataset in datasets.values():
+    dataset["color"] = (dataset["valence"].copy()
+                        .replace({1: "#12a173ff",
+                                  0: "#123ea1ff",
+                                  -1: "#8a300fff"}))
+    
+    dataset["hatching"] = (dataset["valence"].copy()
+                           .replace({1: "/",
+                                     0: "|",
+                                     -1: "\\"}))
 #%% --- Visualization ---
 
-visualizations = {"author/translator": None,
-                  "book/translation": None,
-                  "vwrite/vtranslate": None}
+visualizations = {"author - translator": None,
+                  "book - translation": None,
+                  "vwrite - vtranslate": None}
  
 #%% --- 
 
@@ -117,7 +129,7 @@ while end <= 6:
         axis_min = 0
         axis_max = 0
         
-        for data in list(datasets.values())[start:end]:
+        for key, data in list(datasets.items())[start:end]:
             ax = fig.add_subplot(gs[0, colnum])
             
             # --- Get data ---
@@ -128,10 +140,14 @@ while end <= 6:
             bar_positions = [i for i in range(0, len(bar_labels))]
             
             # Calculate summary statistics
-            num_of_modifiers = data["count"].sum()
-            pos_count = sum(data["valence"] == 1)
-            neut_count = sum(data["valence"] == 0)
-            neg_count = sum(data["valence"] == -1)
+            num_of_modifiers = str(data["count"].sum())
+            pos_count = str(sum(data["valence"] == 1))
+            neut_count = str(sum(data["valence"] == 0))
+            neg_count = str(sum(data["valence"] == -1))
+            
+            # Get color and hatching values
+            colors = list(data["color"])
+            hatching = list(data["hatching"])
             
             
             # Dynamically update the length of axes
@@ -191,7 +207,8 @@ while end <= 6:
                 
                 
                 ax.set_yticklabels(bar_labels,
-                                   ha = "left")
+                                   ha = "left",
+                                   fontweight = "bold")
             
                 
             if colnum == 1:
@@ -201,8 +218,9 @@ while end <= 6:
                 
                 ax.set_yticklabels(bar_labels,
                                    # color = red ATTENTION, HOW YOU WILL COLOR IT
-                                   ha = "right")
-            
+                                   ha = "right",
+                                   fontweight = "bold")
+                
             # Disable axis ticks for y axis on both bar charts
             ax.tick_params(axis = "y",
                which = "both",
@@ -211,13 +229,56 @@ while end <= 6:
                left = False,
                right = False)
                 
+            # --- Text and annotation ---
+            # Set ax title
+            ax.set_title(label = "Top 20 modifiers for {}".format(key),
+                         fontsize = 14,
+                         fontweight = "bold",
+                         loc = "center",
+                         pad = 10.0)
             
+            # Add value labels to each bar
+            add_value_labels_barh(ax,
+                                  spacing = 5 if colnum == 0 else -5,
+                                  ha = "right" if colnum == 0 else "left")
+            
+            # Annotate summary statistics
+            # IN PLACEHOLDER FORMAT ONLY 
+            summary_text = " ".join([num_of_modifiers, pos_count,
+                                    neut_count, neg_count])
+            ax.text(x = 0.10 if colnum == 0 else 0.40,
+                    y = 0.50,
+                    s = summary_text,
+                    transform = ax.transAxes,
+                    fontsize = 12)
+                    
+            # --- Color and Texture ---
+            # Add color and texture to the bars of the bar chart
+            for color, pattern, patch in zip(colors, hatching, ax.patches):
+                patch.set(facecolor = color,
+                          hatch = pattern)
+                
+            # Add color to the y-axis labels
+            for color, label in zip(colors, ax.get_yticklabels()):
+                label.set(color = color)
+
+            
+                    
             # Move over the grid
             colnum += 1
-                        
+            
+        # --- Plot wide configuration ---
+        # Set figure title
+        fig.suptitle("A comparison of the top 20 modifiers for {}"
+                  .format(list(visualizations.keys())[i]),
+                  fontsize = 16,
+                  fontweight = "bold")
+        
         # Set xticks dynamically to 0 - max/2 - max
         for ax in fig.axes:
             ax.set_xticks([axis_min, round(axis_max / 2), axis_max])
+            ax.set_xticklabels([axis_min, round(axis_max / 2), axis_max],
+                               fontweight = "bold")
           
     # --- Visualization Teardown ---
     visualizations[list(visualizations.keys())[i]] = fig
@@ -227,21 +288,21 @@ while end <= 6:
 #%% --- Export data ---
 
 # Prepare directory structure
-# current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
-# current_filename_complete = "_".join(current_filename_split)
+current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+current_filename_complete = "_".join(current_filename_split)
 
-# mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
-# os.mkdir(mkdir_path)
+mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+os.mkdir(mkdir_path)
 
 # Export data
-# file_extensions = [".png", ".svg"]
+file_extensions = [".png", ".svg"]
 
-# for name, visualization in visualizations.items():
-#     for file_extension in file_extensions:
-#         filename_extended = name + file_extension
-#         export_fp = Path.joinpath(mkdir_path, filename_extended)
-#         visualization.savefig(export_fp,
-#                               dpi = 100,
-#                               bbox_inches = "tight",
-#                                pad_inches = 0)
+for name, visualization in visualizations.items():
+    for file_extension in file_extensions:
+        filename_extended = name + file_extension
+        export_fp = Path.joinpath(mkdir_path, filename_extended)
+        visualization.savefig(export_fp,
+                              dpi = 100,
+                              bbox_inches = "tight",
+                              pad_inches = 0.2)
 
