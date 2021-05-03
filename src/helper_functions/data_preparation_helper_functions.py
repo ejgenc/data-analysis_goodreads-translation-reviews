@@ -3,10 +3,6 @@
 Created on Sat Jun 27 16:12:37 2020
 @author: ejgen
 
------- What is this file? ------
-                
-Lorem dolor ipsum sit amet
-
 """
 #%% --- Import required packages ---
 
@@ -115,5 +111,3 @@ def scrape_goodreads_reviews(book_id_list,
                                                       "review_date","rating",
                                                       "review"])
     return reviews_df
-#%%  --- subfunction: handle_goodreads_login ---
-
