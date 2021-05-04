@@ -84,9 +84,9 @@ for key, value in valence_values.items():
 # Encode color and hatching according to valence values
 for dataset in datasets.values():
     dataset["color"] = (dataset["valence"].copy()
-                        .replace({1: "#12a173ff",
-                                  0: "#123ea1ff",
-                                  -1: "#8a300fff"}))
+                        .replace({1: "#125aa1ff",
+                                  0: "#525a61ff",
+                                  -1: "#a03912ff"}))
     
     dataset["hatching"] = (dataset["valence"].copy()
                            .replace({1: "/",
@@ -141,9 +141,12 @@ while end <= 6:
             
             # Calculate summary statistics
             num_of_modifiers = str(data["count"].sum())
-            pos_count = str(sum(data["valence"] == 1))
-            neut_count = str(sum(data["valence"] == 0))
-            neg_count = str(sum(data["valence"] == -1))
+            unique_pos_count = str(sum(data["valence"] == 1))
+            unique_neut_count = str(sum(data["valence"] == 0))
+            unique_neg_count = str(sum(data["valence"] == -1))
+            pos_count = str(data.loc[data["valence"] == 1, "count"].sum())
+            neut_count = str(data.loc[data["valence"] == 0, "count"].sum())
+            neg_count = str(data.loc[data["valence"] == -1, "count"].sum())
             
             # Get color and hatching values
             colors = list(data["color"])
@@ -244,8 +247,9 @@ while end <= 6:
             
             # Annotate summary statistics
             # IN PLACEHOLDER FORMAT ONLY 
-            summary_text = " ".join([num_of_modifiers, pos_count,
-                                    neut_count, neg_count])
+            summary_text = " ".join([num_of_modifiers, unique_pos_count,
+                                    unique_neut_count, unique_neg_count,
+                                    pos_count, neut_count, neg_count])
             ax.text(x = 0.10 if colnum == 0 else 0.40,
                     y = 0.50,
                     s = summary_text,
