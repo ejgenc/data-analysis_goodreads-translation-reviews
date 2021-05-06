@@ -221,7 +221,7 @@ def task_run_book_level_statistics_data_quality_tests():
         "title": show_cmd
     }
 
-def task_visualize_modifiers():
+def task_visualize_top_twenty_modifiers():
     action_path = Path("src/data_visualization/visualize_top_twenty_modifiers.py")
     return {
         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
