@@ -23,15 +23,14 @@ This script targets the following files:
     
     
 The resulting raw figures are located at:
-    ../../media/figures/raw/visualize_modifiers/*
+    ../../media/figures/raw/visualize_top_twenty_modifiers/*
 """
 
 #%% --- Import required packages ---
 
 import os
 
-from pathlib import Path # To wrap around filepaths
-from numpy import arange
+from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -92,14 +91,14 @@ for dataset in datasets.values():
                            .replace({1: "/",
                                      0: "|",
                                      -1: "\\"}))
-#%% --- Visualization ---
+#%% --- Visualize Data ---
+
+
 
 visualizations = {"author - translator": None,
                   "book - translation": None,
                   "vwrite - vtranslate": None}
  
-#%% --- 
-
 #Since we will be creating three plots with two axes according 
 # to visualizations dict,we need to create 3 subsets of the datasets
 # of size 2
