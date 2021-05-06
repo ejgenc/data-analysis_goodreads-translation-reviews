@@ -79,16 +79,141 @@ valence_values = {"author": [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
 for key, value in valence_values.items():
     datasets[key]["valence"] = value
     
-# Encode color and hatching according to valence values
-for dataset in datasets.values():
-    dataset["color"] = (dataset["valence"].copy()
-                        .replace({1: "#125aa1ff",
-                                  0: "#525a61ff",
-                                  -1: "#a03912ff"}))
+# Calculate summary statistics for each dataset
+
+rows = []
+
+for key, dataset in datasets.items():
     
-    dataset["hatching"] = (dataset["valence"].copy()
-                           .replace({1: "/",
-                                     0: "|",
-                                     -1: "\\"}))
+    total_modifiers = dataset["count"].sum()
+    
+    row = [key, total_modifiers]
+    
+    valence_ratios = [1, 0, -1]
+    grouped = dataset.groupby("valence")
+    for valence in valence_ratios:
+        try:
+            num = (grouped
+                     .get_group(valence)
+                     ["count"]
+                     .sum())
+            ratio = num / total_modifiers
+        
+            row.append(num)
+            row.append(ratio)
+        except:
+            pass
+    
+    rows.append(row)
+    
+summary_stats = (pd.DataFrame(rows,
+                             columns = ["dataset_name",
+                                        "total_modifiers",
+                                        "pos",
+                                        "pos_ratio",
+                                        "neut",
+                                        "neut_ratio",
+                                        "neg",
+                                        "neg_ratio"])
+                 .fillna(0, axis = 1))
+    
+# Create a color and hatching dict    
+color_and_hatching = {"pos": ("#125aa1ff", "/"),
+                      "neut": ("#525a61ff","|"),
+                      "neg": ("#a03912ff","\\")}
+
 #%% --- Visualize Data ---
+
+with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
+    # --- Visualization setup ---
+        
+    # Create figure and axes
+    # Figsize calculation in pixels is figsizex/y * dpi
+    fig = plt.figure(figsize = (19.20, 10.80),
+                     dpi = 100)
+    
+    ax = fig.add_subplot(1,1,1)
+    
+    # --- Plot the main bars ---
+    
+        # --- Cast numerical values to visual marks ---
+    main_bar_heights = summary_stats["total_modifiers"].values
+    bar_labels = summary_stats["dataset_name"].values
+    bar_positions = [2, 3.5, 6.5, 8, 12, 13.5]
+    
+        # --- Plot data ---
+    ax.bar(x = bar_positions,
+       height = main_bar_heights,
+       align = "center",
+       width = 1,
+       color = "white",
+       edgecolor = "black",
+       linewidth = 2)
+    
+        # --- Axis parameters ---
+    ax.axes.set_ylim(0, max(main_bar_heights))
+        
+        # --- Ticks and labels ---
+
+    # X-ticks
+    ax.set_xticks(bar_positions)
+    ax.set_xticklabels(bar_labels,
+                       va = "top",
+                       ha = "center",
+                       fontweight = "bold")
+    
+    # Remove the ticks but keep the labels
+    # NOTE: this has to be done after the fact.
+    ax.tick_params(axis = "x",
+                   which = "both",
+                   bottom = False)
+    
+    # Y- ticks
+    ax.set_yticks([0, max(main_bar_heights) * 0.50, max(main_bar_heights)])
+
+    
+    # --- Plot the other bars ---
+    valences = ["pos", "neut", "neg"]
+    for i,column_name in enumerate(valences):
+        bar_heights = summary_stats[column_name].values
+        bar_positions = [2, 3.5, 6.5, 8, 12, 13.5]
+        
+        ax.bar(x = bar_positions,
+               height = bar_heights,
+                align = "center",
+                width = 1,
+                color = color_and_hatching[column_name][0],
+                hatch = color_and_hatching[column_name][1],
+                edgecolor = "black",
+                linewidth = 2,
+                bottom = summary_stats[valences[i - 1]].values if i > 0 else None)
+                     
+
+    
+    
+    
+    
+    
+    
+
+#%% --- Export data ---
+
+# # Prepare directory structure
+# current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+# current_filename_complete = "_".join(current_filename_split)
+
+# mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+# os.mkdir(mkdir_path)
+
+# # Export data
+# file_extensions = [".png", ".svg"]
+
+# for name, visualization in visualizations.items():
+#     for file_extension in file_extensions:
+#         filename_extended = name + file_extension
+#         export_fp = Path.joinpath(mkdir_path, filename_extended)
+#         visualization.savefig(export_fp,
+#                               dpi = 100,
+#                               bbox_inches = "tight",
+#                               pad_inches = 0.2)
 

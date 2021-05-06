@@ -8,13 +8,13 @@ Created on Sat Apr 24 14:33:47 2021
 
 This script targets the analysis result data that describes which 
 unique modifiers have been used for which modified groups (author/translator etc.)
-how many times. The script produces a horizontal bar chart for each
+how many times. The script produces three horizontal bar charts for each
 modified group. The number of occurence of each unique modifier is encoded
 by using position on a common scale(y-axis) / bar length. The same information
 is reduntantly encoded with textual annotation. Categorical information about
 modifier classification (positive - neutral - negative) is encoded using color
 hue. The said hue is applied on both the variables names, the data markers
-and textual annotation. Summary statistics is presented in text.
+and textual annotation. Summary statistics are presented in text.
 
 This script targets the following files:
     ../../data/analysis_results/total_modifiers_per_modified_group.csv
@@ -219,7 +219,6 @@ while end <= 6:
                 ax.set_yticks(bar_positions)
                 
                 ax.set_yticklabels(bar_labels,
-                                   # color = red ATTENTION, HOW YOU WILL COLOR IT
                                    ha = "right",
                                    fontweight = "bold")
                 
