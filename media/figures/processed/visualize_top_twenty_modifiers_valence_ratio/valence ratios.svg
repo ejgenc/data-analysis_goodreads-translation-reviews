@@ -1,0 +1,1571 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="100"
+   inkscape:export-xdpi="100"
+   inkscape:export-filename="F:\Documents\Study Documents\School\Bachelor's Paper - Seeking Traces of the Translator's Invisibility in Goodreads Reviews\Code\bachelors_paper_proof_of_concept\media\figures\processed\visualize_top_twenty_modifiers_valence_ratio\valence ratios.png"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="valence ratios.svg"
+   id="svg711"
+   width="963"
+   viewBox="0 0 722.25 741.75"
+   version="1.1"
+   height="989">
+  <sodipodi:namedview
+     units="px"
+     inkscape:current-layer="layer3"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-11"
+     inkscape:window-x="-11"
+     inkscape:cy="517.07877"
+     inkscape:cx="184.37153"
+     inkscape:zoom="0.59526078"
+     showgrid="false"
+     id="namedview713"
+     inkscape:window-height="986"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:date>2021-05-07T16:46:31.805907</dc:date>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matplotlib v3.4.1, https://matplotlib.org/</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <style
+       id="style4"
+       type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+    <path
+       d="M 4597,0 H 3591 L 3191,1041 H 1359 L 981,0 H 0 l 1784,4581 h 979 z M 2894,1813 2263,3513 1644,1813 Z"
+       id="Arial-BoldMT-41-5"
+       transform="scale(0.015625)" />
+    <path
+       id="Arial-BoldMT-20-8"
+       transform="scale(0.015625)"
+       d="" />
+    <path
+       d="m 3353,2338 -865,-157 q -44,260 -199,391 -155,131 -401,131 -329,0 -524,-227 -195,-226 -195,-757 0,-591 198,-835 199,-243 533,-243 250,0 409,142 160,142 225,489 l 863,-147 Q 3263,531 2881,228 2500,-75 1859,-75 1131,-75 698,384 266,844 266,1656 q 0,822 434,1280 434,458 1175,458 606,0 964,-261 358,-261 514,-795 z"
+       id="Arial-BoldMT-63-0"
+       transform="scale(0.015625)" />
+    <path
+       d="m 256,1706 q 0,438 216,847 216,410 611,625 395,216 883,216 753,0 1234,-489 481,-489 481,-1236 Q 3681,916 3195,420 2709,-75 1972,-75 1516,-75 1102,131 688,338 472,736 256,1134 256,1706 Z m 900,-47 q 0,-493 234,-756 235,-262 579,-262 344,0 576,262 233,263 233,763 0,487 -233,749 -232,263 -576,263 -344,0 -579,-263 -234,-262 -234,-756 z"
+       id="Arial-BoldMT-6f-5"
+       transform="scale(0.015625)" />
+    <path
+       d="m 394,3319 h 809 v -453 q 435,528 1035,528 318,0 552,-132 235,-131 385,-396 219,265 472,396 253,132 541,132 365,0 618,-149 253,-148 378,-436 91,-212 91,-687 V 0 h -878 v 1897 q 0,494 -91,637 -122,188 -375,188 -184,0 -347,-113 -162,-112 -234,-329 -72,-217 -72,-686 V 0 h -878 v 1819 q 0,484 -47,624 -47,141 -146,210 -98,69 -266,69 -203,0 -366,-110 -162,-109 -233,-315 -70,-206 -70,-684 V 0 H 394 Z"
+       id="Arial-BoldMT-6d-8"
+       transform="scale(0.015625)" />
+    <path
+       d="m 434,3319 h 819 v -488 q 160,250 431,406 272,157 604,157 578,0 981,-453 403,-453 403,-1263 0,-831 -407,-1292 -406,-461 -984,-461 -275,0 -499,109 -223,110 -469,375 V -1263 H 434 Z m 869,-1603 q 0,-560 222,-827 222,-267 541,-267 306,0 509,245 203,246 203,805 0,522 -210,775 -209,253 -518,253 -322,0 -535,-249 -212,-248 -212,-735 z"
+       id="Arial-BoldMT-70-6"
+       transform="scale(0.015625)" />
+    <path
+       d="m 1116,2306 -797,144 q 134,481 462,712 328,232 975,232 588,0 875,-139 288,-139 405,-353 117,-214 117,-786 l -9,-1025 q 0,-438 42,-646 42,-207 158,-445 h -869 q -34,88 -84,259 -22,79 -32,104 Q 2134,144 1878,34 1622,-75 1331,-75 819,-75 523,203 228,481 228,906 q 0,282 134,502 135,220 377,337 242,118 699,205 615,116 853,216 v 87 q 0,253 -125,361 -125,108 -472,108 -235,0 -366,-92 -131,-92 -212,-324 z m 1175,-712 q -169,-56 -535,-135 -365,-78 -478,-153 -172,-122 -172,-309 0,-184 137,-319 138,-134 351,-134 237,0 453,156 159,119 209,291 35,112 35,428 z"
+       id="Arial-BoldMT-61-3"
+       transform="scale(0.015625)" />
+    <path
+       d="M 1300,0 H 422 v 3319 h 816 v -472 q 209,334 376,440 167,107 380,107 300,0 578,-166 l -272,-765 q -222,143 -412,143 -185,0 -313,-102 -128,-101 -202,-367 -73,-265 -73,-1112 z"
+       id="Arial-BoldMT-72-4"
+       transform="scale(0.015625)" />
+    <path
+       d="m 459,3769 v 812 h 879 V 3769 Z M 459,0 v 3319 h 879 V 0 Z"
+       id="Arial-BoldMT-69-1"
+       transform="scale(0.015625)" />
+    <path
+       d="m 150,947 881,134 q 57,-256 228,-389 172,-133 482,-133 340,0 512,125 116,88 116,235 0,100 -63,165 -65,63 -293,116 -1063,234 -1347,428 -394,269 -394,747 0,431 340,725 341,294 1057,294 681,0 1012,-222 332,-222 457,-656 l -829,-153 q -53,193 -202,296 -148,104 -423,104 -346,0 -496,-97 -100,-69 -100,-178 0,-94 87,-160 119,-87 820,-247 702,-159 980,-390 275,-235 275,-653 0,-457 -381,-785 Q 2488,-75 1741,-75 1063,-75 667,200 272,475 150,947 Z"
+       id="Arial-BoldMT-73-4"
+       transform="scale(0.015625)" />
+    <path
+       d="m 3478,0 h -878 v 1694 q 0,537 -56,695 -56,158 -183,245 -127,88 -305,88 -228,0 -409,-125 -181,-125 -249,-332 -67,-206 -67,-762 V 0 H 453 v 3319 h 816 v -488 q 434,563 1094,563 290,0 530,-105 241,-105 364,-268 124,-162 172,-368 49,-206 49,-590 z"
+       id="Arial-BoldMT-6e-1"
+       transform="scale(0.015625)" />
+    <path
+       d="m 75,3319 h 488 v 250 q 0,419 89,625 89,206 328,335 239,130 604,130 375,0 735,-112 l -119,-613 q -209,50 -403,50 -191,0 -274,-89 -82,-89 -82,-342 v -234 h 656 V 2628 H 1441 V 0 H 563 V 2628 H 75 Z"
+       id="Arial-BoldMT-66-6"
+       transform="scale(0.015625)" />
+    <path
+       d="M 1981,3319 V 2619 H 1381 V 1281 q 0,-406 17,-473 18,-67 79,-111 61,-44 148,-44 122,0 353,85 L 2053,56 Q 1747,-75 1359,-75 1122,-75 931,4 741,84 652,211 563,338 528,553 500,706 500,1172 V 2619 H 97 v 700 h 403 v 659 l 881,513 V 3319 Z"
+       id="Arial-BoldMT-74-2"
+       transform="scale(0.015625)" />
+    <path
+       d="M 1334,4581 V 2897 q 425,497 1016,497 303,0 547,-113 244,-112 367,-287 124,-175 169,-388 45,-212 45,-659 V 0 h -878 v 1753 q 0,522 -50,662 -50,141 -177,224 -126,83 -317,83 -218,0 -390,-107 -172,-106 -252,-320 -80,-214 -80,-632 V 0 H 456 v 4581 z"
+       id="Arial-BoldMT-68-9"
+       transform="scale(0.015625)" />
+    <path
+       d="M 2381,1056 3256,909 Q 3088,428 2723,176 2359,-75 1813,-75 947,-75 531,491 203,944 203,1634 q 0,825 431,1292 432,468 1091,468 741,0 1169,-489 428,-489 409,-1499 H 1103 q 10,-390 213,-608 203,-217 506,-217 206,0 346,112 141,113 213,363 z m 50,888 q -9,381 -197,579 -187,199 -456,199 -287,0 -475,-209 -187,-210 -184,-569 z"
+       id="Arial-BoldMT-65-0"
+       transform="scale(0.015625)" />
+    <path
+       d="M 1372,0 34,3319 h 922 l 625,-1694 182,-566 q 71,216 90,285 44,140 94,281 l 631,1694 h 903 L 2163,0 Z"
+       id="Arial-BoldMT-76-2"
+       transform="scale(0.015625)" />
+    <path
+       d="m 459,0 v 4581 h 879 V 0 Z"
+       id="Arial-BoldMT-6c-0"
+       transform="scale(0.015625)" />
+    <path
+       d="M 1078,0 28,3319 h 853 l 622,-2175 572,2175 h 847 l 553,-2175 634,2175 h 866 L 3909,0 H 3066 L 2494,2134 1931,0 Z"
+       id="Arial-BoldMT-77-5"
+       transform="scale(0.015625)" />
+    <path
+       d="m 44,3319 h 934 l 794,-2356 775,2356 h 909 L 2284,125 2075,-453 q -116,-291 -221,-444 -104,-153 -240,-248 -136,-96 -335,-149 -198,-53 -448,-53 -253,0 -497,53 l -78,688 q 207,-41 372,-41 306,0 453,180 147,179 225,458 z"
+       id="Arial-BoldMT-79-8"
+       transform="scale(0.015625)" />
+    <path
+       d="M 3503,0 H 2688 V 488 Q 2484,203 2207,64 1931,-75 1650,-75 1078,-75 670,386 263,847 263,1672 q 0,844 396,1283 397,439 1004,439 556,0 962,-463 v 1650 h 878 z M 1159,1731 q 0,-531 147,-768 213,-344 594,-344 303,0 515,257 213,258 213,771 0,572 -206,823 -206,252 -528,252 -313,0 -524,-249 -211,-248 -211,-742 z"
+       id="Arial-BoldMT-64-1"
+       transform="scale(0.015625)" />
+    <path
+       d="m 378,-219 1003,-122 q 25,-175 116,-240 125,-94 394,-94 343,0 515,103 116,69 175,222 41,109 41,403 V 538 Q 2228,0 1628,0 959,0 569,566 263,1013 263,1678 q 0,835 401,1275 402,441 999,441 615,0 1015,-541 v 466 h 822 V 341 q 0,-588 -97,-878 -97,-291 -272,-456 -175,-166 -467,-260 -292,-94 -739,-94 -844,0 -1197,289 -353,289 -353,733 0,44 3,106 z m 785,1947 q 0,-528 204,-774 205,-245 505,-245 322,0 544,252 222,252 222,745 0,516 -213,766 -212,250 -537,250 -316,0 -521,-246 -204,-245 -204,-748 z"
+       id="Arial-BoldMT-67-6"
+       transform="scale(0.015625)" />
+    <path
+       d="M 2644,0 V 497 Q 2463,231 2167,78 1872,-75 1544,-75 1209,-75 943,72 678,219 559,484 441,750 441,1219 v 2100 h 878 V 1794 q 0,-700 48,-858 49,-158 177,-250 128,-92 325,-92 225,0 403,123 178,124 243,306 66,183 66,896 v 1400 h 878 V 0 Z"
+       id="Arial-BoldMT-75-8"
+       transform="scale(0.015625)" />
+    <pattern
+       height="72"
+       id="h7f5440c24b-3"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-2" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-6" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-6"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-6" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-4" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-5"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-9" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-6" />
+    </pattern>
+    <path
+       d="m 350,1059 541,50 q 68,-381 262,-553 194,-172 497,-172 259,0 454,119 196,119 321,317 125,199 209,536 85,338 85,688 0,37 -3,112 -169,-268 -461,-436 -292,-167 -633,-167 -569,0 -963,412 -393,413 -393,1088 0,697 411,1122 411,425 1029,425 447,0 817,-241 371,-240 563,-686 192,-445 192,-1289 0,-878 -191,-1398 Q 2897,466 2520,194 2144,-78 1638,-78 1100,-78 759,220 419,519 350,1059 Z m 2303,2022 q 0,485 -258,769 -257,284 -620,284 -375,0 -653,-306 -278,-306 -278,-794 0,-437 264,-711 264,-273 651,-273 391,0 642,273 252,274 252,758 z"
+       id="ArialMT-39-1"
+       transform="scale(0.015625)" />
+    <path
+       d="m 266,1200 590,50 q 66,-431 305,-649 239,-217 577,-217 406,0 687,306 281,307 281,813 0,481 -270,759 -270,279 -708,279 -272,0 -491,-124 -218,-123 -343,-320 l -528,69 443,2353 H 3088 V 3981 H 1259 L 1013,2750 q 412,288 865,288 600,0 1012,-416 413,-416 413,-1069 Q 3303,931 2941,478 2500,-78 1738,-78 1113,-78 717,272 322,622 266,1200 Z"
+       id="ArialMT-35-7"
+       transform="scale(0.015625)" />
+    <path
+       d="M 3222,541 V 0 H 194 q -6,203 65,391 116,309 370,609 255,300 737,694 747,612 1009,970 263,358 263,677 0,334 -240,563 -239,230 -623,230 -406,0 -650,-244 -244,-243 -247,-674 l -578,59 q 59,647 446,986 388,339 1042,339 659,0 1043,-366 385,-365 385,-906 0,-275 -113,-541 Q 2991,2522 2730,2228 2469,1934 1863,1422 1356,997 1212,845 1069,694 975,541 Z"
+       id="ArialMT-32-3"
+       transform="scale(0.015625)" />
+    <path
+       d="M 2069,0 V 1097 H 81 v 516 l 2091,2968 h 459 V 1613 h 619 V 1097 H 2631 V 0 Z m 0,1613 V 3678 L 634,1613 Z"
+       id="ArialMT-34-4"
+       transform="scale(0.015625)" />
+    <path
+       d="m 581,0 v 641 h 641 V 0 Z"
+       id="ArialMT-2e-0"
+       transform="scale(0.015625)" />
+    <path
+       d="m 303,3981 v 541 H 3269 V 4084 Q 2831,3619 2401,2847 1972,2075 1738,1259 1569,684 1522,0 H 944 q 9,541 212,1306 203,766 583,1477 380,711 808,1198 z"
+       id="ArialMT-37-8"
+       transform="scale(0.015625)" />
+    <path
+       d="M 2384,0 H 1822 V 3584 Q 1619,3391 1289,3197 959,3003 697,2906 v 544 q 472,222 825,537 353,316 500,613 h 362 z"
+       id="ArialMT-31-1"
+       transform="scale(0.015625)" />
+    <path
+       d="m 1131,2484 q -350,129 -519,366 -168,238 -168,569 0,500 359,840 360,341 956,341 600,0 966,-349 366,-348 366,-848 0,-319 -168,-555 -167,-235 -507,-364 422,-137 642,-444 220,-306 220,-731 0,-587 -416,-987 Q 2447,-78 1769,-78 1091,-78 675,323 259,725 259,1325 q 0,447 227,748 227,302 645,411 z m -112,954 q 0,-325 209,-532 210,-206 544,-206 325,0 533,204 208,205 208,502 0,310 -215,521 -214,211 -532,211 -322,0 -535,-207 -212,-206 -212,-493 z M 838,1322 q 0,-241 114,-466 114,-225 339,-349 225,-123 484,-123 403,0 665,259 263,260 263,660 0,406 -270,672 -270,266 -677,266 -397,0 -658,-263 -260,-262 -260,-656 z"
+       id="ArialMT-38-3"
+       transform="scale(0.015625)" />
+    <path
+       d="m 266,2259 q 0,813 167,1308 167,496 496,764 330,269 830,269 369,0 647,-149 278,-148 459,-428 182,-279 285,-681 103,-401 103,-1083 0,-806 -166,-1301 Q 2922,463 2592,192 2263,-78 1759,-78 1097,-78 719,397 266,969 266,2259 Z m 578,0 q 0,-1128 264,-1502 264,-373 651,-373 388,0 652,375 264,375 264,1500 0,1132 -264,1503 -264,372 -658,372 -387,0 -619,-328 Q 844,3388 844,2259 Z"
+       id="ArialMT-30-9"
+       transform="scale(0.015625)" />
+    <pattern
+       height="72"
+       id="h7f5440c24b-0"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-6" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-9" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-3"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-1" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-8" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-2"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-0" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-9" />
+    </pattern>
+    <path
+       d="m 269,1209 562,75 q 97,-478 330,-689 233,-211 567,-211 397,0 670,275 274,275 274,682 0,387 -253,638 -253,252 -644,252 -159,0 -397,-62 l 63,494 q 56,-7 90,-7 360,0 647,187 288,188 288,579 0,309 -210,512 -209,204 -540,204 -328,0 -547,-207 -219,-206 -281,-618 l -563,100 q 103,565 468,876 366,311 910,311 375,0 690,-161 316,-161 483,-439 168,-278 168,-591 0,-296 -160,-540 -159,-244 -471,-388 406,-93 631,-389 225,-295 225,-739 Q 3269,753 2831,336 2394,-81 1725,-81 1122,-81 723,278 325,638 269,1209 Z"
+       id="ArialMT-33-2"
+       transform="scale(0.015625)" />
+    <path
+       d="m 3184,3459 -559,-43 q -75,331 -212,481 -229,241 -563,241 -269,0 -472,-150 -265,-194 -419,-566 -153,-372 -159,-1059 203,309 497,459 294,150 616,150 562,0 957,-414 396,-414 396,-1070 0,-432 -186,-802 Q 2894,316 2569,119 2244,-78 1831,-78 1128,-78 684,439 241,956 241,2144 q 0,1328 490,1931 428,525 1153,525 541,0 886,-303 346,-303 414,-838 z M 888,1484 q 0,-290 123,-556 123,-265 345,-405 222,-139 466,-139 356,0 612,287 257,288 257,782 0,475 -254,748 -253,274 -637,274 -381,0 -647,-274 -265,-273 -265,-717 z"
+       id="ArialMT-36-2"
+       transform="scale(0.015625)" />
+    <pattern
+       height="72"
+       id="h7f5440c24b-6"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-7" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-3" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-7"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-2" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-1" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-6"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-3" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-7" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h7f5440c24b-61"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-5" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-8" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-5"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-4" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-14" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-8"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-32" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-8" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h7f5440c24b-09"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-9" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-4" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-57"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-48" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-88" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-9"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-8" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-0" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h7f5440c24b-1"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#125aa1"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect694-8" />
+      <path
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path696-99" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h91327a1150-52"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#525a61"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect699-49" />
+      <path
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path701-887" />
+    </pattern>
+    <pattern
+       height="72"
+       id="h755e31a6cb-3"
+       patternUnits="userSpaceOnUse"
+       width="72"
+       x="0"
+       y="0">
+      <rect
+         fill="#a03912"
+         height="73"
+         width="73"
+         x="0"
+         y="0"
+         id="rect704-2" />
+      <path
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  "
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         id="path706-08" />
+    </pattern>
+  </defs>
+  <defs
+     id="defs709">
+    <pattern
+       y="0"
+       x="0"
+       width="72"
+       patternUnits="userSpaceOnUse"
+       id="h7f5440c24b"
+       height="72">
+      <rect
+         id="rect694"
+         y="0"
+         x="0"
+         width="73"
+         height="73"
+         fill="#125aa1" />
+      <path
+         id="path696"
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         d="M -36 36  L 36 -36  M -24 48  L 48 -24  M -12 60  L 60 -12  M 0 72  L 72 0  M 12 84  L 84 12  M 24 96  L 96 24  M 36 108  L 108 36  " />
+    </pattern>
+    <pattern
+       y="0"
+       x="0"
+       width="72"
+       patternUnits="userSpaceOnUse"
+       id="h91327a1150"
+       height="72">
+      <rect
+         id="rect699"
+         y="0"
+         x="0"
+         width="73"
+         height="73"
+         fill="#525a61" />
+      <path
+         id="path701"
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         d="M 6 72  L 6 0  M 18 72  L 18 0  M 30 72  L 30 0  M 42 72  L 42 0  M 54 72  L 54 0  M 66 72  L 66 0  " />
+    </pattern>
+    <pattern
+       y="0"
+       x="0"
+       width="72"
+       patternUnits="userSpaceOnUse"
+       id="h755e31a6cb"
+       height="72">
+      <rect
+         id="rect704"
+         y="0"
+         x="0"
+         width="73"
+         height="73"
+         fill="#a03912" />
+      <path
+         id="path706"
+         style="fill:#000000;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.0;"
+         d="M -36 36  L 36 108  M -24 24  L 48 96  M -12 12  L 60 84  M 0 0  L 72 72  M 12 -12  L 84 60  M 24 -24  L 96 48  M 36 -36  L 108 36  " />
+    </pattern>
+  </defs>
+  <g
+     sodipodi:insensitive="true"
+     inkscape:label="Background Layer"
+     id="layer1"
+     inkscape:groupmode="layer">
+    <rect
+       y="5.0259604e-07"
+       x="5.0259604e-07"
+       height="733.5"
+       width="733.5"
+       id="rect716"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <g
+       transform="translate(51.186391,-43.141123)"
+       id="matplotlib.axis_1-2" />
+    <g
+       transform="translate(51.186391,-43.141123)"
+       id="matplotlib.axis_2-4" />
+    <g
+       transform="translate(51.186391,-43.141123)"
+       id="text_6-3">
+      <!-- 0.00 -->
+    </g>
+  </g>
+  <g
+     sodipodi:insensitive="true"
+     style="display:inline"
+     inkscape:label="Visualization Layer"
+     id="layer2"
+     inkscape:groupmode="layer">
+    <g
+       transform="translate(30.127465,-0.91717132)"
+       id="g3412">
+      <g
+         id="patch_2-6"
+         transform="translate(51.186391,-43.141123)">
+        <path
+           d="m 172.8775,96.07392 c -13.50642,0 -26.8553,2.913052 -39.13379,8.53995 -12.27849,5.62689 -23.20017,13.83637 -32.01815,24.06703 -8.817985,10.23066 -15.326582,22.24386 -19.080699,35.21806 -3.754118,12.9742 -4.666186,26.60676 -2.673831,39.96542 1.992354,13.35866 6.842656,26.1318 14.219216,37.44593 7.376564,11.31414 17.107304,20.90534 28.526804,28.11772 11.41949,7.21237 24.26136,11.87768 37.6474,13.67688 13.38604,1.7992 27.00401,0.69033 39.92264,-3.25079 L 172.8775,190.008 Z"
+           style="fill:url(#h7f5440c24b-3);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path11-3" />
+      </g>
+      <g
+         id="patch_3-1"
+         transform="translate(51.186391,-43.141123)">
+        <path
+           d="m 200.28709,279.85412 c 21.52663,-6.56718 39.99226,-20.65707 52.01043,-39.68567 12.01817,-19.0286 16.80636,-41.75694 13.48645,-64.01682 -3.31991,-22.25988 -14.53175,-42.60193 -31.57936,-57.29556 -17.04762,-14.69364 -38.821,-22.782146 -61.32709,-22.78215 l -2e-5,93.93408 z"
+           style="fill:url(#h91327a1150-6);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path14-3" />
+      </g>
+      <g
+         id="patch_4-0"
+         transform="translate(51.186391,-43.141123)">
+        <path
+           d="m 172.87752,96.07392 c 0,0 0,0 0,0 l -2e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-5);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path17-7" />
+      </g>
+    </g>
+    <g
+       transform="translate(-76.494359,-24.702678)"
+       id="g3977">
+      <g
+         id="patch_5-3"
+         transform="translate(170.79594,-19.355616)">
+        <path
+           d="m 373.7575,96.07392 c -16.48765,0 -32.68832,4.34096 -46.96704,12.58478 -14.27872,8.24382 -26.13844,20.10354 -34.38226,34.38226 -8.24383,14.27872 -12.58478,30.4794 -12.58478,46.96704 0,16.48765 4.34096,32.68832 12.58478,46.96704 L 373.7575,190.008 Z"
+           style="fill:url(#h7f5440c24b-0);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path104-9" />
+      </g>
+      <g
+         id="patch_6-9"
+         transform="translate(170.79594,-19.355616)">
+        <path
+           d="m 292.4082,236.97504 c 8.24383,14.27873 20.10354,26.13844 34.38227,34.38226 14.27872,8.24383 30.47939,12.58478 46.96704,12.58478 16.48765,0 32.68832,-4.34096 46.96704,-12.58479 14.27872,-8.24382 26.13843,-20.10354 34.38225,-34.38226 8.24383,-14.27872 12.58478,-30.4794 12.58478,-46.96704 0,-16.48765 -4.34096,-32.68832 -12.58479,-46.96704 -8.24382,-14.27872 -20.10354,-26.13844 -34.38226,-34.38226 -14.27873,-8.24382 -30.4794,-12.584773 -46.96705,-12.58477 l 2e-5,93.93408 z"
+           style="fill:url(#h91327a1150-3);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path107-6" />
+      </g>
+      <g
+         id="patch_7-0"
+         transform="translate(170.79594,-19.355616)">
+        <path
+           d="m 373.75748,96.07392 c 0,0 0,0 0,0 l 2e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-2);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path110-2" />
+      </g>
+    </g>
+    <g
+       transform="translate(170.79594,-19.355616)"
+       id="matplotlib.axis_3-1" />
+    <g
+       transform="translate(170.79594,-19.355616)"
+       id="matplotlib.axis_4-3" />
+    <g
+       transform="translate(81.313636,-3.7005874)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="axes_3-8">
+      <g
+         id="patch_8-0">
+        <path
+           d="m 172.8775,291.76992 c -23.88634,0 -46.89582,9.11102 -64.30707,25.46356 -17.411253,16.35254 -27.945958,38.74599 -29.442473,62.58541 -1.496515,23.83941 6.155032,47.37451 21.384603,65.77607 15.22957,18.40155 36.91902,30.31855 60.61784,33.3057 L 172.8775,385.704 Z"
+           style="fill:url(#h7f5440c24b-6);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path182-3" />
+      </g>
+      <g
+         id="patch_9-9">
+        <path
+           d="m 161.1304,478.90066 c 12.73022,1.6046 25.65525,0.58398 37.97586,-2.99875 12.3206,-3.58272 23.77748,-9.65215 33.66219,-17.83297 9.88471,-8.18082 17.98921,-18.30085 23.81235,-29.73433 5.82314,-11.43347 9.24236,-23.93975 10.04624,-36.74549 0.80388,-12.80574 -1.0245,-25.64144 -5.37209,-37.71338 -4.34759,-12.07194 -11.12288,-23.12605 -19.90692,-32.4788 -8.78404,-9.35275 -19.39196,-16.80729 -31.1678,-21.90267 -11.77584,-5.09538 -24.47176,-7.72435 -37.30271,-7.72435 l -2e-5,93.93408 z"
+           style="fill:url(#h91327a1150-7);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path185-9" />
+      </g>
+      <g
+         id="patch_10-6">
+        <path
+           d="m 172.87752,291.76992 c 0,0 0,0 0,0 l -2e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-6);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path188-0" />
+      </g>
+      <g
+         id="matplotlib.axis_5-2" />
+      <g
+         id="matplotlib.axis_6-6" />
+    </g>
+    <g
+       transform="translate(94.301596,-3.7005874)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="axes_4-2">
+      <g
+         id="patch_11-0">
+        <path
+           d="m 373.7575,291.76992 c -17.02262,0 -33.72932,4.62723 -48.32635,13.38487 -14.59704,8.75765 -26.54259,21.32064 -34.5541,36.34014 -8.01152,15.0195 -11.79163,31.938 -10.93447,48.93903 0.85716,17.00103 6.31977,33.45354 15.80132,47.59107 L 373.7575,385.704 Z"
+           style="fill:url(#h7f5440c24b-61);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path262-0" />
+      </g>
+      <g
+         id="patch_12-8">
+        <path
+           d="m 295.7439,438.02503 c 7.05221,10.51524 16.15815,19.49692 26.76928,26.404 10.61113,6.90708 22.51002,11.59803 34.97991,13.79027 12.46988,2.19223 25.25523,1.84084 37.58587,-1.03303 12.33065,-2.87386 23.95392,-8.2113 34.16965,-15.69079 10.21572,-7.47949 18.81457,-16.94778 25.27856,-27.8345 6.46399,-10.88673 10.66067,-22.9688 12.33722,-35.51843 1.67656,-12.54962 0.79865,-25.30963 -2.58085,-37.51139 -3.3795,-12.20176 -9.19134,-23.59523 -17.08541,-33.49409 L 373.7575,385.704 Z"
+           style="fill:url(#h91327a1150-5);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path265-1" />
+      </g>
+      <g
+         id="patch_13-5">
+        <path
+           d="m 447.19813,327.13707 c -8.79819,-11.03259 -19.97039,-19.94212 -32.68415,-26.06475 -12.71376,-6.12262 -26.64526,-9.3024 -40.75647,-9.3024 l -1e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-8);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path268-7" />
+      </g>
+      <g
+         id="matplotlib.axis_7-0" />
+      <g
+         id="matplotlib.axis_8-0" />
+    </g>
+    <g
+       transform="translate(81.313664,36.657063)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="axes_5-2">
+      <g
+         id="patch_14-5">
+        <path
+           d="m 172.8775,487.46592 c -12.47817,0 -24.83217,2.48639 -36.3388,7.31363 -11.50663,4.82723 -21.93688,11.89923 -30.68018,20.80201 -8.7433,8.90277 -15.625632,19.45915 -20.244107,31.05114 -4.618475,11.592 -6.881178,23.98892 -6.655649,36.46505 0.225528,12.47613 2.934799,24.78317 7.969213,36.20068 5.034413,11.4175 12.293775,21.71824 21.353123,30.2992 9.05935,8.58096 19.73838,15.27137 31.41196,19.67958 11.67358,4.40821 24.10937,6.44648 36.57939,5.9955 L 172.8775,581.4 Z"
+           style="fill:url(#h7f5440c24b-09);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path342-1" />
+      </g>
+      <g
+         id="patch_15-8">
+        <path
+           d="m 176.27245,675.27271 c 23.85454,-0.86271 46.50575,-10.78652 63.31169,-27.73773 16.80595,-16.95122 26.53444,-39.687 27.19181,-63.54809 0.65737,-23.86108 -7.80457,-47.09801 -23.65173,-64.94881 -15.84715,-17.85081 -37.91762,-29.0067 -61.68848,-31.18148 L 172.8775,581.4 Z"
+           style="fill:url(#h91327a1150-57);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path345-0" />
+      </g>
+      <g
+         id="patch_16-5">
+        <path
+           d="m 181.43574,487.8566 c -1.42247,-0.13014 -2.84773,-0.22782 -4.27465,-0.29296 -1.42693,-0.0651 -2.85516,-0.0977 -4.28357,-0.0977 l -2e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-9);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path348-0" />
+      </g>
+      <g
+         id="matplotlib.axis_9-5" />
+      <g
+         id="matplotlib.axis_10-6" />
+    </g>
+    <g
+       transform="translate(94.301617,36.657061)"
+       style="stroke-linecap:butt;stroke-linejoin:round"
+       id="axes_6-0">
+      <g
+         id="patch_17-3">
+        <path
+           d="m 373.7575,487.46592 c -15.69244,0 -31.13755,3.93232 -44.91944,11.43647 -13.78188,7.50415 -25.46611,18.34359 -33.98155,31.52463 -8.51545,13.18104 -13.59368,28.2882 -14.76918,43.93655 -1.17549,15.64835 1.58882,31.34463 8.03951,45.64992 L 373.7575,581.4 Z"
+           style="fill:url(#h7f5440c24b-1);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path424-3" />
+      </g>
+      <g
+         id="patch_18-5">
+        <path
+           d="m 288.12684,620.01349 c 6.69581,14.84886 17.1402,27.70386 30.30369,37.29789 13.16348,9.59403 28.59886,15.60115 44.78468,17.42924 16.18582,1.8281 32.57221,-0.58494 47.54397,-7.00125 14.97176,-6.41631 28.02027,-16.61792 37.85934,-29.59927 9.83907,-12.98135 16.13445,-28.30142 18.2656,-44.45013 2.13116,-16.14871 0.0257,-32.57745 -6.10887,-47.66684 -6.13456,-15.0894 -16.08981,-28.32683 -28.88446,-38.40749 -12.79465,-10.08066 -27.99403,-16.66208 -44.09996,-19.09555 L 373.7575,581.4 Z"
+           style="fill:url(#h91327a1150-52);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path427-0" />
+      </g>
+      <g
+         id="patch_19-9">
+        <path
+           d="m 387.79083,488.52009 c -2.3216,-0.35077 -4.65553,-0.61437 -6.99688,-0.79026 -2.34136,-0.17588 -4.68848,-0.26391 -7.03643,-0.26391 l -2e-5,93.93408 z"
+           style="fill:url(#h755e31a6cb-3);stroke:#000000;stroke-width:2;stroke-linejoin:miter"
+           id="path430-5" />
+      </g>
+      <g
+         id="matplotlib.axis_11-3" />
+      <g
+         id="matplotlib.axis_12-6" />
+    </g>
+  </g>
+  <g
+     sodipodi:insensitive="true"
+     style="display:inline"
+     inkscape:label="Titles Layer"
+     id="layer5"
+     inkscape:groupmode="layer">
+    <text
+       id="text3472"
+       y="23.648438"
+       x="42.125"
+       style="font-weight:bold;font-size:16px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+       xml:space="preserve"><tspan
+         style="font-size:16px;stroke-width:0.75"
+         y="23.648438"
+         x="42.125"
+         id="tspan3470"
+         sodipodi:role="line">A comparison of the valence of the top twenty modifiers for each comparison group </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       x="232.0564"
+       y="256.90527"
+       id="text3472-3"><tspan
+         sodipodi:role="line"
+         id="tspan3470-6"
+         x="232.0564"
+         y="256.90527"
+         style="font-size:14px;stroke-width:0.75">author</tspan></text>
+    <text
+       id="text3472-3-5"
+       y="492.95892"
+       x="237.06714"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       xml:space="preserve"><tspan
+         id="tspan6022"
+         style="font-size:14px;stroke-width:0.75"
+         y="492.95892"
+         x="237.06714"
+         sodipodi:role="line">book</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       x="432.62158"
+       y="492.95892"
+       id="text3472-3-5-4"><tspan
+         sodipodi:role="line"
+         x="432.62158"
+         y="492.95892"
+         style="font-size:14px;stroke-width:0.75"
+         id="tspan6022-2">translation</tspan></text>
+    <text
+       id="text3472-3-9"
+       y="256.90527"
+       x="435.5542"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       xml:space="preserve"><tspan
+         style="font-size:14px;stroke-width:0.75"
+         y="256.90527"
+         x="435.5542"
+         id="tspan3470-6-7"
+         sodipodi:role="line">translator</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       x="234.20203"
+       y="729.01263"
+       id="text3472-3-5-46"><tspan
+         sodipodi:role="line"
+         x="234.20203"
+         y="729.01263"
+         style="font-size:14px;stroke-width:0.75"
+         id="tspan6022-4">vwrite</tspan></text>
+    <text
+       id="text3472-3-5-46-5"
+       y="729.01257"
+       x="433.3009"
+       style="font-weight:bold;font-size:14px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+       xml:space="preserve"><tspan
+         id="tspan6022-4-7"
+         style="font-size:14px;stroke-width:0.75"
+         y="729.01257"
+         x="433.3009"
+         sodipodi:role="line"> vtranslate</tspan></text>
+  </g>
+  <g
+     sodipodi:insensitive="true"
+     style="display:none"
+     inkscape:label="Helper Layer"
+     id="layer4"
+     inkscape:groupmode="layer">
+    <rect
+       y="60.107647"
+       x="766.17725"
+       height="6"
+       width="6"
+       id="rect3422"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-7"
+       width="11.999999"
+       height="11.999999"
+       x="766.96625"
+       y="77.982132" />
+    <rect
+       y="110.59731"
+       x="766.08618"
+       height="17.999998"
+       width="17.999998"
+       id="rect3422-7-1"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-7-1-5"
+       width="11.999999"
+       height="11.999999"
+       x="355.125"
+       y="1.1156819e-06" />
+    <rect
+       y="27.015625"
+       x="349.125"
+       height="24"
+       width="24"
+       id="rect3422-7-1-5-3"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96"
+       width="6"
+       height="6"
+       x="251.19116"
+       y="240.88379" />
+    <rect
+       y="240.88379"
+       x="465.05908"
+       height="6"
+       width="6"
+       id="rect3422-96-9"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-7-1-5-3-2"
+       width="29.999998"
+       height="29.999998"
+       x="239.19116"
+       y="257.06934" />
+    <rect
+       y="257.06934"
+       x="453.05908"
+       height="29.999996"
+       width="29.999996"
+       id="rect3422-7-1-5-3-2-5"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       y="493.12299"
+       x="239.19116"
+       height="29.999996"
+       width="29.999996"
+       id="rect3422-7-1-5-3-2-7"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-7-1-5-3-2-7-7"
+       width="29.999994"
+       height="29.999994"
+       x="453.05908"
+       y="493.12299" />
+    <rect
+       y="476.93744"
+       x="251.19116"
+       height="6"
+       width="6"
+       id="rect3422-96-5"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96-5-3"
+       width="6"
+       height="6"
+       x="465.05908"
+       y="476.93744" />
+    <rect
+       y="142.94968"
+       x="153.25732"
+       height="6"
+       width="6"
+       id="rect3422-96-90"
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96-5-5"
+       width="6"
+       height="6"
+       x="153.25711"
+       y="379.00339" />
+    <rect
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96-5-7"
+       width="6"
+       height="6"
+       x="251.19116"
+       y="712.99115" />
+    <rect
+       y="712.99109"
+       x="465.05908"
+       height="6"
+       width="6"
+       id="rect3422-96-5-7-9"
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       y="615.05707"
+       x="153.25708"
+       height="6"
+       width="6"
+       id="rect3422-96-5-5-0"
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       y="729.1767"
+       x="248.19116"
+       height="11.999998"
+       width="11.999998"
+       id="rect3422-7-1-5-9"
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+    <rect
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96-9-2"
+       width="6"
+       height="6"
+       x="562.99316"
+       y="142.94971" />
+    <rect
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect3422-96-9-7"
+       width="6"
+       height="6"
+       x="562.99316"
+       y="379.00339" />
+    <rect
+       y="615.05701"
+       x="562.9931"
+       height="6"
+       width="6"
+       id="rect3422-96-5-5-1"
+       style="display:inline;fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000" />
+  </g>
+  <g
+     sodipodi:insensitive="true"
+     style="display:inline"
+     inkscape:label="Labels Layer"
+     id="layer3"
+     inkscape:groupmode="layer">
+    <g
+       transform="translate(-12.054925,-10.441402)"
+       id="g7256">
+      <g
+         id="g6805"
+         transform="translate(19.512032,11.447731)">
+        <g
+           transform="translate(0,-12.719697)"
+           id="g6772">
+          <text
+             id="text3491-9"
+             y="161.95798"
+             x="46.67131"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75"
+               y="161.95798"
+               x="46.67131"
+               id="tspan3489-0"
+               sodipodi:role="line">45.29% Neutral</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="53.107834"
+             y="177.04001"
+             id="text3491-2-3"><tspan
+               sodipodi:role="line"
+               x="53.107834"
+               y="177.04001"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               id="tspan3547">788 modifiers</tspan></text>
+        </g>
+        <g
+           id="g6790">
+          <text
+             id="text3491-6"
+             y="113.27342"
+             x="44.136395"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+               y="113.27342"
+               x="44.136395"
+               id="tspan3489-5"
+               sodipodi:role="line">54.71% Positive</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="53.14299"
+             y="128.35547"
+             id="text3491-2-0"><tspan
+               sodipodi:role="line"
+               id="tspan3489-3-2"
+               x="53.14299"
+               y="128.35547"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75">952 modifiers</tspan></text>
+        </g>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+         x="51.868889"
+         y="196.65085"
+         id="text7236"><tspan
+           sodipodi:role="line"
+           id="tspan7234"
+           x="51.868889"
+           y="196.65085"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold'"
+   id="tspan7238">Total:</tspan> 1740 modifiers</tspan></text>
+    </g>
+    <g
+       id="g7312">
+      <g
+         transform="translate(5.334229,-10.44141)"
+         id="g7328">
+        <g
+           id="g7400">
+          <g
+             id="g6880"
+             transform="translate(-79.899291,-23.384895)">
+            <g
+               id="g6865">
+              <text
+                 id="text3491-7"
+                 y="148.10608"
+                 x="648.44128"
+                 style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+                 xml:space="preserve"><tspan
+                   style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+                   y="148.10608"
+                   x="648.44128"
+                   id="tspan3489-8"
+                   sodipodi:role="line">33.33% Positive</tspan></text>
+              <text
+                 xml:space="preserve"
+                 style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+                 x="660.81458"
+                 y="163.18811"
+                 id="text3491-2-9"><tspan
+                   sodipodi:role="line"
+                   id="tspan3489-3-7"
+                   x="660.81458"
+                   y="163.18811"
+                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75">25 modifiers</tspan></text>
+            </g>
+            <g
+               id="g6835">
+              <text
+                 id="text3491-9-8-4"
+                 y="184.07092"
+                 x="650.92346"
+                 style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+                 xml:space="preserve"><tspan
+                   style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75"
+                   y="184.07092"
+                   x="650.92346"
+                   id="tspan3489-0-6-0"
+                   sodipodi:role="line">66.67% Neutral</tspan></text>
+              <text
+                 xml:space="preserve"
+                 style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+                 x="660.7467"
+                 y="199.15297"
+                 id="text3491-2-3-1-8"><tspan
+                   sodipodi:role="line"
+                   x="660.7467"
+                   y="199.15297"
+                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+                   id="tspan3547-9-1">50 modifiers</tspan></text>
+            </g>
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="563.40112"
+             y="196.65089"
+             id="text7236-1"><tspan
+               sodipodi:role="line"
+               id="tspan7234-4"
+               x="563.40112"
+               y="196.65089"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+   id="tspan7238-2">Total:</tspan> 75 modifiers</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(-17.513459,-10.441406)"
+       id="g7431">
+      <g
+         id="g6932"
+         transform="translate(39.731067)">
+        <g
+           id="g6917">
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+             x="37.874916"
+             y="360.77487"
+             id="text3491"><tspan
+               sodipodi:role="line"
+               id="tspan3489"
+               x="37.874916"
+               y="360.77487"
+               style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75">48% Positive</tspan></text>
+          <text
+             id="text3491-2"
+             y="375.8569"
+             x="35.039715"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               y="375.8569"
+               x="35.039715"
+               id="tspan3489-3"
+               sodipodi:role="line">3897 modifiers</tspan></text>
+        </g>
+        <g
+           id="g6910">
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="40.231121"
+             y="396.74557"
+             id="text3491-9-3"><tspan
+               sodipodi:role="line"
+               id="tspan3489-0-68"
+               x="40.231121"
+               y="396.74557"
+               style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75">52% Neutral</tspan></text>
+          <text
+             id="text3491-2-3-15"
+             y="411.82761"
+             x="35.215496"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               id="tspan3547-0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               y="411.82761"
+               x="35.215496"
+               sodipodi:role="line">4221 modifiers</tspan></text>
+        </g>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+         x="57.772736"
+         y="432.70456"
+         id="text7236-0"><tspan
+           sodipodi:role="line"
+           id="tspan7234-9"
+           x="57.772736"
+           y="432.70456"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+   id="tspan7238-6">Total:</tspan> 8118 modifiers</tspan></text>
+    </g>
+    <g
+       transform="translate(6.91919,-10.441406)"
+       id="g7491">
+      <g
+         id="g7088"
+         transform="translate(-53.246826,-234.14566)">
+        <g
+           id="g7059">
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="626.01416"
+             y="612.90295"
+             id="text3491-9-8"><tspan
+               sodipodi:role="line"
+               id="tspan3489-0-6"
+               x="626.01416"
+               y="612.90295"
+               style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75">51.31% Neutral</tspan></text>
+          <text
+             id="text3491-2-3-1"
+             y="627.98499"
+             x="632.50635"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               id="tspan3547-9"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               y="627.98499"
+               x="632.50635"
+               sodipodi:role="line">352 modifiers</tspan></text>
+        </g>
+        <g
+           id="g7066">
+          <text
+             id="text3491-4"
+             y="576.93225"
+             x="623.5437"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+               y="576.93225"
+               x="623.5437"
+               id="tspan3489-2"
+               sodipodi:role="line">34.40% Positive</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="632.57715"
+             y="592.01428"
+             id="text3491-2-37"><tspan
+               sodipodi:role="line"
+               id="tspan3489-3-5"
+               x="632.57715"
+               y="592.01428"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75">236 modifiers</tspan></text>
+        </g>
+        <g
+           id="g7052">
+          <text
+             id="text3491-9-8-9"
+             y="648.87366"
+             x="621.29077"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#a03912;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#a03912;fill-opacity:1;stroke-width:0.75"
+               y="648.87366"
+               x="621.29077"
+               id="tspan3489-0-6-00"
+               sodipodi:role="line">14.29% Negative</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="635.84912"
+             y="663.95569"
+             id="text3491-2-3-1-6"><tspan
+               sodipodi:role="line"
+               x="635.84912"
+               y="663.95569"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               id="tspan3547-9-5">98 modifiers</tspan></text>
+        </g>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+         x="561.81616"
+         y="450.69284"
+         id="text7236-0-3"><tspan
+           sodipodi:role="line"
+           id="tspan7234-9-9"
+           x="561.81616"
+           y="450.69284"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+   id="tspan7238-6-6">Total:</tspan> 686 modifiers</tspan></text>
+    </g>
+    <g
+       id="g7687">
+      <g
+         id="g7166"
+         transform="translate(-0.99757,-11.043945)">
+        <g
+           id="g7137">
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="52.593758"
+             y="615.40765"
+             id="text3491-9-8-0-9"><tspan
+               sodipodi:role="line"
+               id="tspan3489-0-6-8-6"
+               x="52.593758"
+               y="615.40765"
+               style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75">47.97% Neutral</tspan></text>
+          <text
+             id="text3491-2-3-1-86-3"
+             y="630.48969"
+             x="57.700939"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               id="tspan3547-9-6-3"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               y="630.48969"
+               x="57.700939"
+               sodipodi:role="line">1751 modifiers</tspan></text>
+        </g>
+        <g
+           id="g7144">
+          <text
+             id="text3491-4-8-4"
+             y="579.44281"
+             x="52.438484"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+               y="579.44281"
+               x="52.438484"
+               id="tspan3489-2-1-3"
+               sodipodi:role="line">50.58% Positive</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="57.700939"
+             y="594.52484"
+             id="text3491-2-37-1-0"><tspan
+               sodipodi:role="line"
+               id="tspan3489-3-5-1-5"
+               x="57.700939"
+               y="594.52484"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75">1846 modifiers</tspan></text>
+        </g>
+        <g
+           id="g7130">
+          <text
+             id="text3491-9-8-9-2-3"
+             y="651.3725"
+             x="55.57032"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#a03912;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#a03912;fill-opacity:1;stroke-width:0.75"
+               y="651.3725"
+               x="55.57032"
+               id="tspan3489-0-6-00-9-7"
+               sodipodi:role="line">1.45% Negative</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="64.784927"
+             y="666.45453"
+             id="text3491-2-3-1-6-1-0"><tspan
+               sodipodi:role="line"
+               x="64.784927"
+               y="666.45453"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               id="tspan3547-9-5-8-5">53 modifiers</tspan></text>
+        </g>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+         x="39.813721"
+         y="676.29926"
+         id="text7236-0-3-2"><tspan
+           sodipodi:role="line"
+           x="39.813721"
+           y="676.29926"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+           id="tspan7517"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75"
+   id="tspan7238-6-6-9">Total:</tspan> 3650 modifiers</tspan></text>
+    </g>
+    <g
+       id="g7627"
+       transform="translate(-3.0732417,-20.885742)">
+      <g
+         transform="translate(-63.397106,251.89447)"
+         id="g7010"
+         style="display:inline">
+        <g
+           id="g6981">
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#525a61;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="646.16852"
+             y="373.36371"
+             id="text3491-9-8-0"><tspan
+               sodipodi:role="line"
+               id="tspan3489-0-6-8"
+               x="646.16852"
+               y="373.36371"
+               style="font-size:12px;fill:#525a61;fill-opacity:1;stroke-width:0.75">65.87% Neutral</tspan></text>
+          <text
+             id="text3491-2-3-1-86"
+             y="388.44574"
+             x="652.71979"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               id="tspan3547-9-6"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               y="388.44574"
+               x="652.71979"
+               sodipodi:role="line">276 modifiers</tspan></text>
+        </g>
+        <g
+           id="g6988">
+          <text
+             id="text3491-4-8"
+             y="337.39301"
+             x="643.68634"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#125aa1;fill-opacity:1;stroke-width:0.75"
+               y="337.39301"
+               x="643.68634"
+               id="tspan3489-2-1"
+               sodipodi:role="line">31.74% Positive</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="652.24762"
+             y="352.47504"
+             id="text3491-2-37-1"><tspan
+               sodipodi:role="line"
+               id="tspan3489-3-5-1"
+               x="652.24762"
+               y="352.47504"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75">133 modifiers</tspan></text>
+        </g>
+        <g
+           id="g6974">
+          <text
+             id="text3491-9-8-9-2"
+             y="409.32855"
+             x="645.09845"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#a03912;fill-opacity:1;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             xml:space="preserve"><tspan
+               style="font-size:12px;fill:#a03912;fill-opacity:1;stroke-width:0.75"
+               y="409.32855"
+               x="645.09845"
+               id="tspan3489-0-6-00-9"
+               sodipodi:role="line">2.39% Negative</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+             x="655.58746"
+             y="424.41058"
+             id="text3491-2-3-1-6-1"><tspan
+               sodipodi:role="line"
+               x="655.58746"
+               y="424.41058"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+               id="tspan3547-9-5-8">10 modifiers</tspan></text>
+        </g>
+      </g>
+      <text
+         id="text7236-0-3-2-6"
+         y="697.18787"
+         x="571.80853"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+         xml:space="preserve"><tspan
+           id="tspan7517-8"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.75"
+           y="697.18787"
+           x="571.80853"
+           sodipodi:role="line"><tspan
+   id="tspan7238-6-6-9-6"
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.75">Total: </tspan>419 modifiers</tspan></text>
+    </g>
+  </g>
+</svg>
