@@ -8,12 +8,13 @@ Created on Thu May  6 14:32:22 2021
 
 This script targets the analysis result data that describes the valence
 (positive / neutral / negative) of the top twenty modifiers used to modify
-each modifier groups (author/translator etc.) The script produces a multiple
-stacked bar chart. The height of the bars encode the number of non-unique
-modifiers. Each bar is seperated into 3 different zones ("stacks") which represent
-the valence of the modifiers. The height of these zones is dependant on the prevalence
-of each valence group in their subjective bars. These zones are colored and
-given texture according to the valence that they represent.
+each modifier groups (author/translator etc.) The script produces multiple
+pie charts. Each pie chart is divided into 2/3 segments depending on the
+valence of the top twenty words that they represent. The color/hatching
+of the segment represents a valence category. The size of the segment
+represents the amount of the words with the encoded valence.
+
+NOTE: The result requires a substantial amount of editing.
 
 This script targets the following files:
     ../../data/analysis_results/total_modifiers_per_modified_group.csv
@@ -32,8 +33,6 @@ import os
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
-
-from src.helper_functions.data_visualization_helper_functions import *
 #%% --- Set proper directory to assure integration with doit ---
 
 abspath = os.path.abspath(__file__)
@@ -97,10 +96,7 @@ for key, dataset in datasets.items():
                      .get_group(valence)
                      ["count"]
                      .sum())
-            ratio = num / total_modifiers
-        
             row.append(num)
-            row.append(ratio)
         except:
             pass
     
@@ -110,110 +106,101 @@ summary_stats = (pd.DataFrame(rows,
                              columns = ["dataset_name",
                                         "total_modifiers",
                                         "pos",
-                                        "pos_ratio",
                                         "neut",
-                                        "neut_ratio",
-                                        "neg",
-                                        "neg_ratio"])
+                                        "neg"])
                  .fillna(0, axis = 1))
     
-# Create a color and hatching dict    
-color_and_hatching = {"pos": ("#125aa1ff", "/"),
-                      "neut": ("#525a61ff","|"),
-                      "neg": ("#a03912ff","\\")}
+# Create a color and hatching list
+colors = ["#125aa1ff", "#525a61ff", "#a03912ff"]
+hatching = ["/", "|", "\\"] 
 
-#%% --- Visualize Data ---
+
+#%% --- Visualize data ---
 
 with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
     # --- Visualization setup ---
         
-    # Create figure and axes
+    # Create the figure
     # Figsize calculation in pixels is figsizex/y * dpi
-    fig = plt.figure(figsize = (19.20, 10.80),
+    fig = plt.figure(figsize = (10.80, 10.80),
                      dpi = 100)
     
-    ax = fig.add_subplot(1,1,1)
+    # Init a grid spec to orchestrate subplots
+    gs = fig.add_gridspec(nrows = 3,
+                          ncols = 3,
+                          figure = fig,
+                          wspace = 0,
+                          hspace = 0)
     
-    # --- Plot the main bars ---
+    # Init the grid counter
+    rownum = 0
+    colnum = 0
     
+    # Init the row counter
+    i = 0
+    
+    
+    while rownum <= 2 and colnum <= 1:
+        
+        ax = fig.add_subplot(gs[rownum, colnum])
+        
         # --- Cast numerical values to visual marks ---
-    main_bar_heights = summary_stats["total_modifiers"].values
-    bar_labels = summary_stats["dataset_name"].values
-    bar_positions = [2, 3.5, 6.5, 8, 12, 13.5]
-    
+        row = summary_stats.iloc[i]
+        wedge_sizes = row[["pos","neut","neg"]]
+        
         # --- Plot data ---
-    ax.bar(x = bar_positions,
-       height = main_bar_heights,
-       align = "center",
-       width = 1,
-       color = "white",
-       edgecolor = "black",
-       linewidth = 2)
-    
-        # --- Axis parameters ---
-    ax.axes.set_ylim(0, max(main_bar_heights))
+        ax.pie(x = wedge_sizes,
+               labels = wedge_sizes,
+               colors = colors,
+               autopct = "%.2f",
+               startangle = 90,
+               radius = 1.2,
+               wedgeprops = {"edgecolor": "black",
+                             "linewidth": 2})
         
-        # --- Ticks and labels ---
+        # --- Color and Texture ---
+        # Since coloring is handled by the .pie() method itself,
+        # only texture is done here.
+        for wedge, texture in zip(ax.patches, hatching):
+            wedge.set(hatch = texture)
+             
+    
+        # --- Helpers ---
+        # Move over the grid 
+        colnum += 1
+        if colnum > 1:
+            colnum = 0
+            rownum += 1
+            
+        # Select new rows
+        i += 1
+    
+    # --- Text and Annotation ---
+    # Set figure title
+    fig.suptitle(("A comparison of the valence of the top twenty\n"
+                  "modifiers for each comparison group"),
+          fontsize = 16,
+          fontweight = "bold",
+          ha = "right")
 
-    # X-ticks
-    ax.set_xticks(bar_positions)
-    ax.set_xticklabels(bar_labels,
-                       va = "top",
-                       ha = "center",
-                       fontweight = "bold")
-    
-    # Remove the ticks but keep the labels
-    # NOTE: this has to be done after the fact.
-    ax.tick_params(axis = "x",
-                   which = "both",
-                   bottom = False)
-    
-    # Y- ticks
-    ax.set_yticks([0, max(main_bar_heights) * 0.50, max(main_bar_heights)])
-
-    
-    # --- Plot the other bars ---
-    valences = ["pos", "neut", "neg"]
-    for i,column_name in enumerate(valences):
-        bar_heights = summary_stats[column_name].values
-        bar_positions = [2, 3.5, 6.5, 8, 12, 13.5]
-        
-        ax.bar(x = bar_positions,
-               height = bar_heights,
-                align = "center",
-                width = 1,
-                color = color_and_hatching[column_name][0],
-                hatch = color_and_hatching[column_name][1],
-                edgecolor = "black",
-                linewidth = 2,
-                bottom = summary_stats[valences[i - 1]].values if i > 0 else None)
-                     
-
-    
-    
-    
-    
-    
-    
 
 #%% --- Export data ---
 
-# # Prepare directory structure
-# current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
-# current_filename_complete = "_".join(current_filename_split)
+# Prepare directory structure
+current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+current_filename_complete = "_".join(current_filename_split)
 
-# mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
-# os.mkdir(mkdir_path)
+mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+os.mkdir(mkdir_path)
 
-# # Export data
-# file_extensions = [".png", ".svg"]
+# Export data
+file_extensions = [".png", ".svg"]
 
-# for name, visualization in visualizations.items():
-#     for file_extension in file_extensions:
-#         filename_extended = name + file_extension
-#         export_fp = Path.joinpath(mkdir_path, filename_extended)
-#         visualization.savefig(export_fp,
-#                               dpi = 100,
-#                               bbox_inches = "tight",
-#                               pad_inches = 0.2)
+for file_extension in file_extensions:
+    filename_extended = "valence ratios" + file_extension
+    export_fp = Path.joinpath(mkdir_path, filename_extended)
+    fig.savefig(export_fp,
+                dpi = 100,
+                bbox_inches = "tight",
+                pad_inches = 0.2)
 

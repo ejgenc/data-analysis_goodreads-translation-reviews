@@ -16,6 +16,8 @@ modifier classification (positive - neutral - negative) is encoded using color
 hue. The said hue is applied on both the variables names, the data markers
 and textual annotation. Summary statistics are presented in text.
 
+NOTE: The result requires a substantial amount of editing.
+
 This script targets the following files:
     ../../data/analysis_results/total_modifiers_per_modified_group.csv
     ../../data/analysis_results/total_modifiers_per_unique_modified.csv
