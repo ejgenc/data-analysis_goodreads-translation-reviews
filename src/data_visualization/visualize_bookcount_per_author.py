@@ -54,42 +54,54 @@ faulty_row = (faulty_row
               [0:3])
 dataset.iloc[9,:] = faulty_row
 
-# Get the bookcount per author
-bookc_per_author = dataset["author"].value_counts().values
+# Get how many authors there are with n books 
+num_of_authors_with_n_books = (dataset
+                             .copy()
+                             ["author"]
+                             .value_counts()
+                             .replace(9,5)
+                             .value_counts())
 
-# Get the totals so that you can annotate them
-bookcounts = {}
-for count in bookc_per_author:
-    if count not in bookcounts:
-        if count == 9:
-            count = 5
-        bookcounts[count] = 1
-    else:
-        bookcounts[count] += 1
+# Get the raw data so that you can transform it to a plottable manner
+dataset = (pd.DataFrame((dataset["author"]
+                        .value_counts()
+                        .reset_index(drop = True)
+                        .replace(9,5)))
+           .rename({"author": "x"},
+                   axis = 1))
 
-# Create a faux dataset so that you can plot in on the scatterplot
-# Add 0 to all values
-data_to_plot = pd.DataFrame(bookc_per_author,
-                            columns = ["x"])
-data_to_plot["y"] = [0 for x in bookc_per_author]
+dataset["y"] = 0
 
-#Make "9" into "5"
-data_to_plot.loc[0,"x"] = 5
 
-new_x = []
-
-for bookcount, value in bookcounts.items():
-    print(bookcount, value)
-    if value == 1:
-        new_x.append(bookcount)
-    if value == 2:
-        to_append = [bookcount - 0.2, bookcount]
-        new_x += to_append
-    if value >= 3:
-        counter = 0
-            
+# Create a mask for every x value
+for unique_x in dataset["x"].unique()[2:]:
+    x_mask = dataset["x"] == unique_x
+    subset = dataset.loc[x_mask,:]
+    new_x = []
+    new_y = []
+    j = 0
+    base_y = 0
+    
+    for x_value in subset["x"].values:
+        print(j)
+        j += 1
+        if j == 1:
+            new_x.append(x_value - 0.1)
+        elif j == 2:
+            new_x.append(x_value)
+        elif j == 3:
+            new_x.append(x_value + 0.1)
+            base_y += 0.1
+            j = 0
+        new_y.append(base_y)
         
-#%% --- Visualize data ---
+    print(len(new_x))
+    print(len(new_y))
+    dataset.loc[x_mask, "x"] = new_x
+    dataset.loc[x_mask, "y"] = new_y
+    
+    
+#%%
 
 with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
     # --- Visualization setup ---
@@ -99,64 +111,15 @@ with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
     fig = plt.figure(figsize = (10.80, 10.80),
                      dpi = 100)
     
-    # Create the main ax
     ax = fig.add_subplot(1,1,1)
     
-    # --- Plot Data ---
-    ax.scatter(data_to_plot["x"],
-               data_to_plot["y"])
-    
+    # Plot the data
+    ax.scatter(dataset["x"],
+               dataset["y"],
+               s = 100)
     
     # --- Spines and Axes ---
-    ax.axes.set_ylim(-0.5,5)
-    ax.axes.set_xlim(0.5, 5.5)
-    
-    
-    # while rownum <= 2 and colnum <= 1:
-        
-    #     ax = fig.add_subplot(gs[rownum, colnum])
-        
-    #     # --- Cast numerical values to visual marks ---
-    #     row = summary_stats.iloc[i]
-    #     wedge_sizes = row[["pos","neut","neg"]]
-        
-    #     # --- Plot data ---
-    #     ax.pie(x = wedge_sizes,
-    #            labels = wedge_sizes,
-    #            colors = colors,
-    #            autopct = "%.2f",
-    #            startangle = 90,
-    #            radius = 1.2,
-    #            wedgeprops = {"edgecolor": "black",
-    #                          "linewidth": 2})
-        
-    #     # --- Color and Texture ---
-    #     # Since coloring is handled by the .pie() method itself,
-    #     # only texture is done here.
-    #     for wedge, texture in zip(ax.patches, hatching):
-    #         wedge.set(hatch = texture)
-             
-    
-    #     # --- Helpers ---
-    #     # Move over the grid 
-    #     colnum += 1
-    #     if colnum > 1:
-    #         colnum = 0
-    #         rownum += 1
-            
-    #     # Select new rows
-    #     i += 1
-    
-    # # --- Text and Annotation ---
-    # # Set figure title
-    # fig.suptitle(("A comparison of the valence of the top twenty\n"
-    #               "modifiers for each comparison group"),
-    #       fontsize = 16,
-    #       fontweight = "bold",
-    #       ha = "right")
-
-
-
+    ax.axes.set_ylim(-0.10, 3)
 
 
             
