@@ -101,7 +101,7 @@ for unique_x in dataset["x"].unique()[2:]:
     dataset.loc[x_mask, "y"] = new_y
     
     
-#%%
+#%% --- Plot data ---
 
 with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
     # --- Visualization setup ---

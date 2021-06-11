@@ -43,5 +43,36 @@ os.chdir(dname)
 input_fp = Path("../../data/analysis_results/book_level_statistics.csv")
 dataset = (pd
             .read_csv(input_fp, encoding = "utf-8")
-            .loc[:,:])
+            .loc[:,["book_name", "n_initial_reviews",
+                    "n_final_reviews", "perc_lost_after_cleaning",
+                    "total_rev_length_in_words", "total_rev_length_in_sents"]])
 
+#%% --- Prepare data ---
+
+# Calculate the data that will be used to annotate in/around the plot
+mean_loss_percentage = (sum(dataset.loc[:,"perc_lost_after_cleaning"])
+                        / len(dataset.loc[:,"perc_lost_after_cleaning"]))
+
+n_final_reviews = sum(dataset.loc[:,"n_final_reviews"])
+total_len_in_sents = sum(dataset.loc[:,"total_rev_length_in_sents"])
+
+#%% --- Plot data ---
+
+with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
+    # --- Visualization setup ---
+        
+    # Create the figure
+    # Figsize calculation in pixels is figsizex/y * dpi
+    fig = plt.figure(figsize = (19.20, 10.80),
+                     dpi = 100)
+    
+    ax = fig.add_subplot(1,1,1)
+    
+    # Plot the data
+    ax.scatter(dataset["n_initial_reviews"],
+               dataset["n_final_reviews"],
+               s = 250,
+               marker = "o",
+               facecolor = "#525a61ff",
+               edgecolor = "black",
+               linewidth = 1)
