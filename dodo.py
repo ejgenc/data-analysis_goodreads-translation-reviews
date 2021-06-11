@@ -242,3 +242,13 @@ def task_visualize_top_twenty_modifiers_valence_ratio():
         "targets": [Path("media/figures/raw/visualize_top_twenty_modifiers_valence_ratio")],
         "title": show_cmd
     }
+
+def task_visualize_bookcount_per_author():
+    action_path = Path("src/data_visualization/visualize_bookcount_per_author.py")
+    return {
+        "file_dep": [Path("../../data/analysis_results/book_level_statistics.csv")],
+        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("media/figures/raw/visualize_bookcount_per_author")],
+        "title": show_cmd
+    }
