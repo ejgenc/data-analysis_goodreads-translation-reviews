@@ -252,3 +252,4 @@ def task_visualize_bookcount_per_author():
         "targets": [Path("media/figures/raw/visualize_bookcount_per_author")],
         "title": show_cmd
     }
+    
