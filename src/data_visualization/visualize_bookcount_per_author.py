@@ -6,24 +6,24 @@ Created on Tue Jun  8 15:55:11 2021
 
 ------ What is this file? ------
 
-This script targets the analysis result data that describes the valence
-(positive / neutral / negative) of the top twenty modifiers used to modify
-each modifier groups (author/translator etc.) The script produces multiple
-pie charts. Each pie chart is divided into 2/3 segments depending on the
-valence of the top twenty words that they represent. The color/hatching
-of the segment represents a valence category. The size of the segment
-represents the amount of the words with the encoded valence.
+This script visualizes how many authors are represented in the corpus with n
+book (n being 1, 2, 3, 4, 9). The script produces a dot plot, where dots can
+be placed side to side in rows of three. The emergent pattern resembles a
+bar chart and that is indeed the intended effect. The resulting plot is
+less accurate than a bar chart and the data is visually "distorted." However,
+here precision and truthfulness is not as important because the data is rather
+minimal.
 
-NOTE: The result requires a substantial amount of editing.
+NOTE: The result requires some editing.
 
-This script targets the following files:
-    ../../data/analysis_results/total_modifiers_per_modified_group.csv
+This script targets the following file:
+    ../../data/analysis_results/book_level_statistics.csv
     ../../data/analysis_results/total_modifiers_per_unique_modified.csv
     ...
     
     
 The resulting raw figures are located at:
-    ../../media/figures/raw/visualize_top_twenty_modifiers_valence_ratio/*
+    ../../media/figures/raw/visualize_bookcount_per_author/*
 """
 #%% --- Import required packages ---
 
@@ -48,11 +48,11 @@ dataset = (pd
 #%% --- Prepare data ---
 
 # There appears to be a faulty row due to an encoding error on index 9
-faulty_row = dataset.iloc[9,:]["book_id"]
-faulty_row = (faulty_row
-              .split(",")
-              [0:3])
-dataset.iloc[9,:] = faulty_row
+# faulty_row = dataset.iloc[9,:]["book_id"]
+# faulty_row = (faulty_row
+#               .split(",")
+#               [0:3])
+# dataset.iloc[9,:] = faulty_row
 
 # Get how many authors there are with n books 
 num_of_authors_with_n_books = (dataset
