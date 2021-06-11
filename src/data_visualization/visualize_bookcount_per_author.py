@@ -28,8 +28,8 @@ The resulting raw figures are located at:
 #%% --- Import required packages ---
 
 import os
-
 from pathlib import Path
+
 import pandas as pd
 import matplotlib.pyplot as plt
 #%% --- Set proper directory to assure integration with doit ---
