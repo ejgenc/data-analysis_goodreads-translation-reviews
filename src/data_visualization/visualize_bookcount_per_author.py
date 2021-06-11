@@ -91,7 +91,7 @@ for unique_x in dataset["x"].unique()[2:]:
             new_x.append(x_value)
         elif j == 3:
             new_x.append(x_value + 0.1)
-            base_y += 0.1
+            base_y += 0.12
             j = 0
         new_y.append(base_y)
         
@@ -108,7 +108,7 @@ with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
         
     # Create the figure
     # Figsize calculation in pixels is figsizex/y * dpi
-    fig = plt.figure(figsize = (10.80, 10.80),
+    fig = plt.figure(figsize = (19.20, 10.80),
                      dpi = 100)
     
     ax = fig.add_subplot(1,1,1)
@@ -116,11 +116,61 @@ with plt.style.context('matplotlib_stylesheet_ejg_fixes'):
     # Plot the data
     ax.scatter(dataset["x"],
                dataset["y"],
-               s = 100)
+               s = 250,
+               marker = "o",
+               facecolor = "#525a61ff",
+               edgecolor = "black",
+               linewidth = 1)
     
     # --- Spines and Axes ---
-    ax.axes.set_ylim(-0.10, 3)
+    
+    # --- set ylim/xlim
+    ax.axes.set_xlim(0.5, 5.5)
+    ax.axes.set_ylim(-0.10, 3.5)
+    
+    # --- set spines ---
+    ax.spines["left"].set_visible(False)
+    
+    # --- Ticks and Labels ---
+    
+    # --- disable ticks on all axes ---
+    ax.set_xticks([1,2,3,4,5])
+    ax.tick_params(axis = "both",
+                   which = "both",
+                   bottom = False,
+                   top = False,
+                   left = False,
+                   right = False)
+    
+    # --- Modify axis labels ---
+    ax.set_yticklabels([])
+    ax.set_xticklabels(["1","2","3","4","9"],
+                       fontsize = 20,
+                       fontweight = "bold")
 
+    # --- Text and annotation ---
+    # Set ax title
+    ax.set_title(label = "Number of authors who have...",
+                 fontsize = 30,
+                 fontweight = "bold",
+                 loc = "left",
+                 pad = 10.0)
+                
+#%% --- Export data ---
 
-            
+# Prepare directory structure
+current_filename_split = os.path.basename(__file__).split(".")[0].split("_")
+current_filename_complete = "_".join(current_filename_split)
 
+mkdir_path = Path("../../media/figures/raw/{}".format(current_filename_complete))
+os.mkdir(mkdir_path)
+
+# Export data
+file_extensions = [".png", ".svg"]
+for file_extension in file_extensions:
+    filename_extended = "bookcount_per_author" + file_extension
+    export_fp = Path.joinpath(mkdir_path, filename_extended)
+    fig.savefig(export_fp,
+                dpi = 100,
+                bbox_inches = "tight",
+                pad_inches = 0.2)
