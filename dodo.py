@@ -1,8 +1,6 @@
 from pathlib import Path # To wrap around filepaths
 from doit.tools import run_once
 
-
-
 def show_cmd(task): # Set a custom title for all doit tasks
     return "executing... %s" % task.name
 
@@ -253,3 +251,12 @@ def task_visualize_bookcount_per_author():
         "title": show_cmd
     }
     
+def task_visualize_scraping_loss_per_book():
+    action_path = Path("src/data_visualization/visualize_scraping_loss_per_book.py")
+    return {
+        "file_dep": [Path("../../data/analysis_results/book_level_statistics.csv")],
+        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("media/figures/raw/visualize_scraping_loss_per_book")],
+        "title": show_cmd
+    }

@@ -57,6 +57,7 @@ loss_percentages_stats = (loss_percentages
                                 "mean", "median",
                                 "std", "skew"]))
 
+n_initial_reviews = sum(dataset.loc[:,"n_initial_reviews"])
 n_final_reviews = sum(dataset.loc[:,"n_final_reviews"])
 total_len_in_sents = sum(dataset.loc[:,"total_rev_length_in_sents"])
 total_len_in_words = sum(dataset.loc[:,"total_rev_length_in_words"])
