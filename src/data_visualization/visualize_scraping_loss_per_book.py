@@ -6,24 +6,21 @@ Created on Fri Jun 11 16:42:07 2021
 
 ------ What is this file? ------
 
-This script visualizes how many authors are represented in the corpus with n
-book (n being 1, 2, 3, 4, 9). The script produces a dot plot, where dots can
-be placed side to side in rows of three. The emergent pattern resembles a
-bar chart and that is indeed the intended effect. The resulting plot is
-less accurate than a bar chart and the data is visually "distorted." However,
-here precision and truthfulness is not as important because the data is rather
-minimal.
+This script visualizes the loss of reviews that occured in the dataset due
+to the process of data cleaning and data quality testing. The script produces
+multiple plots. The first plot is a scatterplot in which the number of initial
+reviews scraped and the number of reviews after cleaning is plotted per book.
+The second plot is a historgram visualizing the distribution of loss percentages.
+In both plots, outliers (+/- 1.5 IQR) in terms of loss percentages are outlines.
+The right side of the visualization is deliberately left empty.
 
-NOTE: The result requires some editing.
+NOTE: The result requires major editing.
 
 This script targets the following file:
     ../../data/analysis_results/book_level_statistics.csv
-    ../../data/analysis_results/total_modifiers_per_unique_modified.csv
-    ...
-    
     
 The resulting raw figures are located at:
-    ../../media/figures/raw/visualize_bookcount_per_author/*
+    ../../media/figures/raw/visualize_scraping_loss_per_book/*
 """
 #%% --- Import required packages ---
 
