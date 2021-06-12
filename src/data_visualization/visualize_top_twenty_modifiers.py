@@ -309,4 +309,3 @@ for name, visualization in visualizations.items():
                               dpi = 100,
                               bbox_inches = "tight",
                               pad_inches = 0.2)
-
