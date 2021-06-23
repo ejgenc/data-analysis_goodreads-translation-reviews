@@ -6,8 +6,11 @@ Created on Wed Jun 23 14:37:08 2021
 
 ------ What is this file? ------
 
-This script ...
-NOTE: The result requires ....
+This script visualizes the review length distribution of all reviews. Review
+lengths are calculated in terms of both sentences and words. The resulting
+visualization is a small multiples made out of four histograms.
+
+NOTE: The result requires minimal editing.
 
 This script targets the following file:
     ../../data/analysis_results/goodreads_reviews_analyzed.csv
