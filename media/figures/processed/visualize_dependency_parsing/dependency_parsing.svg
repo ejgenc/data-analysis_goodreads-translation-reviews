@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="dependency_parsing.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 254.79374 104.51041"
+   height="395"
+   width="963"
+   inkscape:export-filename="F:\Documents\Study Documents\School\Bachelor's Paper - Seeking Traces of the Translator's Invisibility in Goodreads Reviews\Code\bachelors_paper_proof_of_concept\media\figures\processed\visualize_dependency_parsing\dependency_parsing.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     units="px"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-11"
+     inkscape:window-x="-11"
+     inkscape:window-height="986"
+     inkscape:window-width="1920"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer3"
+     inkscape:document-units="px"
+     inkscape:cy="178.92196"
+     inkscape:cx="447.04663"
+     inkscape:zoom="1.4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="display:inline"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Background Layer"
+     sodipodi:insensitive="true">
+    <rect
+       transform="scale(-1,1)"
+       y="0.63743502"
+       x="-256.15631"
+       height="103.23554"
+       width="255.51888"
+       id="rect10"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.27487;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Banding Layer" />
+  <g
+     style="display:inline"
+     inkscape:label="Table Layer"
+     id="layer4"
+     inkscape:groupmode="layer" />
+  <g
+     style="display:inline"
+     inkscape:label="Text Layer"
+     id="layer3"
+     inkscape:groupmode="layer">
+    <text
+       id="text926"
+       y="10.972973"
+       x="82.45504"
+       style="font-weight:bold;font-size:6.34999967px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';display:inline;stroke-width:0.264583;"
+       xml:space="preserve"><tspan
+         id="tspan932"
+         style="stroke-width:0.264583;font-size:6.34999967px;"
+         y="10.972973"
+         x="82.45504"
+         sodipodi:role="line">Dependency parsing example</tspan></text>
+    <g
+       transform="translate(70.838199,-103.70057)"
+       style="display:inline"
+       id="g1390" />
+    <text
+       id="text104"
+       y="54.446289"
+       x="46.928383"
+       style="font-weight:bold;font-size:8.46667px;line-height:1.45;font-family:Arial;-inkscape-font-specification:'Arial Bold';word-spacing:2.64583px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Arial;-inkscape-font-specification:'Arial Italic';stroke-width:0.264583"
+         y="54.446289"
+         x="46.928383"
+         id="tspan102"
+         sodipodi:role="line">The translation of this edition is clunky.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;stroke-width:0.264583"
+       x="51.185516"
+       y="61.630226"
+       id="text104-7"><tspan
+         sodipodi:role="line"
+         id="tspan102-5"
+         x="51.185516"
+         y="61.630226"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583">det</tspan></text>
+    <text
+       id="text104-7-2"
+       y="44.345173"
+       x="80.958076"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;fill:#1a80e5;stroke-width:0.264583;fill-opacity:1;"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a80e5;stroke-width:0.264583;fill-opacity:1;"
+         y="44.345173"
+         x="80.958076"
+         id="tspan102-5-2"
+         sodipodi:role="line">nsubj</tspan></text>
+    <text
+       id="text104-7-6"
+       y="61.630226"
+       x="109.55083"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583"
+         y="61.630226"
+         x="109.55083"
+         id="tspan102-5-3"
+         sodipodi:role="line">prep</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;stroke-width:0.264583"
+       x="125.04304"
+       y="61.630226"
+       id="text104-7-6-1"><tspan
+         id="tspan168"
+         sodipodi:role="line"
+         x="125.04304"
+         y="61.630226"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583">det</tspan></text>
+    <text
+       id="text104-7-6-1-5"
+       y="61.630226"
+       x="149.35905"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583"
+         y="61.630226"
+         x="149.35905"
+         sodipodi:role="line"
+         id="tspan168-7">pobj</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;stroke-width:0.264583"
+       x="166.54292"
+       y="61.630226"
+       id="text104-7-6-1-5-5"><tspan
+         id="tspan168-7-7"
+         sodipodi:role="line"
+         x="166.54292"
+         y="61.630226"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583">ROOT</tspan></text>
+    <text
+       id="text104-7-6-1-5-5-6"
+       y="43.975201"
+       x="187.65324"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;display:inline;fill:#1a80e5;stroke-width:0.264583;fill-opacity:1;"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a80e5;stroke-width:0.264583;fill-opacity:1;"
+         y="43.975201"
+         x="187.65324"
+         sodipodi:role="line"
+         id="tspan168-7-7-7">acomp</tspan></text>
+  </g>
+</svg>
