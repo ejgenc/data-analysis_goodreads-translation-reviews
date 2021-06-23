@@ -173,7 +173,7 @@ os.mkdir(mkdir_path)
 # Export data
 file_extensions = [".png", ".svg"]
 for file_extension in file_extensions:
-    filename_extended = "scraping_loss_per_book" + file_extension
+    filename_extended = "review_length" + file_extension
     export_fp = Path.joinpath(mkdir_path, filename_extended)
     fig.savefig(export_fp,
                 dpi = 100,
