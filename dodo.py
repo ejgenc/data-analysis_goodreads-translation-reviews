@@ -260,3 +260,13 @@ def task_visualize_scraping_loss_per_book():
         "targets": [Path("media/figures/raw/visualize_scraping_loss_per_book")],
         "title": show_cmd
     }
+
+def task_visualize_review_length():
+    action_path = Path("src/data_visualization/visualize_scraping_loss_per_book.py")
+    return {
+        "file_dep": [Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")],
+        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
+        "actions": ["python {}".format(action_path)],
+        "targets": [Path("media/figures/raw/visualize_review_length")],
+        "title": show_cmd
+    }
