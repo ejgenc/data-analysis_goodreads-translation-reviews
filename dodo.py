@@ -20,30 +20,41 @@ def task_clear_viz_output():
         "title": show_cmd,
     }
 
-def task_run_book_data_external_data_quality_tests():
-    action_path = Path("tests/data_quality_tests/test_book_data_external_data_quality.py")
-    return {
-        "file_dep": [Path("data/external/book_data_external.xlsx")],
-        "actions": ["pytest {}".format(action_path)],
-        "title": show_cmd
-    }
+# --- !!! ATTENTION !!! ---
+# This part of the dodo.py file is commented out by default. The code below triggers
+# the scripts that are responsible for the web scraping of the reviews investigated by this analysis.
+# Since the analysis file is shared for replication purposes, the intended behavior of the script
+# is to re-run the analysis on the dataset as presented by the paper that accompanies this analysis.
+# The dataset may be subject to change every time it is scraped. Thus, replicating the scraping part
+# is made optional. If the user wants to replicate the scraping part too or target the analysis to a new set
+# of Goodreads reviews, s/he should look at the README for a how-to guide.
 
 
-def task_scrape_goodreads_reviews():
-    action_path = Path("src/data_processing/scrape_goodreads_reviews.py")
-    return {
-        "file_dep": [Path("data/external/book_data_external.xlsx")],
-        "task_dep": ["run_book_data_external_data_quality_tests"],
-        "actions": ["python {}".format(action_path)],
-        "targets": [Path("data/raw/goodreads_reviews_raw.csv")],
-        "title": show_cmd,
-    }
+# def task_run_book_data_external_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_book_data_external_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/external/book_data_external.xlsx")],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
+
+# def task_scrape_goodreads_reviews():
+#     action_path = Path("src/data_processing/scrape_goodreads_reviews.py")
+#     return {
+#         "file_dep": [Path("data/external/book_data_external.xlsx")],
+#         "task_dep": ["run_book_data_external_data_quality_tests"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/raw/goodreads_reviews_raw.csv")],
+#         "title": show_cmd,
+#     }
+
+# --- !!! ATTENTION !!! ---
 
 def task_clean_goodreads_reviews_raw():
     action_path = Path("src/data_cleaning/clean_goodreads_reviews_raw.py")
     return {
         "file_dep": [Path("data/raw/goodreads_reviews_raw.csv")],
-        "task_dep": ["scrape_goodreads_reviews"],
+        #"task_dep": ["scrape_goodreads_reviews"], # --- !!! ATTENTION: Uncomment this along with the snippets above. --- #
         "actions": ["python {}".format(action_path)],
         "targets": [Path("data/cleaned/goodreads_reviews_cleaned.csv")],
         "title": show_cmd,

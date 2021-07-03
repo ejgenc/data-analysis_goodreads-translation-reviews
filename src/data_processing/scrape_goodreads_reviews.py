@@ -26,7 +26,9 @@ The resulting csv file is located at:
 #%% --- Import required packages ---
 
 import os
+import shutil
 from pathlib import Path # To wrap around filepaths
+
 import pandas as pd
 from src.helper_functions.data_preparation_helper_functions import scrape_goodreads_reviews
 #%% --- Set proper directory to assure integration with doit ---
@@ -51,6 +53,19 @@ book_id_and_http_df = pd.read_excel(import_fp)
 import_fp = Path("../../env.txt")
 with open(import_fp, "r") as credentials_file:
     credentials = credentials_file.read().split("\n")
+
+#%% --- Check for existing goodreads_reviews_raw.csv
+folder_path = Path("../../data/raw")
+for filename in os.listdir(folder_path):
+    if filename == "goodreads_reviews_raw.csv":
+            file_path = os.path.join(folder_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
     
 #%% --- specify the Selenium driver path ---
 
