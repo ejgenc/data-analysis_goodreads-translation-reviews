@@ -35,7 +35,7 @@ os.chdir(dname)
 #%% --- Import data ---
 
 import_fp = Path("../../data/raw/goodreads_reviews_raw.csv")
-goodreads_reviews = pd.read_csv(import_fp)
+goodreads_reviews = pd.read_csv(import_fp, encoding = "utf-8")
 
 #%% --- Cleaning: filter, document and drop null values ---
 
