@@ -11,5 +11,9 @@ data/cleaned/*
 data/cleaning_reports/*
 data/raw/*
 
+# Exemption for a specific raw file under data/raw/
+!data/raw/goodreads_reviews_raw
+
 # Exemption for gitignore itself
 !.gitignore
+
