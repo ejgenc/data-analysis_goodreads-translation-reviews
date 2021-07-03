@@ -4,8 +4,8 @@ Created on Wed Dec  2 23:45:43 2020
 
 ------ What is this file? ------
                 
-This script ingests the file review_sentences_cleaned.csv in order to process
-it into a second level of analysis
+This script ingests the file review_sentences_cleaned.csv and analyzes it,
+collecting metrics such as review length, sentiment etc.
 
 This script targets the following file:
     ../../data/cleaned/review_sentences_cleaned.csv
