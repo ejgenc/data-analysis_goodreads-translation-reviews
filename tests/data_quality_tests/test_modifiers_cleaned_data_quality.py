@@ -18,7 +18,6 @@ The file can be found at:
 
 import os
 from pathlib import Path # To wrap around filepaths
-import pytest
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---
@@ -110,9 +109,3 @@ class TestValues(object):
                          " outside the expected modified forms.",
                          " Expected {} unfitting modified forms, got {}".format(expected,actual))
         assert expected == actual, error_message
-
-            
-        
-
-
-

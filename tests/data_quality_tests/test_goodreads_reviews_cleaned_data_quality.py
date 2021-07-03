@@ -11,11 +11,8 @@ The file can be found at:
 
 import os
 from pathlib import Path # To wrap around filepaths
-import datetime as dt
-import pytest
 import pandas as pd
 from langdetect import DetectorFactory, detect
-from langdetect.lang_detect_exception import LangDetectException
 
 #%% --- Set proper directory to assure integration with doit ---
 

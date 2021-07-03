@@ -71,15 +71,3 @@ class TestUniqueness(object):
             actual = str(test_target[column].dtype)
             error_message = "Column {} is of wrong data type. Expected {}, got {}".format(column, expected, actual)
             assert expected == actual, error_message
-
-
-#%% --- Quality test: check if all https are available ---
-@pytest.mark.skip(reason="Cannot see reason of testing this")
-class TestHttpAvailability(object):
-    def test_http_availability_by_pinging(self):
-        for http in test_target["http"]:
-            expected = "<Response [200]>"
-            actual = str(requests.get(http))
-            error_message = "The following http is not available: {}".format(http)
-            assert expected == actual, error_message
-                  
