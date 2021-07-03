@@ -6,8 +6,8 @@ Created on Sun Mar 14 12:40:55 2021
 
 ------ What is this file? ------
 
-This script ingests the file modifiers_raw.csv in order to format it
-according to some pre-determined quality standarts.
+This script ingests the file modifiers_raw.csv and analyzes it so that
+metadata about the modifiers can be created.
 
 This script targets the following file:
     ../../data/cleaned/modifiers_cleaned.csv
@@ -17,8 +17,6 @@ The resulting csv files are located at:
     ../../data/analysis_results/total_modifiers_per_modified_group.csv
     ...
     
-!!! ATTENTION! THIS FILE REQUIRES MAJOR REFACTORING !!!
-
 """
 
 #%% --- Import required packages ---
@@ -26,7 +24,6 @@ The resulting csv files are located at:
 import os
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
-from functools import reduce
 
 #%% --- Set proper directory to assure integration with doit ---
 
@@ -93,7 +90,7 @@ for group in modifiers_grouped.groups:
                                        ascending = False))
     modifier_value_counts_per_modified[group] = group_value_counts
     
-#%% --- Analysis: analyze based on modified groups ---
+# --- Analysis: analyze based on modified groups ---
 #%% --- Prepare: create a groupby of modifieds and select modifiers ---
 
 # Prepare modified collections
