@@ -88,20 +88,11 @@ pattern = r"\b[Bb]ook[\w+]?\b|\b[Ss]tyle[\w+]?\b|\b[Aa]uthor[\w+]?\b|\b[Ww]r[io]
 review_sentences["sent_mentions_original"] = review_sentences["review_sentence"].str.contains(pattern)
 
 #%% --- Process: tag sentence if it mentions TRANSLATION / TRANSLATOR ###
-
-# ATTENTION! The tagging process below is at alpha. It will be much more
-# complex in the finished version.
-
 pattern = r"\b[Tt]ranslat\w+\b"
 
 review_sentences["sent_mentions_trans"] = review_sentences["review_sentence"].str.contains(pattern)
 
 #%% -- Process: re-order columns ---
-
-# re-ordering scheme: book/review/sentence id's line up, 
-# tags come after id's
-# extra data comes after tags
-# the actual sentence comes last
 
 review_sentences = review_sentences[["book_id", "review_id",
                                      "sentence_id","sent_mentions_original",
@@ -111,5 +102,4 @@ review_sentences = review_sentences[["book_id", "review_id",
 
 export_fp = Path("../../data/raw/review_sentences_raw.csv")
 review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
-
 

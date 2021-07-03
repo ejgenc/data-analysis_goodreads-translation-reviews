@@ -17,7 +17,7 @@ import pandas as pd
 import time
 from datetime import date
 
-#%% --- Helper Functions ---
+# --- Helper Functions ---
 
 #%% --- Function: scrape_goodreads ---
 
@@ -27,10 +27,6 @@ def scrape_goodreads_reviews(book_id_list,
                              login_id,
                              login_password):
     
-    ## ALL THE TYPE CHECKS BELOW ##
-    
-    ## ALL THE TYPE CHECKS ABOVE ##
-        
     # Set the starting page for goodreads
     initial_http = "https://www.goodreads.com/"
     

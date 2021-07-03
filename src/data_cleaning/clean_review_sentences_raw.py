@@ -77,7 +77,7 @@ review_sentences = review_sentences.loc[reverse_mask,:].reset_index(drop = True)
 export_fp = Path("../../data/cleaned/review_sentences_cleaned.csv")
 review_sentences.to_csv(export_fp, encoding = "utf-8", index = False)
             
-#%% --- Export cleaning documentation - that has been deleted ---
+#%% --- Export cleaning documentation ---
 
 export_fp = Path("../../data/cleaning_reports/review_sentences_raw_shorter_than_three_words.csv")
 shorter_than_3.to_csv(export_fp, encoding = "utf-8", index = False)

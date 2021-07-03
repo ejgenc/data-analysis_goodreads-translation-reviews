@@ -73,7 +73,7 @@ for column_name in tokens_and_dependencies.columns:
 export_fp = Path("../../data/cleaned/tokens_and_dependencies_cleaned.csv")
 tokens_and_dependencies.to_csv(export_fp, encoding = "utf-8", index = False)
             
-#%% --- Export cleaning documentation - that has been deleted ---
+#%% --- Export cleaning documentation ---
 
 export_fp = Path("../../data/cleaning_reports/tokens_and_dependencies_rows_with_null_values.csv")
 tokens_and_dependencies_rows_with_null_values.to_csv(export_fp, encoding = "utf-8", index = False)

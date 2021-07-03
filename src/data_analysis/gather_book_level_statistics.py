@@ -84,13 +84,6 @@ book_statistics = (book_statistics
                            how = "left",
                            on = "book_id"))
 
-# how much of the total reviews are the initia reviews
-# e.g: 300 on Goodreads - 300 scraped --> 100%
-# how much of the total reviews are the final reviews
-# e.g: 100 scraped - 80 left --> 20% lost (perc_lost), perc_left after cleaning
-
-#percentage lost after scraping
-
 #percentage lost after cleaning
 book_statistics["perc_lost_after_cleaning"] = (1
                                                - (book_statistics["n_final_reviews"]
