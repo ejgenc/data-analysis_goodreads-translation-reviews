@@ -3,7 +3,6 @@
 ![Top twenty modifiers for the book - translation token pair.](https://github.com/ejgenc/data-analysis_goodreads_translation_reviews/blob/master/media/figures/processed/visualize_top_twenty_modifiers/book%20-%20translation.png)
 _A sneak peek into the results of the analysis._
 
-* * *
 ## What is this project about?
 
 This repository contains the analysis code for my bachelor's graduation project *Seeking Traces of the Translator's Invisibility in Goodreads Reviews.* The Translator's Invisibility is a translation studies theory first introduced by the scholar Lawrence Venuti. It specifies and explains the dominant norm of "the invisible translator" that exists in the anglophone literary world. My bachelor's project seeks to find the traces of the translator's invisibility in the English translation reviews left on the social book review website Goodreads. It is a humanities data analysis project based on the the collection, processing, cleaning, analysis and the visualization of a corpus.
@@ -25,8 +24,6 @@ The code responsible for the analysis was split into separate categories such as
 Data quality tests were written to check for quality errors (data type mismatch, null values, data out of expected range etc.). The tests were triggered after some data processing script executions and each data cleaning script executions.
 
 The raw data and its subsequent versions are all saved as .csv files. Each variation of the original corpus is recorded for backtesting and reproduction purposes. Rows of data that are dropped during the cleaning process are also recorded separately. The replicator must follow the steps outlined below and replicate the analysis for the datasets to show up under their respective folders.
-
-* * *
 
 ## How to reproduce this analysis?
 
