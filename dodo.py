@@ -1,7 +1,7 @@
-from pathlib import Path # To wrap around filepaths
+from pathlib import Path
 from doit.tools import run_once
 
-def show_cmd(task): # Set a custom title for all doit tasks
+def show_cmd(task):
     return "executing... %s" % task.name
 
 def task_clear_data_output():
@@ -47,7 +47,6 @@ def task_clear_viz_output():
 #         "targets": [Path("data/raw/goodreads_reviews_raw.csv")],
 #         "title": show_cmd,
 #     }
-
 
 # def task_clean_goodreads_reviews_raw():
 #     action_path = Path("src/data_cleaning/clean_goodreads_reviews_raw.py")
@@ -184,7 +183,7 @@ def task_analyze_modifiers_cleaned():
         "task_dep": ["run_modifiers_cleaned_data_quality_tests"],
         "actions": ["python {}".format(action_path)],
         "targets": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
-                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.
+                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")],
         "title": show_cmd
     }
 
@@ -234,7 +233,7 @@ def task_visualize_top_twenty_modifiers():
     action_path = Path("src/data_visualization/visualize_top_twenty_modifiers.py")
     return {
         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
-                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.,
+                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")],
         "task_dep": ["run_book_level_statistics_data_quality_tests"],
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_top_twenty_modifiers")],
@@ -245,7 +244,7 @@ def task_visualize_top_twenty_modifiers_valence_ratio():
     action_path = Path("src/data_visualization/visualize_top_twenty_modifiers_valence_ratio.py")
     return {
         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
-                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")], # Attention! Only two targets are specified here.,
+                    Path("data/analysis_results/total_modifiers_per_modified_group.csv")],
         "task_dep": ["run_book_level_statistics_data_quality_tests"],
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_top_twenty_modifiers_valence_ratio")],

@@ -22,6 +22,7 @@ Reports related to the cleaning process are located at:
 #%% --- Import required packages ---
 
 import os
+import shutil
 from pathlib import Path # To wrap around filepaths
 import pandas as pd
 from langdetect import DetectorFactory, detect
@@ -130,7 +131,20 @@ goodreads_reviews.loc[:,"review"] = goodreads_reviews.loc[:,"review"].str.lower(
 
 mask = goodreads_reviews.loc[:,"review"].str.islower()
 goodreads_reviews = goodreads_reviews.loc[mask, :]
-    
+
+#%% --- Check for existing goodreads_reviews_cleaned.csv
+folder_path = Path("../../data/cleaned")
+for filename in os.listdir(folder_path):
+    if filename == "goodreads_reviews_cleaned.csv":
+            file_path = os.path.join(folder_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
+
 #%% --- Export Data ---
 
 export_fp = Path("../../data/cleaned/goodreads_reviews_cleaned.csv")
