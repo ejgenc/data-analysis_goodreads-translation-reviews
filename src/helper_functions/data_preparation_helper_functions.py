@@ -6,13 +6,11 @@ Created on Sat Jun 27 16:12:37 2020
 """
 #%% --- Import required packages ---
 
-import os
 from bs4 import BeautifulSoup
 from selenium import webdriver # For webscraping
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from pathlib import Path # To wrap around filepaths
 import pandas as pd
 import time
 from datetime import date

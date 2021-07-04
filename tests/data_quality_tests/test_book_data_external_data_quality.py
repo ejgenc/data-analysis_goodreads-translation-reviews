@@ -10,9 +10,7 @@ The file can be found at:
 #%% --- Import required packages ---
 
 import os
-import requests
 from pathlib import Path # To wrap around filepaths
-import pytest
 import pandas as pd
 
 #%% --- Set proper directory to assure integration with doit ---

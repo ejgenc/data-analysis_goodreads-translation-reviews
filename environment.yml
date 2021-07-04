@@ -1,8 +1,22 @@
-name: foo
+name: goodreads-reviews-analysis_env
 channels:
+  - conda-forge
   - defaults
 dependencies:
+  - python>=3.8.5
+  - selenium
+  - pandas
   - pytest
+  - beautifulsoup4
+  - lxml
+  - nltk
+  - xlrd
+  - doit
+  - openpyxl
+  - textblob
+  - spacy
+  - spacy-lookups-data
+  - matplotlib
   - pip
   - pip:
-    - e.
+    - e .
