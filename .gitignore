@@ -13,6 +13,7 @@ data/raw/*
 
 # Exemption for a specific raw file under data/raw/
 !data/cleaned/goodreads_reviews_cleaned.csv
+!data/analysis_results/book_level_statistics.csv
 
 # Exemption for gitignore itself
 !.gitignore

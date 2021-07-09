@@ -207,34 +207,35 @@ def task_run_goodreads_reviews_analyzed_data_quality_tests():
         "title": show_cmd
     }
 
-def task_gather_book_level_statistics():
-    action_path = Path("src/data_analysis/gather_book_level_statistics.py")
-    return {
-        "file_dep": [Path("data/external/book_data_external.xlsx"),
-                    Path("data/raw/goodreads_reviews_raw.csv"),
-                    Path("data/cleaned/goodreads_reviews_cleaned.csv"),
-                    Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
-        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
-        "actions": ["python {}".format(action_path)],
-        "targets": [Path("data/analysis_results/book_level_statistics.csv")],
-        "title": show_cmd
-    }
+# --- !!! ATTENTION - Uncomment the code below if you wish to extend the analysis !!! ---
+# def task_gather_book_level_statistics():
+#     action_path = Path("src/data_analysis/gather_book_level_statistics.py")
+#     return {
+#         "file_dep": [Path("data/external/book_data_external.xlsx"),
+#                     Path("data/raw/goodreads_reviews_raw.csv"),
+#                     Path("data/cleaned/goodreads_reviews_cleaned.csv"),
+#                     Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
+#         "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
+#         "actions": ["python {}".format(action_path)],
+#         "targets": [Path("data/analysis_results/book_level_statistics.csv")],
+#         "title": show_cmd
+#     }
 
-def task_run_book_level_statistics_data_quality_tests():
-    action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
-    return {
-        "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
-        "task_dep": ["gather_book_level_statistics"],
-        "actions": ["pytest {}".format(action_path)],
-        "title": show_cmd
-    }
+# def task_run_book_level_statistics_data_quality_tests():
+#     action_path = Path("tests/data_quality_tests/test_book_level_statistics_data_quality.py")
+#     return {
+#         "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
+#         "task_dep": ["gather_book_level_statistics"],
+#         "actions": ["pytest {}".format(action_path)],
+#         "title": show_cmd
+#     }
 
 def task_visualize_top_twenty_modifiers():
     action_path = Path("src/data_visualization/visualize_top_twenty_modifiers.py")
     return {
         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
                     Path("data/analysis_results/total_modifiers_per_modified_group.csv")],
-        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        # "task_dep": ["run_book_level_statistics_data_quality_tests"], # --- !!! ATTENTION: Uncomment this along with the snippets above. --- #
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_top_twenty_modifiers")],
         "title": show_cmd
@@ -245,7 +246,7 @@ def task_visualize_top_twenty_modifiers_valence_ratio():
     return {
         "file_dep": [Path("data/analysis_results/total_modifiers_per_unique_modified.csv"),
                     Path("data/analysis_results/total_modifiers_per_modified_group.csv")],
-        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        # "task_dep": ["run_book_level_statistics_data_quality_tests"], # --- !!! ATTENTION: Uncomment this along with the snippets above. --- #
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_top_twenty_modifiers_valence_ratio")],
         "title": show_cmd
@@ -254,8 +255,8 @@ def task_visualize_top_twenty_modifiers_valence_ratio():
 def task_visualize_bookcount_per_author():
     action_path = Path("src/data_visualization/visualize_bookcount_per_author.py")
     return {
-        "file_dep": [Path("../../data/analysis_results/book_level_statistics.csv")],
-        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
+        # "task_dep": ["run_book_level_statistics_data_quality_tests"], # --- !!! ATTENTION: Uncomment this along with the snippets above. --- #
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_bookcount_per_author")],
         "title": show_cmd
@@ -264,18 +265,18 @@ def task_visualize_bookcount_per_author():
 def task_visualize_scraping_loss_per_book():
     action_path = Path("src/data_visualization/visualize_scraping_loss_per_book.py")
     return {
-        "file_dep": [Path("../../data/analysis_results/book_level_statistics.csv")],
-        "task_dep": ["run_book_level_statistics_data_quality_tests"],
+        "file_dep": [Path("data/analysis_results/book_level_statistics.csv")],
+        # "task_dep": ["run_book_level_statistics_data_quality_tests"], # --- !!! ATTENTION: Uncomment this along with the snippets above. --- #
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_scraping_loss_per_book")],
         "title": show_cmd
     }
 
 def task_visualize_review_length():
-    action_path = Path("src/data_visualization/visualize_scraping_loss_per_book.py")
+    action_path = Path("src/data_visualization/visualize_review_length.py")
     return {
-        "file_dep": [Path("../../data/analysis_results/goodreads_reviews_analyzed.csv")],
-        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"],
+        "file_dep": [Path("data/analysis_results/goodreads_reviews_analyzed.csv")],
+        "task_dep": ["run_goodreads_reviews_analyzed_data_quality_tests"], 
         "actions": ["python {}".format(action_path)],
         "targets": [Path("media/figures/raw/visualize_review_length")],
         "title": show_cmd

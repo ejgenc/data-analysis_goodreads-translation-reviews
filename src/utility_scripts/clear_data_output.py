@@ -24,7 +24,7 @@ folder_prefix = "../../data/{}"
 for folder_name in folder_names:
     folder_path = Path(folder_prefix.format(folder_name))
     for filename in os.listdir(folder_path):
-        if (filename == ".gitkeep") or (filename == "goodreads_reviews_cleaned.csv"):
+        if (filename == ".gitkeep") or (filename in ["goodreads_reviews_cleaned.csv", "book_level_statistics.csv"]):
             pass
         else:
             file_path = os.path.join(folder_path, filename)
